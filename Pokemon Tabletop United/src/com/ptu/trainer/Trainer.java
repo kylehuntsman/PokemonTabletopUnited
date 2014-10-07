@@ -2,6 +2,7 @@ package com.ptu.trainer;
 
 import com.ptu.CombatStats;
 import com.ptu.trainer.feature.FeatureManager;
+import com.ptu.trainer.inventory.Inventory;
 
 public class Trainer {
 	
@@ -26,6 +27,8 @@ public class Trainer {
 	
 	private FeatureManager features;
 	
+	private Inventory inventory;
+	
 	/**
 	 * Instantiates a Trainer object
 	 */
@@ -35,6 +38,7 @@ public class Trainer {
 		setCombatStats(new CombatStats(10, 5, 5, 5, 5, 5));
 		level = 1;
 		setFeatures(new FeatureManager());
+		setInventory(new Inventory());
 	}
 	
 	public int getActionPoints() {
@@ -94,9 +98,13 @@ public class Trainer {
 		return injuries;
 	}
 
+	public Inventory getInventory() {
+		return inventory;
+	}	
+
 	public int getLongJump() {
 		return skills.getAcrobatics().getValue() / 2;
-	}	
+	}
 
 	public int getMaxHitPoints() {
 		return (level * 2) + (combatStats.getHP() * 3) + 10;
@@ -150,7 +158,7 @@ public class Trainer {
 	public int getWeight() {
 		return weight;
 	}
-
+	
 	private void initAttributes() {
 		setBody(Attribute.AVERAGE);
 		setMind(Attribute.AVERAGE);;
@@ -164,7 +172,7 @@ public class Trainer {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
+
 	public void setBackground(String background) {
 		this.background = background;
 	}
@@ -180,7 +188,7 @@ public class Trainer {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
@@ -201,14 +209,18 @@ public class Trainer {
 		this.injuries = injuries;
 	}
 	
+	private void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+	
 	public void setMind(Attribute mind) {
 		this.mind = mind;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public void setSize(String size) {
 		this.size = size;
 	}
