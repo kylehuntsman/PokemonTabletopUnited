@@ -14,7 +14,7 @@ public enum Type {
 		this.value = value;
 	}
 	
-	public getValue() {
+	public String getValue() {
 		return value;
 	}
 }
