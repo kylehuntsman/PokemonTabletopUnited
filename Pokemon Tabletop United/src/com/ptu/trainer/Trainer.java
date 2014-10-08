@@ -1,6 +1,6 @@
 package com.ptu.trainer;
 
-import com.ptu.CombatStats;
+import com.ptu.CombatStatManager;
 import com.ptu.trainer.feature.FeatureManager;
 import com.ptu.trainer.inventory.Inventory;
 
@@ -21,7 +21,7 @@ public class Trainer {
 	 * Stats
 	 */
 	private SkillManager skills;
-	private CombatStats combatStats;
+	private CombatStatManager combatStats;
 	private int level, exp, actionPoints, hitPoints, injuries;
 	private String abilities;
 	
@@ -35,7 +35,7 @@ public class Trainer {
 	public Trainer() {
 		initAttributes();
 		skills = new SkillManager();
-		setCombatStats(new CombatStats(10, 5, 5, 5, 5, 5));
+		setCombatStats(new CombatStatManager(10, 5, 5, 5, 5, 5));
 		level = 1;
 		setFeatures(new FeatureManager());
 		setInventory(new Inventory());
@@ -57,7 +57,7 @@ public class Trainer {
 		return body;
 	}
 	
-	public CombatStats getCombatStats() {
+	public CombatStatManager getCombatStats() {
 		return combatStats;
 	}
 	
@@ -181,7 +181,7 @@ public class Trainer {
 		this.body = body;
 	}
 
-	private void setCombatStats(CombatStats combatStats) {
+	private void setCombatStats(CombatStatManager combatStats) {
 		this.combatStats = combatStats;
 	}
 

@@ -1,6 +1,6 @@
 package com.ptu;
 
-public class CombatStats {
+public class CombatStatManager {
 	
 	private int hp, attack, defense, specialAttack, specialDefense, speed;
 	
@@ -14,7 +14,7 @@ public class CombatStats {
 	 * @param spDefense - The Special Defense stat value
 	 * @param speed - The Speed stat value
 	 */
-	public CombatStats(int hp, int attack, int defense, int specialAttack, int specialDefense, int speed) {
+	public CombatStatManager(int hp, int attack, int defense, int specialAttack, int specialDefense, int speed) {
 		this.hp = hp;
 		this.attack = attack;
 		this.defense = defense;
