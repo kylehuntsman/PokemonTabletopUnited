@@ -14,12 +14,12 @@ public class CombatStats {
 	 * @param spDefense - The Special Defense stat value
 	 * @param speed - The Speed stat value
 	 */
-	public CombatStats(int hp, int attack, int defense, int spAttack, int spDefense, int speed) {
+	public CombatStats(int hp, int attack, int defense, int specialAttack, int specialDefense, int speed) {
 		this.hp = hp;
 		this.attack = attack;
 		this.defense = defense;
-		specialAttack = spAttack;
-		specialDefense = spDefense;
+		this.specialAttack = specialAttack;
+		this.specialDefense = specialDefense;
 		this.speed = speed;
 	};
 	
