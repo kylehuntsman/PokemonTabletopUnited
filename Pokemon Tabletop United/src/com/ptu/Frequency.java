@@ -1,4 +1,4 @@
-package com.ptu.trainer.feature;
+package com.ptu;
 
 public enum Frequency {
 	AT_WILL("At-Will"),

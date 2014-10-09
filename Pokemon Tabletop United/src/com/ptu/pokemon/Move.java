@@ -1,5 +1,7 @@
 package com.ptu.pokemon;
 
+import com.ptu.Frequency;
+
 public class Move {
 	private String name;
 	private Type type;
@@ -11,6 +13,60 @@ public class Move {
 	private MoveClass moveClass;
 	private String range;
 	private String effect;
-	private ContestType contestType;
-	private String contestEffect;
+	private ContestStat contestStat;
+	private ContestEffect contestEffect;
+	
+	public Move(String name, Type type, Frequency frequency, int accuracyCheck,
+			int damageBaseValue, String calculatedDamage, int quickDamage,
+			MoveClass moveClass, String range, String effect,
+			ContestStat contestStat, String contestEffect) {
+		this.name = name;
+		this.type = type;
+		this.frequency = frequency;
+		this.accuracyCheck = accuracyCheck;
+		this.damageBaseValue = damageBaseValue;
+		this.calculatedDamage = calculatedDamage;
+		this.quickDamage = quickDamage;
+		this.moveClass = moveClass;
+		this.range = range;
+		this.effect = effect;
+		this.contestStat = contestStat;
+		this.contestEffect = contestEffect;
+	}
+	public int getAccuracyCheck() {
+		return accuracyCheck;
+	}
+	public String getCalculatedDamage() {
+		return calculatedDamage;
+	}
+	public String getContestEffect() {
+		return contestEffect;
+	}
+	public ContestStat getcontestStat() {
+		return contestStat;
+	}
+	public int getDamageBaseValue() {
+		return damageBaseValue;
+	}
+	public String getEffect() {
+		return effect;
+	}
+	public Frequency getFrequency() {
+		return frequency;
+	}
+	public MoveClass getMoveClass() {
+		return moveClass;
+	}
+	public String getName() {
+		return name;
+	}
+	public int getQuickDamage() {
+		return quickDamage;
+	}
+	public String getRange() {
+		return range;
+	}
+	public Type getType() {
+		return type;
+	}
 }
