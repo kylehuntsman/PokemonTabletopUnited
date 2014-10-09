@@ -1,5 +1,9 @@
 package com.ptu.pokemon;
 
-public class PokeEdgeManager {
+import java.util.List;
 
+public class PokeEdgeManager {
+	private int currentTutorPoints;
+	private int totalTutorPoints;
+	private List<PokeEdge> pokeEdges;
 }

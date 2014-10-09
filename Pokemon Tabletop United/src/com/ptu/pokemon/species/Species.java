@@ -26,6 +26,7 @@ public class Species {
 	private int height, weight;
 	private double genderRatio;
 	private EggGroup eggGroup1 , eggGroup2;
+	private int hatchRate;
 	private List<Diet> diet;
 	private List<Habitat> habitat;
 	private int overland, swim, longJump, highJump; 
@@ -40,17 +41,18 @@ public class Species {
 	//private List<Forms> forms;
 	
 	public Species(String name, int gameGeneration, int stage,
-			CombatStatManager baseStats, Type type1, Type type2,
+			CombatStatManager combatStats, Type type1, Type type2,
 			List<Ability> basicAbilities, List<Ability> advancedAbilities,
 			Ability highAbility, List<Evolution> evolution, Size size,
 			int height, int weight, double genderRatio, EggGroup eggGroup1,
-			EggGroup eggGroup2, List<Diet> diet, List<Habitat> habitat,
-			int overland, int swim, int longJump, int highJump,
-			List<Capability> cabilities, SkillManager skills, MoveList moveList) {
+			EggGroup eggGroup2, int hatchRate, List<Diet> diet,
+			List<Habitat> habitat, int overland, int swim, int longJump,
+			int highJump, List<Capability> cabilities, SkillManager skills,
+			MoveList moveList) {
 		this.name = name;
 		this.gameGeneration = gameGeneration;
 		this.stage = stage;
-		this.baseStats = baseStats;
+		this.combatStats = combatStats;
 		this.type1 = type1;
 		this.type2 = type2;
 		this.basicAbilities = basicAbilities;
@@ -63,6 +65,7 @@ public class Species {
 		this.genderRatio = genderRatio;
 		this.eggGroup1 = eggGroup1;
 		this.eggGroup2 = eggGroup2;
+		this.hatchRate = hatchRate;
 		this.diet = diet;
 		this.habitat = habitat;
 		this.overland = overland;
@@ -74,11 +77,15 @@ public class Species {
 		this.moveList = moveList;
 	}
 	
+	public CombatStatManager getCombatStats() {
+		return combatStats;
+	}
+	
 	public List<Ability> getAdvancedAbilities() {
 		return advancedAbilities;
 	}
-	public CombatStatManager getBaseStats() {
-		return baseStats;
+	public int getHatchRate() {
+		return hatchRate;
 	}
 	public List<Ability> getBasicAbilities() {
 		return basicAbilities;

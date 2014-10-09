@@ -25,7 +25,7 @@ public class Pokemon {
 	private MoveManager moves;
 	private SkillManager skills;
 	private ContestStatManager contestStats;
-	private VitaminManager vitmains; //Currently does nothing
-	private PoffinManager poffins;   //Currently does nothing
+	private List<Vitamin> vitmains; //Currently does nothing
+	private List<Poffin> poffins;   //Currently does nothing
 	private PokeEdgeManager edges;   //Currently does nothing
 }
