@@ -1,5 +1,4 @@
 package com.ptu;
-import com.ptu.trainer.feature.Frequency;
 
 public class Ability {
 	private String name;
