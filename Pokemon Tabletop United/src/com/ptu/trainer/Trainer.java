@@ -8,28 +8,18 @@ import com.ptu.trainer.feature.FeatureManager;
 import com.ptu.trainer.inventory.Inventory;
 
 public class Trainer {
-	
-	/**
-	 * Trainer information
-	 */
+
 	private String name, gender, background, size, description;
 	private int age, weight;
-	
-	/**
-	 * Attributes
-	 */
+	private int level, exp, actionPoints, hitPoints, injuries;
+	private int money;
+
 	private Attribute body, mind, spirit;
-	
-	/**
-	 * Stats
-	 */
+
 	private SkillManager skills;
 	private CombatStatManager combatStats;
-	private int level, exp, actionPoints, hitPoints, injuries;
 	private AbilityManager abilities;
-	
 	private FeatureManager features;
-	
 	private Inventory inventory;
 	
 	/**
@@ -121,6 +111,10 @@ public class Trainer {
 		return mind;
 	}
 
+	public int getMoney() {
+		return money;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -161,7 +155,7 @@ public class Trainer {
 	public int getThrowingRange() {
 		return 4 + skills.getAthletics().getValue();
 	}
-
+	
 	public int getWeight() {
 		return weight;
 	}
@@ -175,7 +169,7 @@ public class Trainer {
 	public void setActionPoints(int actionPoints) {
 		this.actionPoints = actionPoints;
 	}
-	
+
 	public void setAge(int age) {
 		this.age = age;
 	}
@@ -191,7 +185,7 @@ public class Trainer {
 	private void setCombatStats(CombatStatManager combatStats) {
 		this.combatStats = combatStats;
 	}
-
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -219,9 +213,13 @@ public class Trainer {
 	private void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
-	
+
 	public void setMind(Attribute mind) {
 		this.mind = mind;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
 	}
 
 	public void setName(String name) {
