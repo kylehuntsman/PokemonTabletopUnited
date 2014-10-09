@@ -2,6 +2,8 @@ package com.ptu.trainer;
 
 import com.ptu.AbilityManager;
 import com.ptu.CombatStatManager;
+import com.ptu.Skill;
+import com.ptu.SkillManager;
 import com.ptu.trainer.feature.FeatureManager;
 import com.ptu.trainer.inventory.Inventory;
 

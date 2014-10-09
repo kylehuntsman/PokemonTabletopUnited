@@ -1,4 +1,4 @@
-package com.ptu.trainer;
+package com.ptu;
 
 public enum Skill {
 	PATHETIC(1, 1),

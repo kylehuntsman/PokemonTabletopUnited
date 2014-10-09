@@ -1,4 +1,4 @@
-package com.ptu.pokemon;
+package com.ptu.move;
 
 public enum MoveClass {
 	STATUS("Status"), SPECIAL("Special"), PHYSICAL("Physical");

@@ -1,6 +1,9 @@
-package com.ptu.pokemon;
+package com.ptu.move;
 
 import com.ptu.Frequency;
+import com.ptu.move.contest.ContestEffect;
+import com.ptu.move.contest.ContestStat;
+import com.ptu.pokemon.species.Type;
 
 public class Move {
 	private String name;

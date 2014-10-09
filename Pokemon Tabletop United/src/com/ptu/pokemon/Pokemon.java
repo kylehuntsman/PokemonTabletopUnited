@@ -3,6 +3,8 @@ package com.ptu.pokemon;
 import java.util.List;
 
 import com.ptu.CombatStatManager;
+import com.ptu.pokemon.species.Species;
+import com.ptu.pokemon.species.Type;
 import com.ptu.trainer.inventory.item.Item;
 
 public class Pokemon {

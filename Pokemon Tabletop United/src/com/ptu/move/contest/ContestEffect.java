@@ -1,4 +1,4 @@
-package com.ptu.pokemon;
+package com.ptu.move.contest;
 
 public class ContestEffect {
 	private String name;

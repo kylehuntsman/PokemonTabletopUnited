@@ -1,4 +1,4 @@
-package com.ptu.pokemon;
+package com.ptu.move.contest;
 
 public enum ContestStat {
 	BEAUTY("Beuaty"), COOL("Cool"), CUTE("Cute"),

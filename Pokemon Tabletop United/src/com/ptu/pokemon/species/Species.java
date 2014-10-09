@@ -1,8 +1,11 @@
-package com.ptu.pokemon;
+package com.ptu.pokemon.species;
 
 
-import com.ptu.CombatStatManager;
 import com.ptu.Ability;
+import com.ptu.CombatStatManager;
+import com.ptu.pokemon.Size;
+import com.ptu.pokemon.SkillList;
+
 import java.util.List;
 
 public class Species {

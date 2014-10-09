@@ -1,9 +1,7 @@
-package com.ptu;
+package com.ptu.move;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.ptu.pokemon.Move;
 
 public class MoveManager {
 	

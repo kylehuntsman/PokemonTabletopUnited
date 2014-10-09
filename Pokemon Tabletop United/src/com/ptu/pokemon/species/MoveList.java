@@ -1,5 +1,7 @@
-package com.ptu.pokemon;
+package com.ptu.pokemon.species;
 import java.util.List;
+
+import com.ptu.move.Move;
 
 public class MoveList {
 	private List<Move> levelUpMoveList, tmhmMoveList, eggMoveList, tutorMoveList;

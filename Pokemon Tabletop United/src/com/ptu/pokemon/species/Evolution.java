@@ -1,4 +1,4 @@
-package com.ptu.pokemon;
+package com.ptu.pokemon.species;
 
 public class Evolution {
 	private int stage;

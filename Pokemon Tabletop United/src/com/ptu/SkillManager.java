@@ -1,31 +1,18 @@
-package com.ptu.trainer;
+package com.ptu;
 
 public class SkillManager {
 	
-	/**
-	 * Body skills
-	 */
 	private Skill acrobatics, athletics, combat, intimidate;
 	private Skill stealth, survival;
-	
-	/**
-	 * Mind skill
-	 */
 	private Skill generalEdu, medicineEdu, occultEdu, technologyEdu;
 	private Skill guile, perception;
-	
-	/**
-	 * Spirit skill
-	 */
 	private Skill charm, command, focus, intuition;
 	
 	public SkillManager() {
 		acrobatics = athletics = combat = intimidate = Skill.UNTRAINED;
 		stealth = survival = Skill.UNTRAINED;
-		
 		generalEdu = medicineEdu = occultEdu = technologyEdu = Skill.UNTRAINED;
 		guile = perception = Skill.UNTRAINED;
-		
 		charm = command = focus = intuition = Skill.UNTRAINED;
 	}
 	
