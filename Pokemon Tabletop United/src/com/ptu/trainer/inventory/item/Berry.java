@@ -6,7 +6,6 @@ public class Berry extends Item {
 	
 	public Berry(int tier, String name, String effect, int cost, int quantity) {
 		super(name, effect, cost, quantity);
-		
 		this.tier = tier;
 	}
 
@@ -17,5 +16,4 @@ public class Berry extends Item {
 	public void setTier(int tier) {
 		this.tier = tier;
 	}
-
 }

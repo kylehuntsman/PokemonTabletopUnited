@@ -8,14 +8,14 @@ public enum Diet {
 	TERRAVORE("Terravore"),
 	NULLIVORE("Nullivore");
 
-	private String value;
+	private String name;
 
-	private Diet(String value) {
-		this.value = value;
+	private Diet(String name) {
+		this.name = name;
 	}
-
+	
 	@Override
 	public String toString() {
-		return value;
+		return name;
 	}
 }

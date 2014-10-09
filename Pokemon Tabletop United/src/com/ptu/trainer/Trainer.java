@@ -1,5 +1,6 @@
 package com.ptu.trainer;
 
+import com.ptu.AbilityManager;
 import com.ptu.CombatStatManager;
 import com.ptu.trainer.feature.FeatureManager;
 import com.ptu.trainer.inventory.Inventory;
@@ -23,7 +24,7 @@ public class Trainer {
 	private SkillManager skills;
 	private CombatStatManager combatStats;
 	private int level, exp, actionPoints, hitPoints, injuries;
-	private String abilities;
+	private AbilityManager abilities;
 	
 	private FeatureManager features;
 	
@@ -39,6 +40,10 @@ public class Trainer {
 		level = 1;
 		setFeatures(new FeatureManager());
 		setInventory(new Inventory());
+	}
+	
+	public AbilityManager getAbilities() {
+		return abilities;
 	}
 	
 	public int getActionPoints() {

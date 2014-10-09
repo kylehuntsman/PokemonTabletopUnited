@@ -7,7 +7,6 @@ public class PokeBall extends Item {
 	
 	public PokeBall(int ballNumber, String name, int modifier, String special, int cost, int quantity) {
 		super(name, special, cost, quantity);
-		
 		this.ballNumber = ballNumber;
 		this.modifier = modifier;
 	}

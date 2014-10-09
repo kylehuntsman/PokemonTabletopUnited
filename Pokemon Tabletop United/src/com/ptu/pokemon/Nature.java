@@ -53,12 +53,13 @@ public enum Nature {
 	public CombatStat getLoweredStat() {
 		return loweredStat;
 	}
-
-	public String getName() {
-		return name;
-	}
-
+	
 	public CombatStat getRaisedStat() {
 		return raisedStat;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }

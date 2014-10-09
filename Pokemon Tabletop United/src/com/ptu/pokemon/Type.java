@@ -20,14 +20,14 @@ public enum Type {
 	DARK("Dark"),
 	FAIRY("Fairy");
 
-	private String value;
+	private String name;
 
-	private Type(String value) {
-		this.value = value;
+	private Type(String name) {
+		this.name = name;
 	}
-
+	
 	@Override
 	public String toString() {
-		return value;
+		return name;
 	}
 }

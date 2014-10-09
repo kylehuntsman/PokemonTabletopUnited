@@ -16,14 +16,14 @@ public enum EggGroup {
 	DRAGON("Dragon"),
 	INDETERMINATE("Indeterminate");
 
-	private String value;
+	private String name;
 
-	private EggGroup(String value) {
-		this.value = value;
+	private EggGroup(String name) {
+		this.name = name;
 	}
-
+	
 	@Override
 	public String toString() {
-		return value;
+		return name;
 	}
 }

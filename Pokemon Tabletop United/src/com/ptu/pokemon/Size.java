@@ -7,14 +7,14 @@ public enum Size {
 	HUGE("Huge"),
 	GIGANTIC("Gigantic");
 
-	private String value;
+	private String name;
 
-	private Size(String value) {
-		this.value = value;
+	private Size(String name) {
+		this.name = name;
 	}
-
+	
 	@Override
 	public String toString() {
-		return value;
+		return name;
 	}
 }

@@ -6,7 +6,7 @@ public enum Habitat {
 	MARSH("Marsh"),
 	OCEAN("Ocean"),
 	BEACH("Beach"),
-	FREASHWATER("Freashwater"),
+	FRESHWATER("Freshwater"),
 	TUNDRA("Tundra"),
 	TAIGA("Taiga"),
 	MOUNTAIN("Mountain"),
@@ -15,14 +15,14 @@ public enum Habitat {
 	DESERT("Desert"),
 	RAINFOREST("Rain Forest");
 
-	private String value;
+	private String name;
 
-	private Habitat(String value) {
-		this.value = value;
+	private Habitat(String name) {
+		this.name = name;
 	}
 	
 	@Override
 	public String toString() {
-		return value;
+		return name;
 	}
 }
