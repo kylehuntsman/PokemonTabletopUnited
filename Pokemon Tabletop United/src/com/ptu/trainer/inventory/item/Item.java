@@ -26,6 +26,10 @@ public class Item {
 		return name;
 	}
 
+	public int getQuantity() {
+		return quantity;
+	}
+
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
@@ -36,10 +40,6 @@ public class Item {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getQuantity() {
-		return quantity;
 	}
 
 	public void setQuantity(int quantity) {

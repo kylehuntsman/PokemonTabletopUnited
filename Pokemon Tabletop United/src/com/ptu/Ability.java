@@ -17,19 +17,19 @@ public class Ability {
 		this.effect = effect;
 	}
 
-	public String getName() {
-		return name;
+	public String getEffect() {
+		return effect;
 	}
 	public Frequency getFrequency() {
 		return frequency;
+	}
+	public String getName() {
+		return name;
 	}
 	public String getTarget() {
 		return target;
 	}
 	public String getTrigger() {
 		return trigger;
-	}
-	public String getEffect() {
-		return effect;
 	}
 }

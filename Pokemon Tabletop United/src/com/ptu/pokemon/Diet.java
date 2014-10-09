@@ -1,16 +1,21 @@
 package com.ptu.pokemon;
 
 public enum Diet {
-	CARNIVORE("Carnivore"), HERBIVORE("Herbivore"), OMNIVORE("Omnivore"), 
-	PHOTOTROPH("Phototroph"), TERRAVORE("Terravore"), NULLIVORE("Nullivore");
-	
-	private String value;
-	
-	private Diet(String value) {
-		this.value = value;
-	}
+	CARNIVORE("Carnivore"),
+	HERBIVORE("Herbivore"),
+	OMNIVORE("Omnivore"),
+	PHOTOTROPH("Phototroph"),
+	TERRAVORE("Terravore"),
+	NULLIVORE("Nullivore");
 
-	public String getValue() {
-		return value;
+	private String name;
+
+	private Diet(String name) {
+		this.name = name;
+	}
+	
+	@Override
+	public String toString() {
+		return name;
 	}
 }
