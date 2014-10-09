@@ -20,9 +20,12 @@ public class Pokemon {
 	private String gender;
 	private Nature nature;
 	private AbilityManager abilities;
-	private int overland, swim, longJump, highJump; 
+	private int overland, swim, longJump, highJump, injuries; 
 	private CombatStatManager combatStats;
 	private MoveManager moves;
 	private SkillManager skills;
 	private ContestStatManager contestStats;
+	private VitaminManager vitmains; //Currently does nothing
+	private PoffinManager poffins;   //Currently does nothing
+	private PokeEdgeManager edges;   //Currently does nothing
 }
