@@ -5,23 +5,19 @@ public class Evolution {
 	private String speciesName;
 	private String evolveCondition;
 	
-	public Evolution () {
-		
-	}
-	
 	public Evolution(int stage, String speciesName, String evolveCondition) {
 		this.stage = stage;
 		this.speciesName = speciesName;
 		this.evolveCondition = evolveCondition;
 	}
 	
-	public int getStage() {
-		return stage;
+	public String getEvolveCondition() {
+		return evolveCondition;
 	}
 	public String getSpeciesName() {
 		return speciesName;
 	}
-	public String GetEvolveCondition() {
-		return evolveCondition;
+	public int getStage() {
+		return stage;
 	}
 }
