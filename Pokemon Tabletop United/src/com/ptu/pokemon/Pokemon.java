@@ -2,6 +2,7 @@ package com.ptu.pokemon;
 
 import java.util.List;
 
+import com.ptu.AbilityManager;
 import com.ptu.CombatStatManager;
 import com.ptu.pokemon.species.Species;
 import com.ptu.pokemon.species.Type;
@@ -16,7 +17,7 @@ public class Pokemon {
 	private int loyalty;
 	private String gender;
 	private Nature nature;
-	private List<Ability> abilities;
+	private AbilityManager abilities;
 	private CombatStatManager combatStats;
 	
 }
