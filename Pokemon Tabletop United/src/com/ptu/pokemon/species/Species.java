@@ -13,7 +13,7 @@ public class Species {
 	private String name;
 	private int gameGeneration;
 	private int stage;
-	private CombatStatManager baseStats;
+	private CombatStatManager combatStats;
 	private Type type1, type2;
 	private List<Ability> basicAbilities, advancedAbilities;
 	private Ability highAbility;

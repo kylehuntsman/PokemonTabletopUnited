@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.ptu.AbilityManager;
 import com.ptu.CombatStatManager;
+import com.ptu.SkillManager;
+import com.ptu.move.MoveManager;
 import com.ptu.pokemon.species.Species;
 import com.ptu.pokemon.species.Type;
 import com.ptu.trainer.inventory.item.Item;
@@ -18,6 +20,9 @@ public class Pokemon {
 	private String gender;
 	private Nature nature;
 	private AbilityManager abilities;
+	private int overland, swim, longJump, highJump; 
 	private CombatStatManager combatStats;
-	
+	private MoveManager moves;
+	private SkillManager skills;
+	private ContestStatManager contestStats;
 }
