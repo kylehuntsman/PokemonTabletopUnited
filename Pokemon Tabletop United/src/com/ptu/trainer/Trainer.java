@@ -4,6 +4,7 @@ import com.ptu.AbilityManager;
 import com.ptu.CombatStatManager;
 import com.ptu.Skill;
 import com.ptu.SkillManager;
+import com.ptu.trainer.equipment.EquipmentManager;
 import com.ptu.trainer.feature.FeatureManager;
 import com.ptu.trainer.inventory.Inventory;
 
@@ -21,6 +22,7 @@ public class Trainer {
 	private AbilityManager abilities;
 	private FeatureManager features;
 	private Inventory inventory;
+	private EquipmentManager equipment;
 	
 	/**
 	 * Instantiates a Trainer object
@@ -28,10 +30,11 @@ public class Trainer {
 	public Trainer() {
 		initAttributes();
 		skills = new SkillManager();
-		setCombatStats(new CombatStatManager(10, 5, 5, 5, 5, 5));
+		combatStats = new CombatStatManager(10, 5, 5, 5, 5, 5);
 		level = 1;
-		setFeatures(new FeatureManager());
+		features = new FeatureManager();
 		setInventory(new Inventory());
+		equipment = new EquipmentManager();
 	}
 	
 	public AbilityManager getAbilities() {
@@ -62,6 +65,10 @@ public class Trainer {
 		return description;
 	}
 	
+	public EquipmentManager getEquipment() {
+		return equipment;
+	}
+
 	public int getExp() {
 		return exp;
 	}
@@ -73,7 +80,7 @@ public class Trainer {
 	public String getGender() {
 		return gender;
 	}
-	
+
 	public int getHighJump(boolean isRunning) {
 		int highJump = 0;
 		
@@ -93,11 +100,11 @@ public class Trainer {
 
 	public int getInjuries() {
 		return injuries;
-	}
+	}	
 
 	public Inventory getInventory() {
 		return inventory;
-	}	
+	}
 
 	public int getLongJump() {
 		return skills.getAcrobatics().getValue() / 2;
@@ -151,7 +158,7 @@ public class Trainer {
 	public int getSwimming() {
 		return getOverland() / 2;
 	}
-
+	
 	public int getThrowingRange() {
 		return 4 + skills.getAthletics().getValue();
 	}
@@ -165,7 +172,7 @@ public class Trainer {
 		setMind(Attribute.AVERAGE);;
 		setSpirit(Attribute.AVERAGE);
 	}
-	
+
 	public void setActionPoints(int actionPoints) {
 		this.actionPoints = actionPoints;
 	}
@@ -181,10 +188,6 @@ public class Trainer {
 	public void setBody(Attribute body) {
 		this.body = body;
 	}
-
-	private void setCombatStats(CombatStatManager combatStats) {
-		this.combatStats = combatStats;
-	}
 	
 	public void setDescription(String description) {
 		this.description = description;
@@ -194,10 +197,6 @@ public class Trainer {
 		this.exp = exp;
 	}
 	
-	private void setFeatures(FeatureManager features) {
-		this.features = features;
-	}
-	
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
@@ -205,11 +204,11 @@ public class Trainer {
 	public void setHitPoints(int hitPoints) {
 		this.hitPoints = hitPoints;
 	}
-	
+
 	public void setInjuries(int injuries) {
 		this.injuries = injuries;
 	}
-	
+
 	private void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
