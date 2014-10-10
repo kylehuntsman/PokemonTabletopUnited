@@ -19,7 +19,11 @@ public class FeatureManager {
 		return features.contains(feature);
 	}
 	
+	public Feature get(int index) {
+		return features.get(index);
+	}
+	
 	public void remove(Feature feature) {
-		features.remove(features.indexOf(feature));
+		features.remove(feature);
 	}
 }

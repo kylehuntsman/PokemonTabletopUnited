@@ -19,6 +19,10 @@ public class AbilityManager {
 		return abilities.contains(ability);
 	}
 	
+	public Ability get(int index) {
+		return abilities.get(index);
+	}
+	
 	public void remove(Ability ability) {
 		abilities.remove(ability);
 	}
