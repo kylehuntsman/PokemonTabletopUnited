@@ -10,22 +10,22 @@ public class Inventory {
 	private List<Item> items;
 	
 	public Inventory() {
-		setItems(new ArrayList<Item>());
+		items = new ArrayList<Item>();
 	}
 
 	public void add(Item item) {
 		items.add(item);
 	}
+	
+	public boolean contains(Item item) {
+		return items.contains(item);
+	}
 
-	public List<Item> getItems() {
-		return items;
+	public Item get(int index) {
+		return items.get(index);
 	}
 	
 	public void remove(Item item) {
 		items.remove(item);
-	}
-	
-	private void setItems(List<Item> items) {
-		this.items = items;
 	}
 }

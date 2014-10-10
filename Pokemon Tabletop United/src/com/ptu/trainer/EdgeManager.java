@@ -19,6 +19,10 @@ public class EdgeManager {
 		return edges.contains(edge);
 	}
 	
+	public Edge get(int index) {
+		return edges.get(index);
+	}
+	
 	public void remove(Edge edge) {
 		edges.remove(edge);
 	}

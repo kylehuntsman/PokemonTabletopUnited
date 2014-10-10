@@ -19,6 +19,10 @@ public class MoveManager {
 		return moves.contains(move);
 	}
 	
+	public Move get(int index) {
+		return moves.get(index);
+	}
+	
 	public void remove(Move move) {
 		moves.remove(move);
 	}
