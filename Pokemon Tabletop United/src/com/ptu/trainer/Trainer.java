@@ -21,6 +21,7 @@ public class Trainer {
 	private CombatStatManager combatStats;
 	private AbilityManager abilities;
 	private FeatureManager features;
+	private EdgeManager edges;
 	private Inventory inventory;
 	private EquipmentManager equipment;
 	
@@ -33,6 +34,7 @@ public class Trainer {
 		combatStats = new CombatStatManager(10, 5, 5, 5, 5, 5);
 		level = 1;
 		features = new FeatureManager();
+		edges = new EdgeManager();
 		setInventory(new Inventory());
 		equipment = new EquipmentManager();
 	}
@@ -63,6 +65,10 @@ public class Trainer {
 	
 	public String getDescription() {
 		return description;
+	}
+	
+	public EdgeManager getEdges() {
+		return edges;
 	}
 	
 	public EquipmentManager getEquipment() {
