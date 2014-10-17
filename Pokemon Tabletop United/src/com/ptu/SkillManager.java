@@ -52,6 +52,10 @@ public class SkillManager {
 		return intimidate;
 	}
 
+	public Skill getIntuition() {
+		return intuition;
+	}
+
 	public Skill getMedicineEdu() {
 		return medicineEdu;
 	}
@@ -110,6 +114,10 @@ public class SkillManager {
 
 	public void setIntimidate(Skill intimidate) {
 		this.intimidate = intimidate;
+	}
+
+	public void setIntuition(Skill intuition) {
+		this.intuition = intuition;
 	}
 
 	public void setMedicineEdu(Skill medicineEdu) {
