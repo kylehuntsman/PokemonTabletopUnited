@@ -1,5 +1,9 @@
 package com.ptu;
 
+/**
+ * The <code> CombatStatManager </code> represents an object that manages
+ * combat stats.
+ */
 public class CombatStatManager {
 
 	private int hp, attack, defense, specialAttack, specialDefense, speed;
