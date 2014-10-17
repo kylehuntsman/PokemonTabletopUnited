@@ -13,9 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
-import javafx.scene.control.Tooltip;
 
 import com.ptu.trainer.Attribute;
+import com.ptu.util.Util;
 
 public class WizardController implements Initializable {
 
@@ -191,17 +191,20 @@ public class WizardController implements Initializable {
 
 	private void updateBodyLabel() {
 		int bodyValue = (int) body.getValue();
-		lblBody.setText(Attribute.getString(bodyValue));
+		Attribute attribute = Attribute.getAttribute(bodyValue);
+		lblBody.setText(Util.getDisplayName(attribute.toString()));
 	}
 
 	private void updateMindLabel() {
 		int mindValue = (int) mind.getValue();
-		lblMind.setText(Attribute.getString(mindValue));
+		Attribute attribute = Attribute.getAttribute(mindValue);
+		lblMind.setText(Util.getDisplayName(attribute.toString()));
 	}
 
 	private void updateSpiritLabel() {
 		int spiritValue = (int) spirit.getValue();
-		lblSpirit.setText(Attribute.getString(spiritValue));
+		Attribute attribute = Attribute.getAttribute(spiritValue);
+		lblSpirit.setText(Util.getDisplayName(attribute.toString()));
 	}
 
 	private void updateBtnNext2() {
