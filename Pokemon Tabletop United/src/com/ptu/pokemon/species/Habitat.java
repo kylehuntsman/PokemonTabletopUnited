@@ -1,6 +1,7 @@
 package com.ptu.pokemon.species;
 
 public enum Habitat {
+	ARCTIC("Arctic"),
 	GRASSLAND("Grassland"),
 	FOREST("Forest"),
 	MARSH("Marsh"),
