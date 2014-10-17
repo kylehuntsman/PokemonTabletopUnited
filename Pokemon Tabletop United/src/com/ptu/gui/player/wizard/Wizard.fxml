@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ptu.gui.player.wizard.WizardController">
    <children>
       <Accordion fx:id="accordian" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0">
          <panes>
@@ -26,54 +25,32 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="175.0" prefWidth="570.0" text="It’s important at this step to talk to the other players and the GM about what kind of campaign you will be playing and what character types the GM is looking for. You may be faithfully following the anime and manga and all play kids setting out on their first Pokémon adventure, or your GM might have in mind something more specific, such as playing rookies in a detective agency under the command of Looker or even as grunts of Team Rocket. You only need a brief idea for now, and you can expand on it later!" wrapText="true" />
+                        <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="96.0" prefWidth="570.0" text="It’s important at this step to talk to the other players and the GM about what kind of campaign you will be playing and what character types the GM is looking for. You may be faithfully following the anime and manga and all play kids setting out on their first Pokémon adventure, or your GM might have in mind something more specific, such as playing rookies in a detective agency under the command of Looker or even as grunts of Team Rocket. You only need a brief idea for now, and you can expand on it later!" wrapText="true" />
                         <Button layoutX="509.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Next" />
                         <Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Back" />
+                        <Button fx:id="btnStep1" layoutX="529.0" layoutY="185.0" mnemonicParsing="false" onAction="#toStep2" prefHeight="25.0" prefWidth="55.0" text="Next" />
                      </children>
                   </AnchorPane>
                </content>
             </TitledPane>
-            <TitledPane animated="false" text="Step 2: Assign Attributes">
+            <TitledPane fx:id="paneStep2" animated="false" text="Step 2: Assign Attributes">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="62.0" prefWidth="570.0" text="Trainers begin with a value of Average (0) in all of their Attributes and have 5 points to spend raising them as they wish. You may also lower an Attribute below Average to raise another Attribute by the same amount." wrapText="true" />
-                        <HBox layoutX="232.0" layoutY="76.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="50.0">
-                           <children>
-                              <TextField fx:id="textField" alignment="TOP_LEFT" editable="false" prefHeight="27.0" prefWidth="150.0" />
-                              <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="18.0">
-                                 <children>
-                                    <Button fx:id="upButton" alignment="TOP_LEFT" minHeight="-Infinity" mnemonicParsing="false" onAction="#increment" prefHeight="13.0" prefWidth="18.0" />
-                                    <Button fx:id="downButton" minHeight="-Infinity" mnemonicParsing="false" onAction="#decrement" prefHeight="13.0" prefWidth="18.0" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="166.0" layoutY="76.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="50.0">
-                        	<children>
-                        		<TextField fx:id="textField1" alignment="TOP_LEFT" editable="false" prefHeight="27.0" prefWidth="156.0" />
-                        		<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="18.0">
-                        			<children>
-                        				<Button fx:id="upButton1" alignment="TOP_LEFT" minHeight="-Infinity" mnemonicParsing="false" onAction="#increment" prefHeight="13.0" prefWidth="18.0" />
-                        				<Button fx:id="downButton1" minHeight="-Infinity" mnemonicParsing="false" onAction="#decrement" prefHeight="13.0" prefWidth="18.0" />
-                        			</children>
-                        		</VBox>
-                        	</children>
-                        </HBox>
-                        <HBox layoutX="299.0" layoutY="76.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="50.0">
-                        	<children>
-                        		<TextField fx:id="textField2" alignment="TOP_LEFT" editable="false" prefHeight="27.0" prefWidth="150.0" />
-                        		<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="18.0">
-                        			<children>
-                        				<Button fx:id="upButton2" alignment="TOP_LEFT" minHeight="-Infinity" mnemonicParsing="false" onAction="#increment" prefHeight="13.0" prefWidth="18.0" />
-                        				<Button fx:id="downButton2" minHeight="-Infinity" mnemonicParsing="false" onAction="#decrement" prefHeight="13.0" prefWidth="18.0" />
-                        			</children>
-                        		</VBox>
-                        	</children>
-                        </HBox>
-                        <Label layoutX="166.0" layoutY="54.0" text="Body" />
-                        <Label layoutX="232.0" layoutY="54.0" text="Mind" />
-                        <Label layoutX="299.0" layoutY="54.0" text="Spirit" />
+                       
+                        <Label layoutX="132.0" layoutY="76.0" text="Body: " />
+                        <Label layoutX="131.0" layoutY="116.0" text="Mind: " />
+                        <Label layoutX="131.0" layoutY="154.0" text="Spirit: " />
+                        <Slider fx:id="body" blockIncrement="1.0" layoutX="164.0" layoutY="84.0" majorTickUnit="1.0" max="6.0" min="-2.0" minorTickCount="0" prefHeight="14.0" prefWidth="172.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                        <Slider fx:id="mind" blockIncrement="1.0" layoutX="164.0" layoutY="124.0" majorTickUnit="1.0" max="6.0" min="-2.0" minorTickCount="0" prefHeight="14.0" prefWidth="172.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                        <Slider fx:id="spirit" blockIncrement="1.0" layoutX="164.0" layoutY="162.0" majorTickUnit="1.0" max="6.0" min="-2.0" minorTickCount="0" prefHeight="14.0" prefWidth="172.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                        <TextField fx:id="txtPoints" editable="false" layoutX="439.0" layoutY="114.0" prefHeight="25.0" prefWidth="50.0" />
+                        <Label layoutX="425.0" layoutY="94.0" text="Available Points" />
+                        <Label fx:id="lblBody" layoutX="345.0" layoutY="76.0" text="lblBody" />
+                        <Label fx:id="lblMind" layoutX="345.0" layoutY="116.0" text="lblMind" />
+                        <Label fx:id="lblSpirit" layoutX="345.0" layoutY="154.0" text="lblSpirit" />
+                        <Button fx:id="btnStep2" layoutX="529.0" layoutY="185.0" mnemonicParsing="false" onAction="#toStep3" prefHeight="25.0" prefWidth="55.0" text="Next" />
                      </children>
                   </AnchorPane>
                </content>

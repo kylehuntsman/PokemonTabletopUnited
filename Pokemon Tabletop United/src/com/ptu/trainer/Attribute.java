@@ -4,7 +4,7 @@ public enum Attribute {
 
 	TERRIBLE(-2),
 	POOR(-1),
-	AVERAGE(0),
+	AVERAGE( 0),
 	FAIR(1),
 	GOOD(2),
 	GREAT(3),
@@ -31,6 +31,10 @@ public enum Attribute {
 	 */
 	public int getValue() {
 		return value;
+	}
+	
+	public String toString() {
+		return this.toString().substring(0, 1).toUpperCase() + this.toString().substring(1).toLowerCase();
 	}
 
 }
