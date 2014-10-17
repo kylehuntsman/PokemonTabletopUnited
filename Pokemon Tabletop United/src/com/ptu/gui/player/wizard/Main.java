@@ -5,7 +5,6 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Accordion;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -18,7 +17,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Accordion page = (Accordion) FXMLLoader.load(Main.class.getResource("Wizard.fxml"));
+			AnchorPane page = (AnchorPane) FXMLLoader.load(Main.class.getResource("Wizard.fxml"));
 	        Scene scene = new Scene(page);
 	        primaryStage.setScene(scene);
 	        primaryStage.setTitle("Character Creation Wizard");
