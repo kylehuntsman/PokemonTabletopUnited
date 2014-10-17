@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import com.ptu.gui.player.wizard.UpDownBox?>
+
+<Accordion maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+	prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ptu.gui.player.wizard.WizardController">
+	<panes>
+		<TitledPane animated="false" text="Character Creation">
+			<content>
+				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+					prefWidth="200.0">
+					<children>
+						<Button layoutX="509.0" layoutY="285.0" mnemonicParsing="false"
+							prefHeight="25.0" prefWidth="75.0" text="Next" />
+						<Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0"
+							prefHeight="252.0" prefWidth="567.0"
+							text="Before you can begin playing Pokémon Tabletop United, you first need to create your Trainer character who will be your alter ego in the world of Pokémon. Your character will be the focus of the game and the exciting adventures you have, so making the right character for yourself and for the game campaign is very important!"
+							wrapText="true" />
+					</children>
+				</AnchorPane>
+			</content>
+		</TitledPane>
+		<TitledPane animated="false" text="Step 1: Character Concept">
+			<content>
+				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+					prefWidth="200.0">
+					<children>
+						<Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0"
+							prefHeight="175.0" prefWidth="570.0"
+							text="It’s important at this step to talk to the other players and the GM about what kind of campaign you will be playing and what character types the GM is looking for. You may be faithfully following the anime and manga and all play kids setting out on their first Pokémon adventure, or your GM might have in mind something more specific, such as playing rookies in a detective agency under the command of Looker or even as grunts of Team Rocket. You only need a brief idea for now, and you can expand on it later!"
+							wrapText="true" />
+						<Button layoutX="509.0" layoutY="285.0" mnemonicParsing="false"
+							prefHeight="25.0" prefWidth="75.0" text="Next" />
+						<Button layoutX="14.0" layoutY="285.0" mnemonicParsing="false"
+							prefHeight="25.0" prefWidth="75.0" text="Back" />
+					</children>
+				</AnchorPane>
+			</content>
+		</TitledPane>
+		<TitledPane animated="false" text="Step 2: Assign Attributes">
+			<content>
+				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+					prefWidth="200.0">
+					<children>
+						<Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0"
+							prefHeight="62.0" prefWidth="570.0"
+							text="Trainers begin with a value of Average (0) in all of their Attributes and have 5 points to spend raising them as they wish. You may also lower an Attribute below Average to raise another Attribute by the same amount."
+							wrapText="true" />
+						<Button layoutX="509.0" layoutY="285.0" mnemonicParsing="false"
+							prefHeight="25.0" prefWidth="75.0" text="Next" />
+						<UpDownBox fx:id="body"/>
+						<!--<HBox layoutX="14.0" layoutY="76.0" maxHeight="-Infinity"
+							maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+							prefHeight="27.0" prefWidth="168.0" fx:id="body">
+							<children>
+								<TextField fx:id="textField" alignment="TOP_LEFT"
+									editable="false" prefHeight="27.0" prefWidth="150.0" />
+								<VBox minHeight="-Infinity" minWidth="-Infinity"
+									prefHeight="27.0" prefWidth="18.0">
+									<children>
+										<Button fx:id="upButton" alignment="TOP_LEFT"
+											minHeight="-Infinity" mnemonicParsing="false" onAction="#increment"
+											prefHeight="13.0" prefWidth="18.0" />
+										<Button fx:id="downButton" minHeight="-Infinity"
+											mnemonicParsing="false" onAction="#decrement" prefHeight="13.0"
+											prefWidth="18.0" />
+									</children>
+								</VBox>
+							</children>
+						</HBox>-->
+					</children>
+				</AnchorPane>
+			</content>
+		</TitledPane>
+	</panes>
+</Accordion>
