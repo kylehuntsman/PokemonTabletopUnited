@@ -33,7 +33,7 @@ public enum Attribute {
 		return value;
 	}
 
-	private static Attribute getAttribute(int value) {
+	public static Attribute getAttribute(int value) {
 		Attribute attribute = null;
 
 		switch (value) {
@@ -68,12 +68,4 @@ public enum Attribute {
 
 		return attribute;
 	}
-
-	public static String getString(int value) {
-		Attribute attribute = getAttribute(value);
-		String firstChar = attribute.toString().substring(0, 1).toUpperCase();
-		String restOfString = attribute.toString().substring(1).toLowerCase();
-		return firstChar + restOfString;
-	}
-
 }
