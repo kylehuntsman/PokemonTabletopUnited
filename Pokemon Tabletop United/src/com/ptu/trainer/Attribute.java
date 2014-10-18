@@ -4,7 +4,7 @@ public enum Attribute {
 
 	TERRIBLE(-2),
 	POOR(-1),
-	AVERAGE( 0),
+	AVERAGE(0),
 	FAIR(1),
 	GOOD(2),
 	GREAT(3),
@@ -32,9 +32,40 @@ public enum Attribute {
 	public int getValue() {
 		return value;
 	}
-	
-	public String toString() {
-		return this.toString().substring(0, 1).toUpperCase() + this.toString().substring(1).toLowerCase();
-	}
 
+	public static Attribute getAttribute(int value) {
+		Attribute attribute = null;
+
+		switch (value) {
+		case -2:
+			attribute = TERRIBLE;
+			break;
+		case -1:
+			attribute = POOR;
+			break;
+		case 0:
+			attribute = AVERAGE;
+			break;
+		case 1:
+			attribute = FAIR;
+			break;
+		case 2:
+			attribute = GOOD;
+			break;
+		case 3:
+			attribute = GREAT;
+			break;
+		case 4:
+			attribute = SUPERB;
+			break;
+		case 5:
+			attribute = FABULOUS;
+			break;
+		case 6:
+			attribute = AMAZING;
+			break;
+		}
+
+		return attribute;
+	}
 }

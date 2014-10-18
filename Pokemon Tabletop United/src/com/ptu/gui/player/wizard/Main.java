@@ -17,7 +17,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane page = (AnchorPane) FXMLLoader.load(Main.class.getResource("Wizard.fxml"));
+			AnchorPane page = (AnchorPane) FXMLLoader.load(Main.class.getResource("CharacterCreationWizard.fxml"));
 	        Scene scene = new Scene(page);
 	        primaryStage.setScene(scene);
 	        primaryStage.setTitle("Character Creation Wizard");
