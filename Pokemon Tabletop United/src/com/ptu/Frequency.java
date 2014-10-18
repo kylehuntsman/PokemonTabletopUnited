@@ -3,7 +3,7 @@ package com.ptu;
 //TODO Finish writting the the java doc for frequency enum and re write what a frequency enum is.
 
 /**
- * The <code>Frequency</code> enum represents a how often a Feature or Move may
+ * The <code>Frequency</code> enum represents how often a Feature or Move may
  * be performed and what kind of action is required to perform them.
  */
 public enum Frequency {
