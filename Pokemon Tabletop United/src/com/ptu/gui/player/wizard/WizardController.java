@@ -11,6 +11,8 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 
@@ -39,6 +41,11 @@ public class WizardController implements Initializable {
 	public Slider hp, attack, defense, spAttack, spDefense, speed;
 	public TextField txtCombatStatPoints, txtPhyEvasion, txtSpEvasion, txtSpeedEvasion;
 	public int combatStatPoints;
+	
+	// Step 4
+	public TextField txtBgName;
+	public TextArea txtBgDesc;
+	public TableView tableSkillsMod;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -242,13 +249,17 @@ public class WizardController implements Initializable {
 		else
 			btnNext3.setDisable(true);
 	}
-
 	
 	
+	// Navigation
 	private void goToPane(TitledPane pane) {
+		currentPane.setCollapsible(true);
+		currentPane.setDisable(true);
+		
 		pane.setDisable(false);
 		accordian.setExpandedPane(pane);
-		currentPane.setDisable(true);
+		pane.setCollapsible(false);
+		
 		currentPane = pane;
 	}
 
