@@ -7,5 +7,5 @@ package com.github.funnygopher.ptu;
  * calculations, derived stats, and/or capabilities.
  */
 public enum CombatStat {
-	HP, ATTACK, DEFENSE, SPECIAL_ATTACK, SPECIAL_DEFENSE, SPEED;
+	HP, ATTACK, DEFENSE, SPECIAL_ATTACK, SPECIAL_DEFENSE, SPEED
 }

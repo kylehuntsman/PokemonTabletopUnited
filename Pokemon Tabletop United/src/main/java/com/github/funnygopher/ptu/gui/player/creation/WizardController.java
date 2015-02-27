@@ -1,12 +1,17 @@
 package com.github.funnygopher.ptu.gui.player.creation;
 
+import com.github.funnygopher.ptu.Skill;
 import com.github.funnygopher.ptu.trainer.Attribute;
 import com.github.funnygopher.ptu.util.Util;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,7 +42,7 @@ public class WizardController implements Initializable {
 	// Step 4
 	public TextField txtBgName;
 	public TextArea txtBgDesc;
-	public TableView tableSkillsMod;
+	public TableView<SkillModifier> tableSkillsMod;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -46,6 +51,7 @@ public class WizardController implements Initializable {
 
 		initStep2();
 		initStep3();
+		initStep4();
 	}
 
 	private void initStep2() {
@@ -179,6 +185,37 @@ public class WizardController implements Initializable {
 		});
 	}
 
+	private void initStep4() {
+		tableSkillsMod = new TableView<>();
+		tableSkillsMod.setEditable(true);
+		tableSkillsMod.setItems(FXCollections.observableArrayList(new SkillModifier(Skill.ADEPT, Skill.EXPERT)));
+
+		TableColumn<SkillModifier, Skill> rankUpCol = new TableColumn<>("Rank Up");
+		rankUpCol.setMinWidth(50);
+		rankUpCol.setPrefWidth(150);
+		rankUpCol.setCellValueFactory(new PropertyValueFactory<>("rankUp"));
+		rankUpCol.setCellFactory(ComboBoxTableCell.<SkillModifier, Skill>forTableColumn(Skill.values()));
+		rankUpCol.setEditable(false);
+
+		tableSkillsMod.getColumns().addAll(rankUpCol);
+	}
+
+	public class SkillModifier {
+		private final SimpleObjectProperty<Skill> rankUp, rankDown;
+
+		private SkillModifier(Skill rankUp, Skill rankDown) {
+			this.rankUp = new SimpleObjectProperty<Skill>(rankUp);
+			this.rankDown = new SimpleObjectProperty<Skill>(rankDown);
+		}
+
+		public Skill getRankUp() {
+			return rankUp.get();
+		}
+
+		public Skill getRankDown() {
+			return rankDown.get();
+		}
+	}
 	
 	// Step 2 Functions
 	private void updateAttributePoints() {
@@ -242,7 +279,10 @@ public class WizardController implements Initializable {
 			btnNext3.setDisable(true);
 	}
 	
-	
+	// Step 4 Functions
+	private void addSkillsMod() {
+	}
+
 	// Navigation
 	private void goToPane(TitledPane pane) {
 		currentPane.setCollapsible(true);

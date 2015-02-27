@@ -134,21 +134,16 @@
                <content>
                   <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnNext5" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep5" prefHeight="25.0" prefWidth="55.0" text="Next" />
+                        <Button fx:id="btnNext4" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep5" prefHeight="25.0" prefWidth="55.0" text="Next" />
                         <Button fx:id="btnBack4" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep3" prefHeight="25.0" prefWidth="55.0" text="Back" />
-                        <TableView fx:id="tableSkillsMod" layoutX="284.0" layoutY="31.0" maxWidth="300.0" prefHeight="188.0" prefWidth="300.0">
-                          <columns>
-                            <TableColumn editable="false" prefWidth="150.0" sortable="false" text="Rank Up" />
-                            <TableColumn editable="false" prefWidth="150.0" sortable="false" text="Rank Down" />
-                          </columns>
-                        </TableView>
+                        <TableView fx:id="tableSkillsMod" layoutX="284.0" layoutY="31.0" maxWidth="300.0" prefHeight="188.0" prefWidth="300.0" />
                         <Label layoutX="14.0" layoutY="14.0" text="Background Name" />
                         <TextField fx:id="txtBgName" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="250.0" />
                         <Label layoutX="14.0" layoutY="68.0" text="Background Description" />
                         <TextArea fx:id="txtBgdDesc" layoutX="13.0" layoutY="85.0" prefHeight="170.0" prefWidth="250.0" wrapText="true" />
                         <Label layoutX="284.0" layoutY="14.0" text="Skills Modified" />
-                        <Button layoutX="284.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Button" />
-                        <Button layoutX="436.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Button" />
+                        <Button layoutX="284.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Add" />
+                        <Button layoutX="436.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Remove" />
                      </children></AnchorPane>
                </content>
             </TitledPane>

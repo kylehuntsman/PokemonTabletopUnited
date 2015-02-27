@@ -17,9 +17,9 @@ public class CombatStatManager {
 	 *            - The Attack stat value
 	 * @param defense
 	 *            - The Defense stat value
-	 * @param spAttack
+	 * @param specialAttack
 	 *            - The Special Attack stat value
-	 * @param spDefense
+	 * @param specialDefense
 	 *            - The Special Defense stat value
 	 * @param speed
 	 *            - The Speed stat value
