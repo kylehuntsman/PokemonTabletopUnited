@@ -1,4 +1,4 @@
-package com.github.funnygopher.ptu.gui.player.creation;
+package com.github.funnygopher.ptu.charactercreation.gui;
 
 import com.github.funnygopher.ptu.Skill;
 import com.github.funnygopher.ptu.trainer.Attribute;

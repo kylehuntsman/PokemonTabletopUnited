@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.155902004454343" orientation="VERTICAL" prefHeight="900.0" prefWidth="750.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="13.0" layoutY="95.0" text="Background:">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="13.0" layoutY="68.0" text="Age:">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="13.0" layoutY="41.0" text="Gender:">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="13.0" layoutY="14.0" text="Name:">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField editable="false" focusTraversable="false" layoutX="90.0" layoutY="15.0" prefHeight="25.0" prefWidth="275.0" />
+                  <TextField editable="false" focusTraversable="false" layoutX="90.0" layoutY="42.0" prefHeight="25.0" prefWidth="275.0" />
+                  <TextField editable="false" focusTraversable="false" layoutX="90.0" layoutY="69.0" prefHeight="25.0" prefWidth="275.0" />
+                  <TextField editable="false" focusTraversable="false" layoutX="90.0" layoutY="96.0" prefHeight="25.0" prefWidth="275.0" />
+                  <Label layoutX="379.0" layoutY="17.0" text="Height / Size:">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="379.0" layoutY="44.0" text="Weight:">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="378.0" layoutY="71.0" text="Description:">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField editable="false" focusTraversable="false" layoutX="460.0" layoutY="18.0" prefHeight="25.0" prefWidth="275.0" />
+                  <TextField editable="false" focusTraversable="false" layoutX="460.0" layoutY="45.0" prefHeight="25.0" prefWidth="275.0" />
+                  <TextArea editable="false" focusTraversable="false" layoutX="460.0" layoutY="72.0" prefHeight="50.0" prefWidth="275.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="91.0" prefWidth="748.0">
+               <children>
+                  <SplitPane dividerPositions="0.29797979797979796" prefHeight="755.0" prefWidth="748.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <TitledPane animated="false" prefHeight="206.0" prefWidth="219.0" text="Body">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </TitledPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
