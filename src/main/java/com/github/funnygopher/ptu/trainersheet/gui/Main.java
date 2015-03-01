@@ -18,7 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/trainersheet.gui.TrainerSheet.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/trainersheet.gui/TrainerSheet.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

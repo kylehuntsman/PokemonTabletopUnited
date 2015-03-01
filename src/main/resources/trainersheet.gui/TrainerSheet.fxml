@@ -9,9 +9,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="862.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1528.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="bodyPane" layoutX="-1.0" prefHeight="90.0" prefWidth="1600.0">
+      <AnchorPane fx:id="bodyPane" layoutX="-1.0" prefHeight="90.0" prefWidth="1528.0">
          <children>
             <Label layoutX="380.0" layoutY="41.0" text="Background:">
                <padding>
@@ -57,12 +57,12 @@
             <TextArea editable="false" focusTraversable="false" layoutX="1219.0" layoutY="15.0" prefHeight="50.0" prefWidth="275.0" />
          </children>
       </AnchorPane>
-      <VBox fx:id="skillsPane" layoutX="-1.0" layoutY="90.0" prefHeight="772.0" prefWidth="200.0">
+      <VBox fx:id="skillsPane" layoutX="-1.0" layoutY="90.0" prefHeight="770.0" prefWidth="200.0">
          <children>
             <AnchorPane prefHeight="226.0" prefWidth="200.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="50.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                  <GridPane gridLinesVisible="true" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="200.0">
+                  <GridPane gridLinesVisible="true" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="199.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="114.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="104.0" minWidth="10.0" prefWidth="86.0" />
@@ -182,7 +182,7 @@
             <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="347.0" prefWidth="200.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="50.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                  <GridPane gridLinesVisible="true" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+                  <GridPane gridLinesVisible="true" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="199.0">
                      <children>
                         <Label text="General Edu" GridPane.halignment="LEFT">
                            <padding>
@@ -265,7 +265,7 @@
             <AnchorPane layoutX="10.0" layoutY="257.0" prefHeight="181.0" prefWidth="200.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="50.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                  <GridPane gridLinesVisible="true" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="200.0">
+                  <GridPane gridLinesVisible="true" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="149.0" prefWidth="199.0">
                      <children>
                         <Label text="Charm" GridPane.halignment="LEFT">
                            <padding>
@@ -324,9 +324,9 @@
             </AnchorPane>
          </children>
       </VBox>
-      <AnchorPane layoutX="199.0" layoutY="90.0" prefHeight="764.0" prefWidth="550.0">
+      <AnchorPane layoutX="199.0" layoutY="90.0" prefHeight="771.0" prefWidth="1328.0">
          <children>
-            <AnchorPane layoutY="438.0" prefHeight="155.0" prefWidth="275.0">
+            <AnchorPane layoutX="275.0" layoutY="386.0" prefHeight="193.0" prefWidth="275.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
                   <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="275.0">
@@ -342,10 +342,10 @@
                         <TextField alignment="CENTER" editable="false" focusTraversable="false" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </HBox>
-                  <ListView focusTraversable="false" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="275.0" />
+                  <ListView focusTraversable="false" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="158.0" prefWidth="275.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="275.0" layoutY="438.0" prefHeight="155.0" prefWidth="275.0">
+            <AnchorPane layoutY="386.0" prefHeight="193.0" prefWidth="275.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
                   <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="275.0">
@@ -361,10 +361,10 @@
                         <TextField alignment="CENTER" editable="false" focusTraversable="false" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </HBox>
-                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="125.0" prefWidth="275.0" />
+                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="158.0" prefWidth="275.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="275.0" layoutY="598.0" prefHeight="155.0" prefWidth="275.0">
+            <AnchorPane layoutX="275.0" layoutY="578.0" prefHeight="193.0" prefWidth="275.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
                   <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="275.0">
@@ -380,10 +380,10 @@
                         <TextField alignment="CENTER" editable="false" focusTraversable="false" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </HBox>
-                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="125.0" prefWidth="275.0" />
+                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="158.0" prefWidth="275.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutY="598.0" prefHeight="155.0" prefWidth="275.0">
+            <AnchorPane layoutY="578.0" prefHeight="193.0" prefWidth="275.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
                   <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="275.0">
@@ -399,13 +399,13 @@
                         <TextField alignment="CENTER" editable="false" focusTraversable="false" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </HBox>
-                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="125.0" prefWidth="275.0" />
+                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="158.0" prefWidth="275.0" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="283.0" prefWidth="275.0">
+            <AnchorPane prefHeight="192.0" prefWidth="550.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
-                  <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="275.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="550.0" />
+                  <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="550.0">
                      <children>
                         <Label text="STATS" textFill="WHITE">
                            <font>
@@ -416,10 +416,10 @@
                   </HBox>
                </children>
             </AnchorPane>
-            <AnchorPane layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="155.0" prefWidth="275.0">
+            <AnchorPane layoutY="194.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="192.0" prefWidth="825.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
-                  <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="275.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="825.0" />
+                  <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="825.0">
                      <children>
                         <Label text="MOVES" textFill="WHITE">
                            <font>
@@ -428,10 +428,21 @@
                         </Label>
                      </children>
                   </HBox>
-                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="125.0" prefWidth="275.0" />
+                  <TableView layoutY="35.0" prefHeight="157.0" prefWidth="825.0">
+                    <columns>
+                      <TableColumn prefWidth="144.0" text="Move" />
+                      <TableColumn minWidth="0.0" prefWidth="83.0" text="Freq." />
+                        <TableColumn minWidth="0.0" prefWidth="55.0" text="AC" />
+                        <TableColumn prefWidth="88.0" text="Type" />
+                        <TableColumn prefWidth="110.0" text="Dmg. Roll" />
+                        <TableColumn prefWidth="125.0" text="Dmg. Type" />
+                        <TableColumn prefWidth="205.0" text="Range" />
+                        <TableColumn prefWidth="75.0" text="Contest Type" />
+                    </columns>
+                  </TableView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="275.0" layoutY="278.0" prefHeight="155.0" prefWidth="275.0">
+            <AnchorPane layoutX="550.0" layoutY="578.0" prefHeight="193.0" prefWidth="275.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
                   <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="275.0">
@@ -446,10 +457,10 @@
                         </Label>
                      </children>
                   </HBox>
-                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="125.0" prefWidth="275.0" />
+                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="158.0" prefWidth="275.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="275.0" prefHeight="155.0" prefWidth="275.0">
+            <AnchorPane layoutX="550.0" layoutY="386.0" prefHeight="192.0" prefWidth="275.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
                   <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="275.0">
@@ -461,7 +472,51 @@
                         </Label>
                      </children>
                   </HBox>
-                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="125.0" prefWidth="275.0" />
+                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="157.0" prefWidth="275.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="550.0" prefHeight="193.0" prefWidth="275.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
+                  <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="275.0">
+                     <children>
+                        <Label text="CAPABILITIES" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ListView focusTraversable="false" layoutY="35.0" prefHeight="158.0" prefWidth="275.0" />
+               </children>
+            </AnchorPane>
+            <Label layoutX="844.0" layoutY="579.0" text="NOTES">
+               <font>
+                  <Font name="Segoe UI Light" size="20.0" />
+               </font>
+            </Label>
+            <TextArea layoutX="844.0" layoutY="609.0" prefHeight="143.0" prefWidth="465.0" />
+            <AnchorPane layoutX="844.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="578.0" prefWidth="465.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="465.0" />
+                  <HBox alignment="CENTER" blendMode="SRC_ATOP" prefHeight="35.0" prefWidth="465.0">
+                     <children>
+                        <Label text="INVENTORY" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <TableView layoutY="35.0" prefHeight="543.0" prefWidth="465.0">
+                     <columns>
+                        <TableColumn prefWidth="344.0" text="Item" />
+                        <TableColumn minWidth="0.0" prefWidth="106.0" text="Quantity" />
+                     </columns>
+                  </TableView>
                </children>
             </AnchorPane>
          </children>
