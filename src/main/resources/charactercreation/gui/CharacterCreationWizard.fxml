@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="600.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.funnygopher.ptu.charactercreation.gui.WizardController">
+<AnchorPane maxHeight="600.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.funnygopher.ptu.charactercreation.gui.CharacterCreationController">
    <children>
       <Accordion fx:id="accordian" maxHeight="600.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0">
          <panes>
@@ -32,44 +32,12 @@
                   </AnchorPane>
                </content>
             </TitledPane>
-            <TitledPane fx:id="paneStep2" disable="true" maxHeight="255.0" prefHeight="255.0" text="Step 2: Assign Attributes">
-               <content>
-                  <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="200.0">
-                     <children>
-                        <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="62.0" prefWidth="570.0" text="Attributes are a basic measure of a Trainer’s natural talents and inclinations. Trainers begin with a value of Average (0) in all of their Attributes and have 5 points to spend raising them as they wish. You may also lower an Attribute below Average to raise another Attribute by the same amount." wrapText="true" />
-                       
-                        <Label layoutX="132.0" layoutY="100.0" text="Body: ">
-                           <tooltip>
-                              <Tooltip opacity="0.9" text="Bodyrepresents a Trainer’s overall level of physical &#10;fitness and helps determine how strong they are. &#10;It governs skills ranging from athletic training to &#10;wilderness survival." />
-                           </tooltip></Label>
-                        <Label layoutX="131.0" layoutY="140.0" text="Mind: ">
-                           <tooltip>
-                              <Tooltip opacity="0.9" text="Mindrepresents a Trainer’s mental capacity and &#10;intelligence. It governs skills related to academic fields &#10;and learning as well as awareness of one’s environment." />
-                           </tooltip></Label>
-                        <Label layoutX="131.0" layoutY="178.0" text="Spirit: ">
-                           <tooltip>
-                              <Tooltip opacity="0.9" text="Spiritrepresents a Trainer’s force of personality and &#10;willpower. It governs skills related to winning others to &#10;your point of view and keeping focus on complex tasks." />
-                           </tooltip></Label>
-                        <Slider fx:id="body" blockIncrement="1.0" layoutX="164.0" layoutY="108.0" majorTickUnit="1.0" max="6.0" min="-2.0" minorTickCount="0" prefHeight="14.0" prefWidth="172.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-                        <Slider fx:id="mind" blockIncrement="1.0" layoutX="164.0" layoutY="148.0" majorTickUnit="1.0" max="6.0" min="-2.0" minorTickCount="0" prefHeight="14.0" prefWidth="172.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-                        <Slider fx:id="spirit" blockIncrement="1.0" layoutX="164.0" layoutY="186.0" majorTickUnit="1.0" max="6.0" min="-2.0" minorTickCount="0" prefHeight="14.0" prefWidth="172.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-                        <TextField fx:id="txtAttributePoints" alignment="CENTER" editable="false" layoutX="439.0" layoutY="138.0" prefHeight="25.0" prefWidth="50.0" />
-                        <Label layoutX="425.0" layoutY="118.0" text="Available Points" />
-                        <Label fx:id="lblBody" layoutX="345.0" layoutY="100.0" text="lblBody" />
-                        <Label fx:id="lblMind" layoutX="345.0" layoutY="140.0" text="lblMind" />
-                        <Label fx:id="lblSpirit" layoutX="345.0" layoutY="178.0" text="lblSpirit" />
-                        <Button fx:id="btnNext2" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep3" prefHeight="25.0" prefWidth="55.0" text="Next" />
-                        <Button fx:id="btnBack2" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep1" prefHeight="25.0" prefWidth="55.0" text="Back" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </TitledPane>
-            <TitledPane fx:id="paneStep3" disable="true" maxHeight="300.0" prefHeight="300.0" text="Step 3: Assign Combat Stats">
+            <TitledPane fx:id="paneStep2" disable="true" maxHeight="300.0" prefHeight="300.0" text="Step 2: Assign Combat Stats">
               <content>
                 <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="598.0">
                      <children>
-                        <Button fx:id="btnBack3" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep2" prefHeight="25.0" prefWidth="55.0" text="Back" />
-                        <Button fx:id="btnNext3" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep4" prefHeight="25.0" prefWidth="55.0" text="Next" />
+                        <Button fx:id="btnBack2" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep1" prefHeight="25.0" prefWidth="55.0" text="Back" />
+                        <Button fx:id="btnNext2" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep3" prefHeight="25.0" prefWidth="55.0" text="Next" />
                         <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="90.0" prefWidth="570.0" text="Pokémon Tabletop United uses the same 6 Combat Stats used in the Pokémon video games. If you’re familiar with the video games, then these will need no introduction. If not, read the tooltips for an explanation! Trainers begin with 10 HP and 5 points each in the rest of their Combat Stats. You may distribute 10 additional points among your Combat Stats, but you may put no more than 5 points into any single stat." wrapText="true" />
                         <Slider fx:id="hp" blockIncrement="1.0" layoutX="77.0" layoutY="124.0" majorTickUnit="1.0" max="15.0" min="10.0" minorTickCount="0" prefHeight="25.0" prefWidth="100.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
                         <Slider fx:id="attack" blockIncrement="1.0" layoutX="77.0" layoutY="167.0" majorTickUnit="1.0" max="10.0" min="5.0" minorTickCount="0" prefHeight="25.0" prefWidth="100.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
@@ -130,12 +98,12 @@
                      </children></AnchorPane>
               </content>
             </TitledPane>
-            <TitledPane fx:id="paneStep4" disable="true" layoutX="10.0" layoutY="85.0" text="Step 4: Create Background">
+            <TitledPane fx:id="paneStep3" disable="true" layoutX="10.0" layoutY="85.0" text="Step 3: Create Background">
                <content>
                   <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnNext4" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep5" prefHeight="25.0" prefWidth="55.0" text="Next" />
-                        <Button fx:id="btnBack4" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep3" prefHeight="25.0" prefWidth="55.0" text="Back" />
+                        <Button fx:id="btnNext3" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep4" prefHeight="25.0" prefWidth="55.0" text="Next" />
+                        <Button fx:id="btnBack3" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep2" prefHeight="25.0" prefWidth="55.0" text="Back" />
                         <TableView fx:id="tableSkillsMod" layoutX="284.0" layoutY="31.0" maxWidth="300.0" prefHeight="188.0" prefWidth="300.0" />
                         <Label layoutX="14.0" layoutY="14.0" text="Background Name" />
                         <TextField fx:id="txtBgName" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="250.0" />
@@ -147,16 +115,25 @@
                      </children></AnchorPane>
                </content>
             </TitledPane>
-            <TitledPane fx:id="paneStep5" disable="true" layoutX="10.0" layoutY="110.0" text="Step 5: Choose Edges">
+            <TitledPane fx:id="paneStep4" disable="true" layoutX="10.0" layoutY="110.0" text="Step 4: Choose Edges">
                <content>
                   <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnNext5" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep6" prefHeight="25.0" prefWidth="55.0" text="Next" />
-                        <Button fx:id="btnBack5" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep4" prefHeight="25.0" prefWidth="55.0" text="Back" />
+                        <Button fx:id="btnNext4" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep5" prefHeight="25.0" prefWidth="55.0" text="Next" />
+                        <Button fx:id="btnBack4" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep3" prefHeight="25.0" prefWidth="55.0" text="Back" />
                      </children></AnchorPane>
                </content>
             </TitledPane>
-            <TitledPane fx:id="paneStep6" disable="true" layoutX="10.0" layoutY="135.0" text="Step 6: Choose Features">
+            <TitledPane fx:id="paneStep5" disable="true" layoutX="10.0" layoutY="135.0" text="Step 5: Choose Features">
+               <content>
+                  <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btnBack5" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep4" prefHeight="25.0" prefWidth="55.0" text="Back" />
+                        <Button fx:id="btnNext5" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep6" prefHeight="25.0" prefWidth="55.0" text="Next" />
+                     </children></AnchorPane>
+               </content>
+            </TitledPane>
+            <TitledPane fx:id="paneStep6" disable="true" layoutX="10.0" layoutY="160.0" text="Step 6: Capabilities">
                <content>
                   <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="200.0">
                      <children>
@@ -165,7 +142,7 @@
                      </children></AnchorPane>
                </content>
             </TitledPane>
-            <TitledPane fx:id="paneStep7" disable="true" layoutX="10.0" layoutY="160.0" text="Step 7: Capabilities">
+            <TitledPane fx:id="paneStep7" disable="true" layoutX="10.0" layoutY="210.0" text="Step 7: Basic Descriptions">
                <content>
                   <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="200.0">
                      <children>
@@ -174,7 +151,7 @@
                      </children></AnchorPane>
                </content>
             </TitledPane>
-            <TitledPane fx:id="paneStep8" disable="true" layoutX="10.0" layoutY="210.0" text="Step 8: Basic Descriptions">
+            <TitledPane fx:id="paneStep8" disable="true" layoutX="10.0" layoutY="185.0" text="Step 8: Choose a Pokemon">
                <content>
                   <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="200.0">
                      <children>
@@ -183,20 +160,11 @@
                      </children></AnchorPane>
                </content>
             </TitledPane>
-            <TitledPane fx:id="paneStep9" disable="true" layoutX="10.0" layoutY="185.0" text="Step 9: Choose a Pokemon">
+            <TitledPane fx:id="paneStep9" disable="true" layoutX="10.0" layoutY="235.0" text="Step 9: Money and Items">
                <content>
                   <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnBack9" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep8" prefHeight="25.0" prefWidth="55.0" text="Back" />
-                        <Button fx:id="btnNext9" layoutX="529.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep10" prefHeight="25.0" prefWidth="55.0" text="Next" />
-                     </children></AnchorPane>
-               </content>
-            </TitledPane>
-            <TitledPane fx:id="paneStep10" disable="true" layoutX="10.0" layoutY="235.0" text="Step 10: Money and Items">
-               <content>
-                  <AnchorPane maxHeight="300.0" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="btnBack10" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#toStep9" prefHeight="25.0" prefWidth="55.0" text="Back" />
                      </children></AnchorPane>
                </content>
             </TitledPane>
