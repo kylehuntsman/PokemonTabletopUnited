@@ -9,21 +9,21 @@
    <children>
       <ToolBar fx:id="tbSteps" focusTraversable="false" layoutY="408.0" prefHeight="60.0" prefWidth="800.0" style="-fx-border-color: rgb(175, 175,175 );">
          <items>
-            <Button fx:id="bTrainerConcept" mnemonicParsing="false" onAction="#onStep1Click" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Trainer&#10;Concept" textAlignment="CENTER" />
+            <Button fx:id="bTrainerConcept" disable="true" mnemonicParsing="false" onAction="#onStep1Click" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Trainer&#10;Concept" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button fx:id="bBackground" mnemonicParsing="false" onAction="#onStep2Click" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Background" textAlignment="CENTER" />
+            <Button fx:id="bBackground" disable="true" mnemonicParsing="false" onAction="#onStep2Click" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Background" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button fx:id="bEdges" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Edges" textAlignment="CENTER" />
+            <Button fx:id="bEdges" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Edges" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button fx:id="bFeatures" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Features" textAlignment="CENTER" />
+            <Button fx:id="bFeatures" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Features" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button fx:id="bStats" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Stats" textAlignment="CENTER" />
+            <Button fx:id="bStats" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Stats" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button fx:id="bDescription" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Description" textAlignment="CENTER" />
+            <Button fx:id="bDescription" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Description" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button fx:id="bPokemon" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Pokemon" textAlignment="CENTER" />
+            <Button fx:id="bPokemon" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Pokemon" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button fx:id="bMoneyItems" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Money and&#10;Items" textAlignment="CENTER" />
+            <Button fx:id="bMoneyItems" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Money and&#10;Items" textAlignment="CENTER" />
          </items>
       </ToolBar>
       <AnchorPane fx:id="pContent" prefHeight="408.0" prefWidth="800.0" />

@@ -23,4 +23,8 @@ public class StepNavigator {
             e.printStackTrace();
         }
     }
+
+    public static TrainerCreator2Controller getController() {
+        return trainerCreator2Controller;
+    }
 }

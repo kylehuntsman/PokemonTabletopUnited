@@ -1,19 +1,22 @@
 package com.github.funnygopher.ptu.trainercreator;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class TrainerCreator2Controller {
 
     @FXML
-    AnchorPane pContent;
+    private AnchorPane pContent;
+    public Button bTrainerConcept;
+    public Button bBackground;
+    public Button bEdges;
+    public Button bFeatures;
+    public Button bStats;
+    public Button bDescription;
+    public Button bPokemon;
+    public Button bMoneyItems;
 
     public void setStep(Node node) {
         pContent.getChildren().setAll(node);
