@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3241321771">
+  <component name="DataSourceManagerImpl" format="xml" hash="4045094839">
     <data-source source="LOCAL" name="H2 - ptu" uuid="29c4f701-7c5b-4162-9c81-8b69262ce0b9">
       <driver-ref>h2.embedded</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
       <jdbc-url>jdbc:h2:file:$PROJECT_DIR$/DB/ptu</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.185/h2-1.4.185.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="H2 - game" uuid="30ec61bb-23c4-47df-bb12-a8656aff6c1c">
+      <driver-ref>h2.embedded</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:file:$PROJECT_DIR$/DB/game</jdbc-url>
       <libraries>
         <library>
           <url>file://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.185/h2-1.4.185.jar</url>
