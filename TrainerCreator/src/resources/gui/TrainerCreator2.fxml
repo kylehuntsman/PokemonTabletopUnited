@@ -5,26 +5,27 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.funnygopher.ptu.trainercreator.TrainerCreator2Controller">
    <children>
-      <ToolBar focusTraversable="false" layoutY="408.0" prefHeight="60.0" prefWidth="800.0" style="-fx-border-color: rgb(175, 175,175 );">
+      <ToolBar fx:id="tbSteps" focusTraversable="false" layoutY="408.0" prefHeight="60.0" prefWidth="800.0" style="-fx-border-color: rgb(175, 175,175 );">
          <items>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Trainer&#10;Concept" textAlignment="CENTER" />
+            <Button fx:id="bTrainerConcept" mnemonicParsing="false" onAction="#onStep1Click" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Trainer&#10;Concept" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Background" textAlignment="CENTER" />
+            <Button fx:id="bBackground" mnemonicParsing="false" onAction="#onStep2Click" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Background" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Edges" textAlignment="CENTER" />
+            <Button fx:id="bEdges" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Edges" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Features" textAlignment="CENTER" />
+            <Button fx:id="bFeatures" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Features" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Stats" textAlignment="CENTER" />
+            <Button fx:id="bStats" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Stats" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Description" textAlignment="CENTER" />
+            <Button fx:id="bDescription" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Description" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Pokemon" textAlignment="CENTER" />
+            <Button fx:id="bPokemon" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Pokemon" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Money and&#10;Items" textAlignment="CENTER" />
+            <Button fx:id="bMoneyItems" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Money and&#10;Items" textAlignment="CENTER" />
          </items>
       </ToolBar>
+      <AnchorPane fx:id="pContent" prefHeight="408.0" prefWidth="800.0" />
    </children>
 </AnchorPane>
