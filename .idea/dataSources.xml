@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3241321771">
+    <data-source source="LOCAL" name="H2 - ptu" uuid="29c4f701-7c5b-4162-9c81-8b69262ce0b9">
+      <driver-ref>h2.embedded</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:file:$PROJECT_DIR$/DB/ptu</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.185/h2-1.4.185.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
