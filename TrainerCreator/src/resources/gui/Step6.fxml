@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.funnygopher.ptu.trainercreator.Step6Controller">
+    <children>
+        <Label layoutX="33.0" layoutY="36.0" text="Name" />
+      <TextField fx:id="txtName" layoutX="109.0" layoutY="32.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="291.0" layoutY="207.0" text="Appearance" />
+      <TextArea fx:id="txtAppearance" layoutX="291.0" layoutY="224.0" prefHeight="114.0" prefWidth="239.0" />
+      <TextArea fx:id="txtPersonality" layoutX="542.0" layoutY="46.0" prefHeight="114.0" prefWidth="239.0" />
+      <Label layoutX="542.0" layoutY="29.0" text="Personality" />
+      <TextArea fx:id="txtHistory" layoutX="542.0" layoutY="224.0" prefHeight="114.0" prefWidth="239.0" />
+      <Label layoutX="542.0" layoutY="207.0" text="History (Optional)" />
+      <TextField fx:id="txtHeight" layoutX="210.0" layoutY="154.0" prefHeight="25.0" prefWidth="48.0" />
+      <Label layoutX="31.0" layoutY="158.0" text="Height / Size" />
+      <Label layoutX="33.0" layoutY="199.0" text="Weight" />
+      <TextField fx:id="txtWeight" layoutX="210.0" layoutY="195.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="txtAge" layoutX="226.0" layoutY="114.0" prefHeight="25.0" prefWidth="32.0" />
+      <Label layoutX="33.0" layoutY="118.0" text="Age" />
+      <Label layoutX="33.0" layoutY="77.0" text="Gender" />
+      <TextField fx:id="txtGender" layoutX="194.0" layoutY="73.0" prefHeight="25.0" prefWidth="64.0" />
+      <Label layoutX="281.0" layoutY="29.0" text="Description" />
+      <TextArea fx:id="txtDescription" layoutX="281.0" layoutY="46.0" prefHeight="65.0" prefWidth="239.0" />
+      <Button fx:id="bContinue" layoutX="721.0" layoutY="369.0" mnemonicParsing="false" onAction="#onContinueClick" text="Continue" />
+    </children>
+</AnchorPane>

@@ -23,12 +23,26 @@ public class TrainerCreator2Controller {
     }
 
     @FXML
-    public void onStep1Click() {
-        StepNavigator.loadStep(StepNavigator.STEP1);
-    }
+    public void onStep1Click() { StepNavigator.loadStep(StepNavigator.STEP1);}
 
     @FXML
-    public void onStep2Click() {
-        StepNavigator.loadStep(StepNavigator.STEP2);
-    }
+    public void onStep2Click() { StepNavigator.loadStep(StepNavigator.STEP2);}
+
+    @FXML
+    public void onStep3Click() { StepNavigator.loadStep(StepNavigator.STEP3);}
+
+    @FXML
+    public void onStep4Click() { StepNavigator.loadStep(StepNavigator.STEP4);}
+
+    @FXML
+    public void onStep5Click() { StepNavigator.loadStep(StepNavigator.STEP5);}
+
+    @FXML
+    public void onStep6Click() { StepNavigator.loadStep(StepNavigator.STEP6);}
+
+    @FXML
+    public void onStep7Click() { StepNavigator.loadStep(StepNavigator.STEP7);}
+
+    @FXML
+    public void onStep8Click() { StepNavigator.loadStep(StepNavigator.STEP8);}
 }

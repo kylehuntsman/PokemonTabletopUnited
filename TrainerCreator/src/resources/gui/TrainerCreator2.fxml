@@ -19,7 +19,7 @@
             <Separator orientation="VERTICAL" prefHeight="60.0" />
             <Button fx:id="bStats" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Stats" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button fx:id="bDescription" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Description" textAlignment="CENTER" />
+            <Button fx:id="bDescription" disable="true" mnemonicParsing="false" onAction="#onStep6Click" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Description" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
             <Button fx:id="bPokemon" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Pokemon" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
