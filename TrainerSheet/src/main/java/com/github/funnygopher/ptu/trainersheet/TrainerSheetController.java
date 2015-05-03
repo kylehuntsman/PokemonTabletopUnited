@@ -1,4 +1,4 @@
-package com.github.funnygopher.ptu.trainersheet.gui;
+package com.github.funnygopher.ptu.trainersheet;
 
 import javafx.fxml.Initializable;
 

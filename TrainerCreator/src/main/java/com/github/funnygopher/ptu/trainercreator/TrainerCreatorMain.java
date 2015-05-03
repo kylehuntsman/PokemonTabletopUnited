@@ -1,4 +1,4 @@
-package com.github.funnygopher.ptu.trainersheet.gui;
+package com.github.funnygopher.ptu.trainercreator;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,23 +8,23 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Main extends Application {
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
+public class TrainerCreatorMain extends Application {
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	@Override
+	public void start(Stage primaryStage) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/trainersheet.gui/TrainerSheet.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/gui/TrainerCreator.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Trainer Sheet");
+        primaryStage.setTitle("Character Creation Wizard");
         primaryStage.show();
-    }
+	}
 }

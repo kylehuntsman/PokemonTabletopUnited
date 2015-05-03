@@ -25,5 +25,8 @@
         <module name="PokemonTabletopUnited" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="PokemonTabletopUnited" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

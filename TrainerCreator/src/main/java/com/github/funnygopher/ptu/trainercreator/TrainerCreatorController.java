@@ -1,8 +1,6 @@
-package com.github.funnygopher.ptu.charactercreation.gui;
+package com.github.funnygopher.ptu.trainercreator;
 
 import com.github.funnygopher.ptu.Skill;
-import com.github.funnygopher.ptu.trainer.Attribute;
-import com.github.funnygopher.ptu.util.Util;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CharacterCreationController implements Initializable {
+public class TrainerCreatorController implements Initializable {
 
 	public Accordion accordian;
 	public Button btnNext0, btnNext1, btnNext2, btnNext3, btnNext4, btnNext5,
