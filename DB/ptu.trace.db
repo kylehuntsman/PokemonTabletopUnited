@@ -1,0 +1,283 @@
+05-02 23:15:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CONTEST_EFFECT" already exists; SQL statement:
+CREATE TABLE CONTEST_EFFECT (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(50) NOT NULL,
+  ROLL VARCHAR(3) NOT NULL,
+  EFFECT VARCHAR(250) NOT NULL
+) [42101-185]
+05-02 23:32:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE NATURE (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(15) NOT NULL,
+  STAT_RAISED_ID INT FOREIGN[*] KEY REFERENCES STAT(ID) NOT NULL,
+  STAT_LOWERED_ID INT FOREIGN KEY REFERENCES STAT(ID) NOT NULL
+)"; expected "(, FOR, UNSIGNED, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE NATURE (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(15) NOT NULL,
+  STAT_RAISED_ID INT FOREIGN KEY REFERENCES STAT(ID) NOT NULL,
+  STAT_LOWERED_ID INT FOREIGN KEY REFERENCES STAT(ID) NOT NULL
+) [42001-185]
+05-02 23:38:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "STAT" not found; SQL statement:
+CREATE TABLE NATURE (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(15) NOT NULL,
+  STAT_RAISED_ID INT NOT NULL,
+  STAT_LOWERED_ID INT NOT NULL,
+  FOREIGN KEY (STAT_RAISED_ID) REFERENCES STAT(ID),
+  FOREIGN KEY (STAT_LOWERED_ID) REFERENCES STAT(ID)
+) [42102-185]
+05-02 23:49:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "STAT" not found; SQL statement:
+CREATE TABLE NATURE (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(15) NOT NULL,
+  STAT_RAISED_ID INT NOT NULL,
+  STAT_LOWERED_ID INT NOT NULL,
+  FOREIGN KEY (STAT_RAISED_ID) REFERENCES STAT(ID),
+  FOREIGN KEY (STAT_LOWERED_ID) REFERENCES STAT(ID)
+) [42102-185]
+05-03 00:17:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "BALL" already exists; SQL statement:
+CREATE TABLE BALL (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(15) NOT NULL,
+  IMAGE BLOB NOT NULL,
+  MODIFIER INT NOT NULL,
+  EFFECT VARCHAR(100) NOT NULL,
+  COST INT NOT NULL
+) [42101-185]
+05-03 00:18:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "BALL" already exists; SQL statement:
+CREATE TABLE BALL (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(15) NOT NULL,
+  IMAGE BLOB NOT NULL,
+  MODIFIER INT NOT NULL,
+  EFFECT VARCHAR(100) NOT NULL,
+  COST INT NOT NULL
+) [42101-185]
+05-03 00:26:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ABILITY (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(50) NOT NULL,
+  FREQUENCY VARCHAR(30) NOT NULL,
+  ACTION_ID INT FOREIGN[*] KEY REFERENCES ACTION(ID),
+  TRIGGER VARCHAR(250) NOT NULL,
+  EFFECT VARCHAR(1000) NOT NULL
+)"; expected "(, FOR, UNSIGNED, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE ABILITY (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(50) NOT NULL,
+  FREQUENCY VARCHAR(30) NOT NULL,
+  ACTION_ID INT FOREIGN KEY REFERENCES ACTION(ID),
+  TRIGGER VARCHAR(250) NOT NULL,
+  EFFECT VARCHAR(1000) NOT NULL
+) [42001-185]
+05-03 00:27:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACTION" already exists; SQL statement:
+CREATE TABLE ACTION (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(20) NOT NULL,
+  DESCRIPTION VARCHAR(1000)
+) [42101-185]
+05-03 00:48:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "BALL" already exists; SQL statement:
+CREATE TABLE BALL (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(15) NOT NULL,
+  IMAGE BLOB NOT NULL,
+  MODIFIER INT NOT NULL,
+  EFFECT VARCHAR(100) NOT NULL,
+  COST INT NOT NULL
+) [42101-185]
+05-03 00:50:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE SPECIES (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(30) NOT NULL,
+  IMAGE BLOB NOT NULL,
+  HP INT NOT NULL,
+  ATTACK INT NOT NULL,
+  DEFENSE INT NOT NULL,
+  SPECIAL_ATTACK INT NOT NULL,
+  SPECIAL_DEFENSE INT NOT NULL,
+  SPEED INT NOT NULL,
+  TYPE1_ID INT NOT NULL,
+  TYPE2_ID INT,
+  HEIGHT_FEET FLOAT NOT NULL,
+  HEIGHT_METERS FLOAT NOT NULL,
+  SIZE_ID INT NOT NULL,
+  WEIGHT_LBS FLOAT NOT NULL,
+  WEIGHT_KGS FLOAT NOT NULL,
+  WEIGHT_CLASS_ID INT NOT NULL,
+  MALE_GENDER_RATIO FLOAT NOT NULL,
+  FEMALE_GENDER_RATIO FLOAT NOT NULL,
+  EGG_GROUP_ID INT NOT NULL,
+  EGG_IMAGE BLOB NOT NULL,
+  AVERAGE_HATCH_RATE INT NOT NULL,
+  DIET_ID INT NOT NULL,
+  OVERLAND INT NOT NULL,
+  SWIM INT NOT NULL
+  LEVITATE[*] INT NOT NULL,
+  VERTICAL_JUMP INT NOT NULL,
+  HORIZONTAL_JUMP INT NOT NULL,
+  POWER INT NOT NULL,
+  FOREIGN KEY (TYPE1_ID) REFERENCES TYPE(ID),
+  FOREIGN KEY (TYPE2_ID) REFERENCES TYPE(ID),
+  FOREIGN KEY (SIZE_ID) REFERENCES SIZE(ID),
+  FOREIGN KEY (WEIGHT_CLASS_ID) REFERENCES WEIGHT_CLASS(ID),
+  FOREIGN KEY (EGG_GROUP_ID) REFERENCES EGG_GROUP(ID),
+  FOREIGN KEY (DIET_ID) REFERENCES DIET(ID)
+)"; expected "AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE SPECIES (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(30) NOT NULL,
+  IMAGE BLOB NOT NULL,
+  HP INT NOT NULL,
+  ATTACK INT NOT NULL,
+  DEFENSE INT NOT NULL,
+  SPECIAL_ATTACK INT NOT NULL,
+  SPECIAL_DEFENSE INT NOT NULL,
+  SPEED INT NOT NULL,
+  TYPE1_ID INT NOT NULL,
+  TYPE2_ID INT,
+  HEIGHT_FEET FLOAT NOT NULL,
+  HEIGHT_METERS FLOAT NOT NULL,
+  SIZE_ID INT NOT NULL,
+  WEIGHT_LBS FLOAT NOT NULL,
+  WEIGHT_KGS FLOAT NOT NULL,
+  WEIGHT_CLASS_ID INT NOT NULL,
+  MALE_GENDER_RATIO FLOAT NOT NULL,
+  FEMALE_GENDER_RATIO FLOAT NOT NULL,
+  EGG_GROUP_ID INT NOT NULL,
+  EGG_IMAGE BLOB NOT NULL,
+  AVERAGE_HATCH_RATE INT NOT NULL,
+  DIET_ID INT NOT NULL,
+  OVERLAND INT NOT NULL,
+  SWIM INT NOT NULL
+  LEVITATE INT NOT NULL,
+  VERTICAL_JUMP INT NOT NULL,
+  HORIZONTAL_JUMP INT NOT NULL,
+  POWER INT NOT NULL,
+  FOREIGN KEY (TYPE1_ID) REFERENCES TYPE(ID),
+  FOREIGN KEY (TYPE2_ID) REFERENCES TYPE(ID),
+  FOREIGN KEY (SIZE_ID) REFERENCES SIZE(ID),
+  FOREIGN KEY (WEIGHT_CLASS_ID) REFERENCES WEIGHT_CLASS(ID),
+  FOREIGN KEY (EGG_GROUP_ID) REFERENCES EGG_GROUP(ID),
+  FOREIGN KEY (DIET_ID) REFERENCES DIET(ID)
+) [42001-185]
+05-03 01:46:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "SPECIES_EGG_MOVE_LIST" already exists; SQL statement:
+CREATE TABLE SPECIES_EGG_MOVE_LIST (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  SPECIES_ID INT NOT NULL,
+  LEVEL INT NOT NULL,
+  MOVE_ID INT NOT NULL,
+  FOREIGN KEY (SPECIES_ID) REFERENCES SPECIES(ID),
+  FOREIGN KEY (MOVE_ID) REFERENCES MOVE(ID)
+) [42101-185]
+05-03 02:28:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "APRICORN" not found; SQL statement:
+CREATE TABLE APRICORN_BALL (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  APRICORN_ID INT NOT NULL,
+  BALL_ID INT NOT NULL,
+  FOREIGN KEY (APRICORN_ID) REFERENCES APRICORN(ID),
+  FOREIGN KEY (BALL_ID) REFERENCES BALL(ID),
+) [42102-185]
+05-03 03:29:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "TYPE_ID" not found; SQL statement:
+CREATE TABLE WEAPON_MOVE(
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(50) NOT NULL,
+  FREQUENCY VARCHAR(30) NOT NULL,
+  ACCUARACY_CHECK INT NOT NULL,
+  DAMAGE_BASE_ID INT,
+  MOVE_CLASS_ID INT NOT NULL,
+  RANGE VARCHAR(50),
+  EFFECT VARCHAR(1000) NOT NULL,
+  LIMITATION VARCHAR(250),
+  WEAPON_SUGGESTION VARCHAR(250),
+  FOREIGN KEY (TYPE_ID) REFERENCES TYPE(ID),
+  FOREIGN KEY (DAMAGE_BASE_ID) REFERENCES DAMAGE_BASE(ID),
+  FOREIGN KEY (MOVE_CLASS_ID) REFERENCES MOVE_CLASS(ID),
+) [42122-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:648)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:74)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:197)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:171)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at com.intellij.database.remote.jdbc.impl.RemoteStatementImpl.execute(RemoteStatementImpl.java:61)
+	at sun.reflect.GeneratedMethodAccessor24.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:323)
+	at sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:568)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$254(TCPTransport.java:683)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler$$Lambda$1/1216127226.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+05-03 03:29:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "TYPE_ID" not found; SQL statement:
+CREATE TABLE WEAPON_MOVE(
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(50) NOT NULL,
+  FREQUENCY VARCHAR(30) NOT NULL,
+  ACCUARACY_CHECK INT NOT NULL,
+  DAMAGE_BASE_ID INT,
+  MOVE_CLASS_ID INT NOT NULL,
+  RANGE VARCHAR(50),
+  EFFECT VARCHAR(1000) NOT NULL,
+  LIMITATION VARCHAR(250),
+  WEAPON_SUGGESTION VARCHAR(250),
+  FOREIGN KEY (TYPE_ID) REFERENCES TYPE(ID),
+  FOREIGN KEY (DAMAGE_BASE_ID) REFERENCES DAMAGE_BASE(ID),
+  FOREIGN KEY (MOVE_CLASS_ID) REFERENCES MOVE_CLASS(ID)
+) [42122-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:648)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:74)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:197)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:171)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at com.intellij.database.remote.jdbc.impl.RemoteStatementImpl.execute(RemoteStatementImpl.java:61)
+	at sun.reflect.GeneratedMethodAccessor24.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:323)
+	at sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:568)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$254(TCPTransport.java:683)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler$$Lambda$1/1216127226.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
