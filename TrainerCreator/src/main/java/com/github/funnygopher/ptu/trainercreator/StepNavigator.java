@@ -9,6 +9,7 @@ public class StepNavigator {
     public static final String MAIN = "/gui/TrainerCreator2.fxml";
     public static final String STEP1 = "/gui/Step1.fxml";
     public static final String STEP2 = "/gui/Step2.fxml";
+    public static final String STEP3 = "/gui/Step3.fxml";
 
     private static TrainerCreator2Controller trainerCreator2Controller;
 
