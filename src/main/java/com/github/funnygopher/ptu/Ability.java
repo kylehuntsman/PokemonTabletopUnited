@@ -79,4 +79,18 @@ public class Ability {
 	public String getTrigger() {
 		return trigger;
 	}
+
+    @Override public String toString() {
+        String result = "";
+        result += "Ability   :  " + name + "\n";
+        result += "Frequency :  " + frequency + "\n";
+        if (!trigger.isEmpty()) {
+            result += "Trigger   :  " + trigger + "\n";
+        }
+        if (!target.isEmpty()) {
+            result += "Target    :  " + target + "\n";
+        }
+        result += "Effect    :  " +  effect + "\n";
+        return result;
+    }
 }
