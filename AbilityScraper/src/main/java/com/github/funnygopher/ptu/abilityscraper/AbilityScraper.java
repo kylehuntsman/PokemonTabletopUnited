@@ -1,12 +1,11 @@
 package com.github.funnygopher.ptu.abilityscraper;
 
 import com.github.funnygopher.ptu.Ability;
-import javafx.scene.effect.Effect;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +16,7 @@ public class AbilityScraper {
     private int startPage;
     private int endPage;
 
-    public AbilityScraper(String pdfFile, int startPage, int endPage) throws IOException{
+    public AbilityScraper(InputStream pdfFile, int startPage, int endPage) throws IOException{
         this.startPage = startPage;
         this.endPage = endPage;
 
@@ -25,58 +24,65 @@ public class AbilityScraper {
     }
 
     public List<Ability> parseAbilities() throws IOException {
-        List<Ability> abilities = new ArrayList<Ability>();
+        List<Ability> abilities = new ArrayList<>();
+
         for (int currentPageNumber = startPage; currentPageNumber <= endPage; currentPageNumber++) {
             List<String> lines = getPageLines(currentPageNumber);
-            String name, frequncy, target, trigger, effect;
-            name = frequncy = target = trigger = effect = "";
-            for (int lineIndex = 0; lineIndex < lines.size(); lineIndex++) {
-                String currentLine = lines.get(lineIndex);
-                if (currentLine.isEmpty() ||
-                        currentLine.contains("ABILITY LIST:") ||
-                        currentLine.contains("INDICES AND REFERENCES") ||
-                        currentLine.matches("^\\d*$")) {}
-                else if (currentLine.contains("Ability:")) {
-                    if (!name.isEmpty()) {
-                        Ability newAbility = new Ability(name, frequncy, target, trigger, effect);
-                        abilities.add(newAbility);
+            List<Integer> abilityNameIndexes = getAbilityNameIndexes(lines);
+            String name, frequency, target, trigger, effect;
+
+            for (int i = 0; i < abilityNameIndexes.size() - 1; i++) {
+                name = getAbilityName(lines.get(abilityNameIndexes.get(i)));
+                frequency = lines.get(abilityNameIndexes.get(i) + 1);
+                target = "";
+                trigger = "";
+                effect = "";
+                for (int lineIndex = abilityNameIndexes.get(i); lineIndex <= abilityNameIndexes.get(i + 1); lineIndex++) {
+                    String currentLine = lines.get(lineIndex);
+                    if (currentLine.contains("Ability:")) {}
+                    else if (currentLine.contains("Target:")) {
+                        target = getAbilityTarget(currentLine);
+                    }
+                    else if (currentLine.contains("Trigger:")) {
+                        trigger = getAbilityTrigger(currentLine);
+                    }
+                    else if (currentLine.contains("Effect:")) {
+                        effect = getAbilityEffect(currentLine);
                     }
                     else {
-                        name = frequncy = target = trigger = effect = "";
-                        name = getAbilityName(currentLine);
-                        lineIndex++;
-                        frequncy = lines.get(lineIndex);
+                        effect += " " + currentLine;
                     }
                 }
-                else if (currentLine.contains("Target:")) {
-                    target = getAbilityTarget(currentLine);
-                }
-                else if (currentLine.contains("Trigger:")) {
-                    trigger = getAbilityTrigger(currentLine);
-                }
-                else if (currentLine.contains("Effect:")) {
-                    effect = getAbilityEffect(currentLine);
-                }
-                else {
-                    effect += currentLine;
-                }
+                abilities.add(new Ability(name, frequency, target, trigger, effect));
             }
         }
         return abilities;
     }
 
+    //Get indexes of the abilities
     private List<String> getPageLines(int pageNumber) throws IOException{
-        List<String> lines = new ArrayList<String>();
-        String pageText = "";
+        List<String> lines;
+        String pageText;
         PDFTextStripper stripper = new PDFTextStripper();
         stripper.setStartPage(pageNumber);
         stripper.setEndPage(pageNumber);
         pageText = stripper.getText(pdf).replaceAll(" +", " ");
         lines = Arrays.asList(pageText.split("\n"));
         for (int lineIndex = 0; lineIndex < lines.size(); lineIndex++) {
-            lines.set(lineIndex, lines.get(lineIndex).trim());
+            lines.set(lineIndex, lines.get(lineIndex).trim() + " ");
         }
         return lines;
+    }
+
+    private ArrayList<Integer> getAbilityNameIndexes(List<String> pageLines) {
+        ArrayList<Integer> abilityIndexes = new ArrayList<>();
+        for (int lineIndex = 0; lineIndex < pageLines.size(); lineIndex++) {
+            String currentLine = pageLines.get(lineIndex);
+            if (currentLine.contains("Ability:"))
+                abilityIndexes.add(lineIndex);
+        }
+        abilityIndexes.add(pageLines.size() - 1);
+        return abilityIndexes;
     }
 
     private String getAbilityName(String input) {
