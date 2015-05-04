@@ -16,6 +16,6 @@ public class Step2Controller implements Initializable {
 
     @FXML
     public void onContinueClick() {
-        StepNavigator.loadStep(StepNavigator.STEP6);
+        StepNavigator.loadStep(StepNavigator.STEP5);
     }
 }

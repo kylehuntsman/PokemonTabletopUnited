@@ -35,7 +35,9 @@ public class TrainerCreator2Controller {
     public void onStep4Click() { StepNavigator.loadStep(StepNavigator.STEP4);}
 
     @FXML
-    public void onStep5Click() { StepNavigator.loadStep(StepNavigator.STEP5);}
+    public void onStep5Click() {
+        StepNavigator.loadStep(StepNavigator.STEP5);
+    }
 
     @FXML
     public void onStep6Click() { StepNavigator.loadStep(StepNavigator.STEP6);}

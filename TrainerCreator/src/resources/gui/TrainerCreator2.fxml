@@ -17,7 +17,7 @@
             <Separator orientation="VERTICAL" prefHeight="60.0" />
             <Button fx:id="bFeatures" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Features" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
-            <Button fx:id="bStats" disable="true" mnemonicParsing="false" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Stats" textAlignment="CENTER" />
+            <Button fx:id="bStats" disable="true" mnemonicParsing="false" onAction="#onStep5Click" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Stats" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
             <Button fx:id="bDescription" disable="true" mnemonicParsing="false" onAction="#onStep6Click" prefHeight="50.0" prefWidth="86.0" style="-fx-background-color: none;" text="Description" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="60.0" />
