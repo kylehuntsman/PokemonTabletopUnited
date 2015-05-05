@@ -1,11 +1,19 @@
 package com.github.funnygopher.ptu.trainercreator;
 
+import com.github.funnygopher.ptu.trainer.Trainer;
+import com.github.funnygopher.ptu.trainer.TrainerBuilder;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
-public class TrainerCreatorController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TrainerCreatorController implements Initializable {
+
+    private TrainerBuilder trainerBuilder;
 
     @FXML
     private AnchorPane pContent;
@@ -17,6 +25,15 @@ public class TrainerCreatorController {
     public Button bDescription;
     public Button bPokemon;
     public Button bMoneyItems;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        trainerBuilder = new TrainerBuilder();
+    }
+
+    public TrainerBuilder getTrainerBuilder() {
+        return trainerBuilder;
+    }
 
     public void setStep(Node node) {
         pContent.getChildren().setAll(node);

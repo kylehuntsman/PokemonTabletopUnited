@@ -7,33 +7,33 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.funnygopher.ptu.trainercreator.Step6Controller">
     <children>
-        <Label layoutX="194.0" layoutY="136.0" text="Name">
+        <Label layoutX="164.0" layoutY="133.0" text="Name">
          <padding>
             <Insets top="5.0" />
          </padding></Label>
-      <TextField fx:id="txtName" layoutX="194.0" layoutY="158.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="356.0" layoutY="132.0" snapToPixel="false" text="Appearance">
+      <TextField fx:id="txtName" layoutX="164.0" layoutY="155.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="164.0" layoutY="181.0" snapToPixel="false" text="Background Description">
          <padding>
             <Insets top="5.0" />
          </padding></Label>
-      <TextArea fx:id="txtAppearance" layoutX="356.0" layoutY="154.0" prefHeight="50.0" prefWidth="250.0" snapToPixel="false" />
-      <TextArea fx:id="txtPersonality" layoutX="356.0" layoutY="226.0" prefHeight="50.0" prefWidth="250.0" snapToPixel="false" />
-      <Label layoutX="356.0" layoutY="204.0" snapToPixel="false" text="Personality">
+      <TextArea fx:id="txtBackgroundDescription" layoutX="164.0" layoutY="203.0" prefHeight="75.0" prefWidth="472.0" snapToPixel="false" />
+      <TextArea fx:id="txtAppearance" layoutX="164.0" layoutY="300.0" prefHeight="75.0" prefWidth="472.0" snapToPixel="false" />
+      <Label layoutX="164.0" layoutY="278.0" snapToPixel="false" text="Appearance">
          <padding>
             <Insets top="5.0" />
          </padding></Label>
-      <Label layoutX="194.0" layoutY="182.0" text="Gender">
+      <Label layoutX="322.0" layoutY="132.0" text="Gender">
          <padding>
             <Insets top="5.0" />
          </padding></Label>
       <Button fx:id="bContinue" layoutX="721.0" layoutY="369.0" mnemonicParsing="false" onAction="#onContinueClick" text="Continue" />
-      <ChoiceBox layoutX="194.0" layoutY="204.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="194.0" layoutY="229.0" text="Age">
+      <ChoiceBox fx:id="ddGender" layoutX="322.0" layoutY="154.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="480.0" layoutY="132.0" text="Age">
          <padding>
             <Insets top="5.0" />
          </padding>
       </Label>
-      <TextField alignment="CENTER" layoutX="194.0" layoutY="251.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="txtAge" alignment="CENTER" layoutX="480.0" layoutY="154.0" prefHeight="25.0" prefWidth="155.0" />
       <Label layoutY="51.0" prefWidth="800.0" text="Your character is now mostly complete as far as the game mechanics go, but that’s only the start. Now’s the time when you should take care to flesh out your character’s appearance, their personality, and anything else that isn’t covered by the game mechanics but is important to defining a person. Choose a name! You’ll be using it forthe rest of the campaign, so be sure you’re happy with whatever you choose." wrapText="true">
          <padding>
             <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />

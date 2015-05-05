@@ -14,7 +14,7 @@ public class AbilityManager {
 	/**
 	 * Instantiates an <code>AbilityManager</code> object.
 	 */
-	private AbilityManager() {
+	public AbilityManager() {
 		abilities = new ArrayList<Ability>();
 	}
 

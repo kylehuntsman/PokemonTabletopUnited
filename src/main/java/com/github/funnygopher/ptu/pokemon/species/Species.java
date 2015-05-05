@@ -4,7 +4,7 @@ package com.github.funnygopher.ptu.pokemon.species;
 import com.github.funnygopher.ptu.CombatStatManager;
 import com.github.funnygopher.ptu.Ability;
 import com.github.funnygopher.ptu.SkillManager;
-import com.github.funnygopher.ptu.pokemon.Size;
+import com.github.funnygopher.ptu.Size;
 
 import java.util.List;
 

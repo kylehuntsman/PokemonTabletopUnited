@@ -1,4 +1,4 @@
-package com.github.funnygopher.ptu.pokemon;
+package com.github.funnygopher.ptu;
 
 public enum Size {
 	SMALL("Small"),

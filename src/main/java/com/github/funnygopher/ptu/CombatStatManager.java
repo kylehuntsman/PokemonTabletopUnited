@@ -32,7 +32,11 @@ public class CombatStatManager {
 		this.specialAttack = specialAttack;
 		this.specialDefense = specialDefense;
 		this.speed = speed;
-	};
+	}
+
+	public CombatStatManager() {
+		this(10, 5, 5, 5, 5, 5);
+	}
 
 	/**
 	 * Gets the Attack stat
