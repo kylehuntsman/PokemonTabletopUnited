@@ -10,7 +10,7 @@ public class Step1Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        TrainerCreator2Controller controller = StepNavigator.getController();
+        TrainerCreatorController controller = StepNavigator.getController();
         controller.bTrainerConcept.setDisable(false);
     }
 

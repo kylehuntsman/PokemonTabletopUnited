@@ -27,8 +27,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PokemonTabletopUnited" target="1.5" />
-      <module name="TrainerCreator" target="1.5" />
+      <module name="PokemonTabletopUnited" target="1.8" />
+      <module name="TrainerCreator" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -10,12 +10,12 @@ public class Step6Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        TrainerCreator2Controller controller = StepNavigator.getController();
+        TrainerCreatorController controller = StepNavigator.getController();
         controller.bDescription.setDisable(false);
     }
 
     @FXML
     public void onContinueClick() {
-        StepNavigator.loadStep(StepNavigator.STEP7);
+        //StepNavigator.loadStep(StepNavigator.STEP7);
     }
 }

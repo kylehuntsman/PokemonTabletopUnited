@@ -26,7 +26,7 @@ public class Step5Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        TrainerCreator2Controller controller = StepNavigator.getController();
+        TrainerCreatorController controller = StepNavigator.getController();
         controller.bStats.setDisable(false);
 
         sliders = new Slider[] {
