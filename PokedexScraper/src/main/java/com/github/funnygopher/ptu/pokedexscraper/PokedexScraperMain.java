@@ -133,10 +133,11 @@ public class PokedexScraperMain {
                             String ability = rawAbility.substring(3);
                             basicAbilitiesList.add(ability.replaceAll("\\s+", ""));
                         }
+                        for (int i = 0; i < basicAbilitiesList.size(); i++) {
+                            System.out.println("Basic Ability " + (i + 1) + " : " + basicAbilitiesList.get(i));
+                        }
                     }
-                    for (int i = 0; i < basicAbilitiesList.size(); i++) {
-                        System.out.println("Basic Ability " + (i + 1) + " : " + basicAbilitiesList.get(i));
-                    }
+
 
                     //GET THE ADV ABILITY
                     List<String> advAbilitiesList = new ArrayList<String>();
@@ -150,10 +151,11 @@ public class PokedexScraperMain {
                             String ability = rawAbility.substring(3);
                             advAbilitiesList.add(ability.replaceAll("\\s+", ""));
                         }
+                        for (int i = 0; i < advAbilitiesList.size(); i++) {
+                            System.out.println("Adv Ability " + (i + 1) + " : " + advAbilitiesList.get(i));
+                        }
                     }
-                    for (int i = 0; i < advAbilitiesList.size(); i++) {
-                        System.out.println("Adv Ability " + (i + 1) + " : " + advAbilitiesList.get(i));
-                    }
+
 
                     //GET THE HIGH ABILITY
                     List<String> highAbilitiesList = new ArrayList<String>();
@@ -167,11 +169,15 @@ public class PokedexScraperMain {
                             String ability = rawAbility.substring(3);
                             highAbilitiesList.add(ability.replaceAll("\\s+", ""));
                         }
-                    }
-                    for (int i = 0; i < highAbilitiesList.size(); i++) {
-                        System.out.println("High Ability " + (i + 1) + " : " + highAbilitiesList.get(i));
+                        for (int i = 0; i < highAbilitiesList.size(); i++) {
+                            System.out.println("High Ability " + (i + 1) + " : " + highAbilitiesList.get(i));
+                        }
                     }
 
+                    //GET EVOLUTION
+                    if(currentPageText.contains("Evolution")) {
+                        //String[] rawEvolutions = currentPageText.substring(curr).split("High Ability ");
+                    }
 
                 }
             }
