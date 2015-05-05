@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.funnygopher.ptu.trainercreator.Step2Controller">
    <children>
-      <Label layoutX="350.0" layoutY="59.0" text="Background Name" />
+      <Label layoutX="350.0" layoutY="59.0" text="Background Name">
+         <padding>
+            <Insets top="5.0" />
+         </padding></Label>
       <TextField fx:id="txtBackgroundName" layoutX="275.0" layoutY="76.0" prefHeight="25.0" prefWidth="250.0" />
       <Label layoutX="270.0" layoutY="121.0" prefHeight="25.0" prefWidth="261.0" text="Rank three different skills down to Pathetic Rank" wrapText="true">
          <padding>

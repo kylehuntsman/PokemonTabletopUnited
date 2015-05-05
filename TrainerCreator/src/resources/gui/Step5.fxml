@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.funnygopher.ptu.trainercreator.Step5Controller">
+   <children>
+       <Label alignment="TOP_LEFT" layoutY="101.0" prefHeight="90.0" prefWidth="800.0" text="Pokémon Tabletop United uses the same 6 Combat Stats used in the Pokémon video games. If you’re familiar with the video games, then these will need no introduction. If not, read the tooltips for an explanation! Trainers begin with 10 HP and 5 points each in the rest of their Combat Stats. You may distribute 10 additional points among your Combat Stats, but you may put no more than 5 points into any single stat." wrapText="true">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+       <Slider fx:id="hp" blockIncrement="1.0" layoutX="177.0" layoutY="197.0" majorTickUnit="1.0" max="15.0" min="10.0" minorTickCount="0" prefHeight="25.0" prefWidth="100.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
+       <Slider fx:id="attack" blockIncrement="1.0" layoutX="177.0" layoutY="240.0" majorTickUnit="1.0" max="10.0" min="5.0" minorTickCount="0" prefHeight="25.0" prefWidth="100.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+       <Label layoutX="155.0" layoutY="193.0" text="HP:">
+           <tooltip>
+               <Tooltip opacity="0.9" text="HP determines your Hit Points, which represent your &#10;ability to take hits and keep going in battle." />
+           </tooltip>
+       </Label>
+       <Label layoutX="137.0" layoutY="237.0" text="Attack:">
+           <tooltip>
+               <Tooltip opacity="0.9" text="Attack represents how hard you can hit Physically, and &#10;it is added to the damage roll of all Physical Damage a &#10;Trainer deals." />
+           </tooltip>
+       </Label>
+       <Label layoutX="305.0" layoutY="195.0" text="Defense:">
+           <tooltip>
+               <Tooltip opacity="0.9" text="Defense is used to avoid and resist Physical attacks. &#10;Whenever a Trainer takes Physical damage, &#10;they subtract their Defense stat from the damage first &#10;before subtracting damage from their Hit Points." />
+           </tooltip>
+       </Label>
+       <Slider fx:id="defense" blockIncrement="1.0" layoutX="355.0" layoutY="199.0" majorTickUnit="1.0" max="10.0" min="5.0" minorTickCount="0" prefHeight="25.0" prefWidth="100.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+       <Slider fx:id="spAttack" blockIncrement="1.0" layoutX="177.0" layoutY="280.0" majorTickUnit="1.0" max="10.0" min="5.0" minorTickCount="0" prefHeight="25.0" prefWidth="100.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+       <Label layoutX="117.0" layoutY="277.0" text="Sp. Attack:">
+           <tooltip>
+               <Tooltip opacity="0.9" text="Special Attack represents how hard you can hit with &#10;Special attacks, and it is added to the damage roll of all &#10;Special Damage a Trainer deals." />
+           </tooltip>
+       </Label>
+       <Label layoutX="286.0" layoutY="237.0" text="Sp. Defense:">
+           <tooltip>
+               <Tooltip opacity="0.9" text="Special Defense is used to avoid and resist Special &#10;attacks. Whenever a Trainer takes Special &#10;damage, they subtract their Special Defense stat from &#10;the damage first before subtracting damage from their &#10;Hit Points." />
+           </tooltip>
+       </Label>
+       <Slider fx:id="spDefense" blockIncrement="1.0" layoutX="355.0" layoutY="240.0" majorTickUnit="1.0" max="10.0" min="5.0" minorTickCount="0" prefHeight="25.0" prefWidth="100.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+       <Slider fx:id="speed" blockIncrement="1.0" layoutX="355.0" layoutY="282.0" majorTickUnit="1.0" max="10.0" min="5.0" minorTickCount="0" prefHeight="25.0" prefWidth="100.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+       <Label layoutX="315.0" layoutY="279.0" text="Speed:">
+           <tooltip>
+               <Tooltip opacity="0.9" text="Speed is a measure of how quick a Trainer &#10;is and determines turn order in combat." />
+           </tooltip>
+       </Label>
+       <Label layoutX="477.0" layoutY="195.0" text="Phy. Evasion: ">
+           <tooltip>
+               <Tooltip opacity="0.9" text="Additionally, for every 5 points a Trainer &#10;has in Defense, they gain +1 Physical Evasion, up to a &#10;maximum of +6 at 30 Defense." />
+           </tooltip>
+       </Label>
+       <Label layoutX="484.0" layoutY="237.0" text="Sp. Evasion: ">
+           <tooltip>
+               <Tooltip opacity="0.9" text="Additionally, for every 5 points a Trainer &#10;has in Special Defense, they gain +1 Special Evasion, &#10;up to a maximum of +6 at 30 Special Defense." />
+           </tooltip>
+       </Label>
+       <Label layoutX="467.0" layoutY="279.0" text="Speed Evasion: ">
+           <tooltip>
+               <Tooltip opacity="0.9" text="Additionally, for every 5 points a Trainer has in Speed, &#10;they gain +1 Speed Evasion, up to a maximum of +6 at &#10;30 Speed." />
+           </tooltip>
+       </Label>
+       <TextField fx:id="txtPhyEvasion" alignment="CENTER" editable="false" layoutX="548.0" layoutY="191.0" prefHeight="25.0" prefWidth="30.0" />
+       <TextField fx:id="txtSpEvasion" alignment="CENTER" editable="false" layoutX="548.0" layoutY="233.0" prefHeight="25.0" prefWidth="30.0" />
+       <TextField fx:id="txtSpeedEvasion" alignment="CENTER" editable="false" layoutX="548.0" layoutY="275.0" prefHeight="25.0" prefWidth="30.0" />
+       <Label layoutX="600.0" layoutY="209.0" text="Available Points" />
+       <TextField fx:id="txtCombatStatPoints" alignment="CENTER" editable="false" layoutX="617.0" layoutY="233.0" prefHeight="25.0" prefWidth="50.0" />
+       <Button fx:id="bContinue" layoutX="721.0" layoutY="369.0" mnemonicParsing="false" onAction="#onContinueClick" text="Continue" />
+   </children>
+</AnchorPane>

@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="PokemonTabletopUnited" />
+        <module name="TrainerCreator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="PokemonTabletopUnited" target="1.5" />
+      <module name="TrainerCreator" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
