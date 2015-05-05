@@ -158,6 +158,4 @@ public class Species {
 	public int getWeight() {
 		return weight;
 	}
-	
-	
 }
