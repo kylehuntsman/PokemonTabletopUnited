@@ -3,6 +3,7 @@ package com.github.funnygopher.ptu.pokedexscraper;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,19 +17,8 @@ public class PokedexScraperMain {
     public static void parsePokedex() {
         List<String> skipNames = new ArrayList<String>(Arrays.asList(
                 "PUMPKABOO", "GOURGEIST", "ROTOM", "TOTODILE", "MAGMAR", "PORYGON-Z"));
-        try {
-            int firstPage = 12; //12
-            int lastPage = 745; //745
 
-            PDDocument pdf;
-            File input = new File("C:\\Users\\braolson\\downloads\\PTU 1.05\\Pokedex 1.05.pdf");  // The PDF file from where you would like to extract
-            pdf = PDDocument.load(input);
-            PDFTextStripper stripper = new PDFTextStripper();
-            int pokemonNumber = 1;
-            //System.out.println(stripper.getText(pdf));
-
-
-            /*
+        /*
             The Problem Children
             PUMPKABOO - has different sizes which causes problems
             GOURGEIST - has different sizes which causes problems
@@ -41,7 +31,21 @@ public class PokedexScraperMain {
             EXEGGUTOR - Missing "," after the power capability
             VULPIX - Missing "," after the power capability
             NINETALES - Missing "," after the power capability
-             */
+            */
+        try {
+            PDDocument pdf;
+            PDFTextStripper stripper = new PDFTextStripper();
+
+
+            File input = new File("C:\\Users\\braolson\\downloads\\PTU 1.05\\Pokedex 1.05.pdf");  // The PDF file from where you would like to extract
+            pdf = PDDocument.load(input);
+
+
+            int firstPage = 12; //12
+            int lastPage = 745; //745
+            int pokemonNumber = 1;
+            //System.out.println(stripper.getText(pdf));
+
 
             for (int currentPageIndex = firstPage; currentPageIndex <= lastPage; currentPageIndex++) {
 
@@ -51,7 +55,7 @@ public class PokedexScraperMain {
                 //currentPageText = currentPageText.replaceAll("\\s+", " ");
 
 
-                if(currentPageIndex == 682)
+                if (currentPageIndex == 682)
                     continue;
 
                 System.out.println("------------------------------------");
@@ -64,13 +68,13 @@ public class PokedexScraperMain {
                 String name = getPokemonName(currentPageText);
                 System.out.println(name);
 
-                if (skipNames.contains(name))
-                {
+                if (skipNames.contains(name)) {
                     continue;
                 }
 
                 //GET HP
-                String hp = getPokemonStat(currentPageText, "HP:", "Attack:");;
+                String hp = getPokemonStat(currentPageText, "HP:", "Attack:");
+                ;
                 System.out.println("HP : " + hp);
 
                 //GET ATTACK
@@ -78,7 +82,8 @@ public class PokedexScraperMain {
                 System.out.println("Attack : " + attack);
 
                 //GET DEFENSE
-                String defense = getPokemonStat(currentPageText, "Defense:", "Special Attack:");;
+                String defense = getPokemonStat(currentPageText, "Defense:", "Special Attack:");
+                ;
                 System.out.println("Defense : " + defense);
 
                 //GET SPECIAL ATTACK
@@ -202,8 +207,25 @@ public class PokedexScraperMain {
                 String focus = getSkill(currentPageText, "Focus");
                 System.out.println("Focus : " + focus);
 
+                //GET LEVEL UP MOVES
+                List<String> levelUpMoves = getLevelUpMoveList(currentPageText);
+                System.out.println("Level Up Moves : " + levelUpMoves.toString());
+
+                //GET TM/HM MOVES
+                List<String> tmhmMoves = getTMHMoveList(currentPageText);
+                System.out.println("TM/HM Moves : " + tmhmMoves.toString());
+
+                //GET EGG MOVES
+                List<String> eggMoves = getEggMoveList(currentPageText);
+                System.out.println("Egg Moves : " + eggMoves.toString());
+
+                //GET TUTOR MOVES
+                List<String> tutorMoves = getTutorMoveList(currentPageText);
+                System.out.println("Tutor Moves : " + tutorMoves.toString());
             }
-        } catch (Exception e) {
+        }
+
+        catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println("There are " + skipNames.size() + " problem children.");
@@ -214,8 +236,7 @@ public class PokedexScraperMain {
     }
 
     public static List<String> getLabelDelaminatedTermsList(String input, String splitString, String endString, int offset) {
-        input = input
-                .substring(input.indexOf(splitString) + splitString.length(), input.indexOf(endString));
+        input = input.substring(input.indexOf(splitString) + splitString.length(), input.indexOf(endString));
         List<String> output = Arrays.asList(input.split(splitString));
 
         for (int i = 0; i < output.size(); i++) {
@@ -228,7 +249,7 @@ public class PokedexScraperMain {
     }
 
     public static List<String> getNumberedList(String input, String startString, String endString) {
-        String inputSubString = (input.substring(input.indexOf(startString) + startString.length() + 2, input.indexOf(endString) - 7));
+        String inputSubString = (input.substring(input.indexOf(startString) + startString.length() + 2, input.indexOf(endString)));
 
         List<String> output = Arrays.asList(inputSubString.split("\n"));
         List<String> finalOutput = new ArrayList<String>();
@@ -240,6 +261,36 @@ public class PokedexScraperMain {
             }
         }
 
+        return finalOutput;
+    }
+
+    public static List<String> getSeparatedList(String input, String startString, String endString){
+        input = input.substring(input.indexOf(startString) + startString.length(), input.indexOf(endString)).trim().replace("\r", "").replace("\n", "");
+        List<String> output = new ArrayList<String>();
+        output = Arrays.asList(input.split(","));
+        List<String> finalOutput = new ArrayList<String>();
+
+        for (int i = 0; i < output.size(); i++) {
+            output.set(i, output.get(i).trim());
+            if (!output.get(i).isEmpty()) {
+                finalOutput.add(output.get(i));
+            }
+        }
+        return finalOutput;
+    }
+
+    public static List<String> getSeparatedList(String input, String startString){
+        input = input.substring(input.indexOf(startString) + startString.length(),input.length()).trim().replace("\r", "").replace("\n", "");
+        List<String> output = new ArrayList<String>();
+        output = Arrays.asList(input.split(","));
+        List<String> finalOutput = new ArrayList<String>();
+
+        for (int i = 0; i < output.size(); i++) {
+            output.set(i, output.get(i).trim());
+            if (!output.get(i).isEmpty()) {
+                finalOutput.add(output.get(i));
+            }
+        }
         return finalOutput;
     }
 
@@ -492,25 +543,71 @@ public class PokedexScraperMain {
         return skills;
     }
 
-    //GET ATHLETICS
-
-    //GET ACROBATICS
-
-    //GET COMBAT
-
-    //GET STEALTH
-
-    //GET PERCEPTION
-
-    //GET FOCUS
-
     //GET MOVE LIST
+    public static List<String> getLevelUpMoveList(String pageText){
+        String startString = "Level Up Move List";
+        List<String> moves = new ArrayList<String>();
+
+        if (pageText.contains("TM/HM")){
+            moves = getNumberedList(pageText, startString, "TM/HM");
+        }
+        else if (pageText.contains("Egg Move List")){
+            moves = getNumberedList(pageText, startString, "Egg Move List");
+        }
+        else if (pageText.contains("Tutor Move List")){
+            moves = getNumberedList(pageText, startString, "Tutor Move List");
+        }
+        else{
+
+
+            String inputSubString = (pageText.substring(pageText.indexOf(startString) + startString.length() + 2, pageText.length() - 1));
+
+            List<String> output = Arrays.asList(inputSubString.split("\n"));
+
+            for (int i = 0; i < output.size(); i++) {
+                output.set(i, output.get(i).trim());
+                if (!output.get(i).isEmpty()) {
+                    moves.add(output.get(i));
+                }
+            }
+        }
+        return moves;
+    }
 
     //GET TM/HM
+    public static List<String> getTMHMoveList( String pageText){
+        List<String> moveList = new ArrayList<String>();
+        if (pageText.contains("TM/HM Move List")){
+            if (pageText.contains("Egg Move List"))
+                moveList = getSeparatedList(pageText, "TM/HM Move List", "Egg Move List");
+            else if (pageText.contains("Tutor Move List"))
+                moveList = getSeparatedList(pageText, "TM/HM Move List", "Tutor Move List");
+            else
+                moveList = getSeparatedList(pageText, "TM/HM Move List");
+        }
+        return moveList;
+    }
 
     //GET EGG MOVE LIST
+    public static List<String> getEggMoveList( String pageText){
+        List<String> moveList = new ArrayList<String>();
+        if (pageText.contains("Egg Move List")){
+            if (pageText.contains("Egg Move List"))
+                moveList = getSeparatedList(pageText, "Egg Move List", "Tutor Move List");
+            else
+                moveList = getSeparatedList(pageText, "Egg Move List");
+        }
+        return moveList;
+    }
 
     //TUTOR MOVE LIST
+    public static List<String> getTutorMoveList( String pageText){
+        List<String> moveList = new ArrayList<String>();
+        if (pageText.contains("Tutor Move List")){
+            moveList = getSeparatedList(pageText, "Tutor Move List");
+        }
+        return moveList;
+    }
 }
 
 
