@@ -1,5 +1,6 @@
 package com.github.funnygopher.ptu.pokedexscraper;
 
+import com.sun.glass.ui.View;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
 
@@ -14,6 +15,8 @@ public class PokedexScraperMain {
     }
 
     public static void parsePokedex() {
+        List<String> skipNames = new ArrayList<String>(Arrays.asList(
+                "PUMPKABOO", "GOURGEIST", "ROTOM", "TOTODILE", "MAGMAR", "PORYGON-Z"));
         try {
             int firstPage = 12; //12
             int lastPage = 745; //745
@@ -25,7 +28,21 @@ public class PokedexScraperMain {
             int pokemonNumber = 1;
             //System.out.println(stripper.getText(pdf));
 
-            List<String> skipNames = new ArrayList<String>(Arrays.asList("PUMPKABOO", "GOURGEIST", "ROTOM", "TOTODILE", "MAGMAR"));
+
+            /*
+            The Problem Children
+            PUMPKABOO - has different sizes which causes problems
+            GOURGEIST - has different sizes which causes problems
+            ROTOM - has alternate forms which cause problems
+            TOTODILE - does not have the keyword evolution can only half parse
+            MAGMAR - does not have the keyword evolution can only half parse
+            PORYGON-Z - has "Biology" (WHAT!) instead of "Diet" (WTF!!!!)
+            WHIMSICOTT - has "()" in his Fly capability
+            EXEGGCUTE - Missing "," after the power capability
+            EXEGGUTOR - Missing "," after the power capability
+            VULPIX - Missing "," after the power capability
+            NINETALES - Missing "," after the power capability
+             */
 
             for (int currentPageIndex = firstPage; currentPageIndex <= lastPage; currentPageIndex++) {
 
@@ -133,22 +150,65 @@ public class PokedexScraperMain {
                     }
                 }
 
-
                 //GET AVERAGE HATCH RATE
+                int hatchRate = getHathRate(currentPageText);
+                if (hatchRate != -1)
+                    System.out.println("Hatch Rate: " + hatchRate);
 
                 //GET DIETS
+                List<String> diets = getDiets(currentPageText);
+                System.out.print("Diets : ");
+                for (int i = 0; i < diets.size(); i++) {
+                    System.out.print(diets.get(i));
+                    if (i < diets.size() - 1) {
+                        System.out.print(", ");
+                    }
+                    else {
+                        System.out.println();
+                    }
+                }
+
 
                 //GET HABITATS
+                List<String> habitats = getHabitats(currentPageText);
+                System.out.print("Habitats : ");
+                for (int i = 0; i < habitats.size(); i++) {
+                    System.out.print(habitats.get(i));
+                    if (i < habitats.size() - 1) {
+                        System.out.print(", ");
+                    }
+                    else {
+                        System.out.println();
+                    }
+                }
 
                 //GET OVERLAND
+                int overland = getCapabilityValue(currentPageText, "Overland");
+                System.out.println("Overland : " + overland);
 
                 //GET SWIM
+                int swim = getCapabilityValue(currentPageText, "Swim");
+                System.out.println("Swim : " + swim);
+
+                //GET SKY
+                int sky = getCapabilityValue(currentPageText, "Sky");
+                System.out.println("Sky : " + sky);
+
+                //GET BURROW
+                int burrow = getCapabilityValue(currentPageText, "Burrow");
+                System.out.println("Burrow : " + burrow);
+
+                //GET LEVITATE
+                int levitate = getCapabilityValue(currentPageText, "Levitate");
+                System.out.println("Levitate : " + levitate);
+
+                //GET POWER
+                int power = getCapabilityValue(currentPageText, "Power");
+                System.out.println("Power : " + power);
 
                 //GET LONG JUMP
 
                 //GET HIGH JUMP
-
-                //GET POWER
 
                 /*
                 //GET MEGA
@@ -165,9 +225,7 @@ public class PokedexScraperMain {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void imageParseTest() {
+        System.out.println("There are " + skipNames.size() + " problem children.");
     }
 
     public static List<String> getLabelDelaminatedTermsList(String input, String splitString, String endString) {
@@ -205,6 +263,10 @@ public class PokedexScraperMain {
 
     public static String getSubString(String input, String startString, String endString) {
         return input.substring(input.indexOf(startString), input.indexOf(endString));
+    }
+
+    public static String getBetweenSubString(String input, String startString, String endString){
+        return input.substring(input.indexOf(startString) + startString.length(), input.indexOf(endString));
     }
 
     //GET THE NAME
@@ -336,11 +398,11 @@ public class PokedexScraperMain {
         String eggGroupLine = "";
         List<String> eggGroups = new ArrayList<String>();
         try {
-            eggGroupLine = (getSubString(pageText, "Egg Group", "Average ")).trim();
+            eggGroupLine = getSubString(pageText, "Egg Group", "Average ").trim();
         }
         catch (Exception a) {
             try {
-                eggGroupLine = (getSubString(pageText, "Egg Group", "Diet ")).trim();
+                eggGroupLine = getSubString(pageText, "Egg Group", "Diet ").trim();
             }
             catch (Exception b) {
                 System.out.println(b.getMessage());
@@ -355,21 +417,96 @@ public class PokedexScraperMain {
     }
 
     //GET AVERAGE HATCH RATE
-
+    public static int getHathRate(String pageText) {
+        if (pageText.contains("Average Hatch")) {
+            String hatchRateLine = getSubString(pageText, "Average Hatch Rate:", "Day").trim();
+            hatchRateLine = hatchRateLine.substring(hatchRateLine.indexOf(":") + 1).trim();
+            int hatchRate;
+            try {
+                hatchRate = Integer.parseInt(hatchRateLine);
+                return hatchRate;
+            } catch (Exception e) {
+                return -1;
+            }
+        }
+        else {
+            return -1;
+        }
+    }
 
     //GET DIETS
+    public static List<String> getDiets(String pageText) {
+        String dietsLine = "";
+        List<String> diets = new ArrayList<String>();
+        dietsLine = getSubString(pageText, "Diet", "Habitat").trim();
+        dietsLine = dietsLine.substring(dietsLine.indexOf(":") + 1);
+        diets = Arrays.asList(dietsLine.split(","));
+        for (int i = 0; i < diets.size(); i++) {
+            diets.set(i, diets.get(i).trim());
+        }
+        return diets;
+    }
 
     //GET HABITATS
+    public static List<String> getHabitats(String pageText) {
+        String habitatLine = "";
+        List<String> habitats = new ArrayList<String>();
+        habitatLine = getSubString(pageText, "Habitat", "Capability").trim();
+        habitatLine = habitatLine.substring(habitatLine.indexOf(":") + 1);
+        habitats = Arrays.asList(habitatLine.split(","));
+        for (int i = 0; i < habitats.size(); i++) {
+            habitats.set(i, habitats.get(i).trim());
+        }
+        return habitats;
+    }
 
-    //GET OVERLAND
-
-    //GET SWIM
+    //GET CAPABILITY VALUE
+    public static int getCapabilityValue(String pageText, String valueName) {
+        String capabilities = getBetweenSubString(pageText, "Capability List", "Skill List").trim().replaceAll("\\s+", "");
+        if (capabilities.contains(valueName)) {
+            int value;
+            int startIndex = capabilities.indexOf(valueName) + valueName.length();
+            try {
+                value = Integer.parseInt((capabilities.substring(startIndex, startIndex + 2).trim()));
+            }
+            catch (Exception a) {
+                try {
+                    value = Integer.parseInt((capabilities.substring(startIndex, startIndex + 1).trim()));
+                }
+                catch (Exception b) {
+                    return 0;
+                }
+            }
+            return value;
+        } else
+            return 0;
+    }
 
     //GET LONG JUMP
 
     //GET HIGH JUMP
 
-    //GET POWER
+    //GET CAPABILITIES
+
+    //GET ATHLETICS
+
+    //GET ACROBATICS
+
+    //GET COMBAT
+
+    //GET STEALTH
+
+    //GET PERCEPTION
+
+    //GET FOCUS
+
+    //GET MOVE LIST
+
+    //GET TM/HM
+
+    //GET EGG MOVE LIST
+
+    //TUTOR MOVE LIST
 }
 
 
