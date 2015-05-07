@@ -1,13 +1,15 @@
 package com.github.funnygopher.ptu.pokedexscraper;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDResources;
+import org.apache.pdfbox.pdmodel.graphics.xobject.PDXObjectImage;
 import org.apache.pdfbox.util.PDFTextStripper;
 
 import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
 
 public class PokedexScraperMain {
     public static void main(String[] args) {
@@ -19,216 +21,243 @@ public class PokedexScraperMain {
                 "PUMPKABOO", "GOURGEIST", "ROTOM", "TOTODILE", "MAGMAR", "PORYGON-Z"));
 
         /*
-            The Problem Children
-            PUMPKABOO - has different sizes which causes problems
-            GOURGEIST - has different sizes which causes problems
-            ROTOM - has alternate forms which cause problems
-            TOTODILE - does not have the keyword evolution can only half parse
-            MAGMAR - does not have the keyword evolution can only half parse
-            PORYGON-Z - has "Biology" (WHAT!) instead of "Diet" (WTF!!!!)
-            WHIMSICOTT - has "()" in his Fly capability
-            EXEGGCUTE - Missing "," after the power capability
-            EXEGGUTOR - Missing "," after the power capability
-            VULPIX - Missing "," after the power capability
-            NINETALES - Missing "," after the power capability
-            */
-        try {
-            PDDocument pdf;
-            PDFTextStripper stripper = new PDFTextStripper();
+        The Problem Children
+        PUMPKABOO - has different sizes which causes problems
+        GOURGEIST - has different sizes which causes problems
+        ROTOM - has alternate forms which cause problems
+        TOTODILE - does not have the keyword evolution can only half parse
+        MAGMAR - does not have the keyword evolution can only half parse
+        PORYGON-Z - has "Biology" (WHAT!) instead of "Diet" (WTF!!!!)
+        WHIMSICOTT - has "()" in his Fly capability
+        EXEGGCUTE - Missing "," after the power capability
+        EXEGGUTOR - Missing "," after the power capability
+        VULPIX - Missing "," after the power capability
+        NINETALES - Missing "," after the power capability
+        */
 
+        PDDocument pdf = null;
+        try {
 
             File input = new File("C:\\Users\\braolson\\downloads\\PTU 1.05\\Pokedex 1.05.pdf");  // The PDF file from where you would like to extract
             pdf = PDDocument.load(input);
-
-
-            int firstPage = 12; //12
-            int lastPage = 745; //745
-            int pokemonNumber = 1;
-            //System.out.println(stripper.getText(pdf));
-
-
-            for (int currentPageIndex = firstPage; currentPageIndex <= lastPage; currentPageIndex++) {
-
-                stripper.setStartPage(currentPageIndex);
-                stripper.setEndPage(currentPageIndex);
-                String currentPageText = stripper.getText(pdf);
-                //currentPageText = currentPageText.replaceAll("\\s+", " ");
-
-
-                if (currentPageIndex == 682)
-                    continue;
-
-                System.out.println("------------------------------------");
-                //System.out.println(currentPageText);
-
-                //INCREMENT NUMBER
-                System.out.println(pokemonNumber++);
-
-                //GET THE NAME
-                String name = getPokemonName(currentPageText);
-                System.out.println(name);
-
-                if (skipNames.contains(name)) {
-                    continue;
-                }
-
-                //GET HP
-                String hp = getPokemonStat(currentPageText, "HP:", "Attack:");
-                ;
-                System.out.println("HP : " + hp);
-
-                //GET ATTACK
-                String attack = getPokemonStat(currentPageText, "Attack:", "Defense:");
-                System.out.println("Attack : " + attack);
-
-                //GET DEFENSE
-                String defense = getPokemonStat(currentPageText, "Defense:", "Special Attack:");
-                ;
-                System.out.println("Defense : " + defense);
-
-                //GET SPECIAL ATTACK
-                String specialAttack = getPokemonStat(currentPageText, "Special Attack:", "Special Defense");
-                System.out.println("Special Attack : " + specialAttack);
-
-                //GET SPECIAL DEFENSE
-                String specialDefense = getPokemonStat(currentPageText, "Special Defense:", "Speed:");
-                System.out.println("Special Defense : " + specialDefense);
-
-                //GET SPEED
-                String speed = getPokemonStat(currentPageText, "Speed:", "Basic Information");
-                System.out.println("Speed : " + speed);
-
-                //GET THE TYPE
-                List<String> types = getPokemonTypes(currentPageText);
-                System.out.println("Types : " + types.toString());
-
-                //GET THE BASIC ABILITY
-                List<String> basicAbilities = getBasicAbility(currentPageText);
-                System.out.println("Basic Abilities : " + basicAbilities.toString());
-
-                //GET THE ADV ABILITY
-                List<String> advAbilities = getAdvAbility(currentPageText);
-                System.out.println("Adv Abilities : " + advAbilities.toString());
-
-                //GET THE HIGH ABILITY
-                List<String> highAbilities = getHighAbility(currentPageText);
-                System.out.println("High Abilities : " + highAbilities.toString());
-
-                //GET EVOLUTION TREE
-                List<String> evolutions = getEvolutionTree(currentPageText);
-                System.out.println("Evolution : " + evolutions.toString());
-
-                //GET HEIGHT
-                double height = getPokemonHeight(currentPageText);
-                System.out.println("Height : " + height + " m");
-
-                //GET WEIGHT
-                double weight = getPokemonWeight(currentPageText);
-                System.out.println("Weight : " + weight + " kg");
-
-                //GET MALE GENDER RATIO
-                double genderRatio = getPokemonGenderRatio(currentPageText);
-                System.out.println("Gender Ratio: " + genderRatio + "% MALE");
-
-                //GET EGG GROUPS
-                List<String> eggGroups = getPokemonEggGroups(currentPageText);
-                System.out.println("Egg Groups : " + eggGroups.toString());
-
-                //GET AVERAGE HATCH RATE
-                int hatchRate = getHathRate(currentPageText);
-                if (hatchRate != -1)
-                    System.out.println("Hatch Rate: " + hatchRate);
-
-                //GET DIETS
-                List<String> diets = getDiets(currentPageText);
-                System.out.println("Diets : " + diets.toString());
-
-                //GET HABITATS
-                List<String> habitats = getHabitats(currentPageText);
-                System.out.println("Habitats : " + habitats.toString());
-
-                //GET OVERLAND
-                int overland = getCapabilityValue(currentPageText, "Overland");
-                System.out.println("Overland : " + overland);
-
-                //GET SWIM
-                int swim = getCapabilityValue(currentPageText, "Swim");
-                System.out.println("Swim : " + swim);
-
-                //GET SKY
-                int sky = getCapabilityValue(currentPageText, "Sky");
-                System.out.println("Sky : " + sky);
-
-                //GET BURROW
-                int burrow = getCapabilityValue(currentPageText, "Burrow");
-                System.out.println("Burrow : " + burrow);
-
-                //GET LEVITATE
-                int levitate = getCapabilityValue(currentPageText, "Levitate");
-                System.out.println("Levitate : " + levitate);
-
-                //GET POWER
-                int power = getCapabilityValue(currentPageText, "Power");
-                System.out.println("Power : " + power);
-
-                //GET LONG JUMP
-                int longJump = getCapabilityValue(currentPageText, "Jump");
-                System.out.println("Long Jump : " + longJump);
-
-                //GET HIGH JUMP
-                int highJump = getHighJumpValue(currentPageText);
-                System.out.println("High Jump : " + highJump);
-
-                //GET CAPABILITIES
-                List<String> capabilities = getCapabilities(currentPageText);
-                System.out.println("Capabilities : " + capabilities.toString());
-
-                //GET ATHLETICS
-                String athletics = getSkill(currentPageText, "Athl");
-                System.out.println("Athletics : " + athletics);
-
-                //GET ACROBATICS
-                String acrobatics = getSkill(currentPageText, "Acro");
-                System.out.println("Acrobatics : " + acrobatics);
-
-                //GET COMBAT
-                String combat = getSkill(currentPageText, "Combat");
-                System.out.println("Combat : " + combat);
-
-                //GET STEALTH
-                String stealth = getSkill(currentPageText, "Stealth");
-                System.out.println("Stealth : " + stealth);
-
-                //GET PERCEPTION
-                String perception = getSkill(currentPageText, "Percep");
-                System.out.println("Perception : " + perception);
-
-                //GET FOCUS
-                String focus = getSkill(currentPageText, "Focus");
-                System.out.println("Focus : " + focus);
-
-                //GET LEVEL UP MOVES
-                List<String> levelUpMoves = getLevelUpMoveList(currentPageText);
-                System.out.println("Level Up Moves : " + levelUpMoves.toString());
-
-                //GET TM/HM MOVES
-                List<String> tmhmMoves = getTMHMoveList(currentPageText);
-                System.out.println("TM/HM Moves : " + tmhmMoves.toString());
-
-                //GET EGG MOVES
-                List<String> eggMoves = getEggMoveList(currentPageText);
-                System.out.println("Egg Moves : " + eggMoves.toString());
-
-                //GET TUTOR MOVES
-                List<String> tutorMoves = getTutorMoveList(currentPageText);
-                System.out.println("Tutor Moves : " + tutorMoves.toString());
-            }
         }
-
         catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("There are " + skipNames.size() + " problem children.");
+
+        List pages = pdf.getDocumentCatalog().getAllPages();
+        Iterator iter = pages.iterator();
+        int index = 1;
+
+        while(iter.hasNext()) {
+            PDPage page = (PDPage) iter.next();
+            PDResources resources = page.getResources();
+            Map pageImages = null;
+            try {
+                pageImages = resources.getImages();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (pageImages != null) {
+                Iterator imageIter = pageImages.keySet().iterator();
+                while (imageIter.hasNext()) {
+                    String key = (String) imageIter.next();
+                    PDXObjectImage image = (PDXObjectImage) pageImages.get(key);
+                    try {
+                        image.write2file("C:\\Users\\braolson\\downloads\\PTU 1.05\\images\\" + index + ".png");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    index++;
+                }
+            }
+        }
+
+        //PDFTextStripper stripper = new PDFTextStripper();
+
+        /*
+        int firstPage = 12; //12
+        int lastPage = 745; //745
+        int pokemonNumber = 1;
+        //System.out.println(stripper.getText(pdf));
+        for (int currentPageIndex = firstPage; currentPageIndex <= lastPage; currentPageIndex++) {
+
+            stripper.setStartPage(currentPageIndex);
+            stripper.setEndPage(currentPageIndex);
+            String currentPageText = stripper.getText(pdf);
+            //currentPageText = currentPageText.replaceAll("\\s+", " ");
+
+
+            if (currentPageIndex == 682)
+                continue;
+
+            System.out.println("------------------------------------");
+            //System.out.println(currentPageText);
+
+            //INCREMENT NUMBER
+            System.out.println(pokemonNumber++);
+
+            //GET THE NAME
+            String name = getPokemonName(currentPageText);
+            System.out.println(name);
+
+            if (skipNames.contains(name)) {
+                continue;
+            }
+
+            //GET HP
+            String hp = getPokemonStat(currentPageText, "HP:", "Attack:");
+            ;
+            System.out.println("HP : " + hp);
+
+            //GET ATTACK
+            String attack = getPokemonStat(currentPageText, "Attack:", "Defense:");
+            System.out.println("Attack : " + attack);
+
+            //GET DEFENSE
+            String defense = getPokemonStat(currentPageText, "Defense:", "Special Attack:");
+            ;
+            System.out.println("Defense : " + defense);
+
+            //GET SPECIAL ATTACK
+            String specialAttack = getPokemonStat(currentPageText, "Special Attack:", "Special Defense");
+            System.out.println("Special Attack : " + specialAttack);
+
+            //GET SPECIAL DEFENSE
+            String specialDefense = getPokemonStat(currentPageText, "Special Defense:", "Speed:");
+            System.out.println("Special Defense : " + specialDefense);
+
+            //GET SPEED
+            String speed = getPokemonStat(currentPageText, "Speed:", "Basic Information");
+            System.out.println("Speed : " + speed);
+
+            //GET THE TYPE
+            List<String> types = getPokemonTypes(currentPageText);
+            System.out.println("Types : " + types.toString());
+
+            //GET THE BASIC ABILITY
+            List<String> basicAbilities = getBasicAbility(currentPageText);
+            System.out.println("Basic Abilities : " + basicAbilities.toString());
+
+            //GET THE ADV ABILITY
+            List<String> advAbilities = getAdvAbility(currentPageText);
+            System.out.println("Adv Abilities : " + advAbilities.toString());
+
+            //GET THE HIGH ABILITY
+            List<String> highAbilities = getHighAbility(currentPageText);
+            System.out.println("High Abilities : " + highAbilities.toString());
+
+            //GET EVOLUTION TREE
+            List<String> evolutions = getEvolutionTree(currentPageText);
+            System.out.println("Evolution : " + evolutions.toString());
+
+            //GET HEIGHT
+            double height = getPokemonHeight(currentPageText);
+            System.out.println("Height : " + height + " m");
+
+            //GET WEIGHT
+            double weight = getPokemonWeight(currentPageText);
+            System.out.println("Weight : " + weight + " kg");
+
+            //GET MALE GENDER RATIO
+            double genderRatio = getPokemonGenderRatio(currentPageText);
+            System.out.println("Gender Ratio: " + genderRatio + "% MALE");
+
+            //GET EGG GROUPS
+            List<String> eggGroups = getPokemonEggGroups(currentPageText);
+            System.out.println("Egg Groups : " + eggGroups.toString());
+
+            //GET AVERAGE HATCH RATE
+            int hatchRate = getHathRate(currentPageText);
+            if (hatchRate != -1)
+                System.out.println("Hatch Rate: " + hatchRate);
+
+            //GET DIETS
+            List<String> diets = getDiets(currentPageText);
+            System.out.println("Diets : " + diets.toString());
+
+            //GET HABITATS
+            List<String> habitats = getHabitats(currentPageText);
+            System.out.println("Habitats : " + habitats.toString());
+
+            //GET OVERLAND
+            int overland = getCapabilityValue(currentPageText, "Overland");
+            System.out.println("Overland : " + overland);
+
+            //GET SWIM
+            int swim = getCapabilityValue(currentPageText, "Swim");
+            System.out.println("Swim : " + swim);
+
+            //GET SKY
+            int sky = getCapabilityValue(currentPageText, "Sky");
+            System.out.println("Sky : " + sky);
+
+            //GET BURROW
+            int burrow = getCapabilityValue(currentPageText, "Burrow");
+            System.out.println("Burrow : " + burrow);
+
+            //GET LEVITATE
+            int levitate = getCapabilityValue(currentPageText, "Levitate");
+            System.out.println("Levitate : " + levitate);
+
+            //GET POWER
+            int power = getCapabilityValue(currentPageText, "Power");
+            System.out.println("Power : " + power);
+
+            //GET LONG JUMP
+            int longJump = getCapabilityValue(currentPageText, "Jump");
+            System.out.println("Long Jump : " + longJump);
+
+            //GET HIGH JUMP
+            int highJump = getHighJumpValue(currentPageText);
+            System.out.println("High Jump : " + highJump);
+
+            //GET CAPABILITIES
+            List<String> capabilities = getCapabilities(currentPageText);
+            System.out.println("Capabilities : " + capabilities.toString());
+
+            //GET ATHLETICS
+            String athletics = getSkill(currentPageText, "Athl");
+            System.out.println("Athletics : " + athletics);
+
+            //GET ACROBATICS
+            String acrobatics = getSkill(currentPageText, "Acro");
+            System.out.println("Acrobatics : " + acrobatics);
+
+            //GET COMBAT
+            String combat = getSkill(currentPageText, "Combat");
+            System.out.println("Combat : " + combat);
+
+            //GET STEALTH
+            String stealth = getSkill(currentPageText, "Stealth");
+            System.out.println("Stealth : " + stealth);
+
+            //GET PERCEPTION
+            String perception = getSkill(currentPageText, "Percep");
+            System.out.println("Perception : " + perception);
+
+            //GET FOCUS
+            String focus = getSkill(currentPageText, "Focus");
+            System.out.println("Focus : " + focus);
+
+            //GET LEVEL UP MOVES
+            List<String> levelUpMoves = getLevelUpMoveList(currentPageText);
+            System.out.println("Level Up Moves : " + levelUpMoves.toString());
+
+            //GET TM/HM MOVES
+            List<String> tmhmMoves = getTMHMoveList(currentPageText);
+            System.out.println("TM/HM Moves : " + tmhmMoves.toString());
+
+            //GET EGG MOVES
+            List<String> eggMoves = getEggMoveList(currentPageText);
+            System.out.println("Egg Moves : " + eggMoves.toString());
+
+            //GET TUTOR MOVES
+            List<String> tutorMoves = getTutorMoveList(currentPageText);
+            System.out.println("Tutor Moves : " + tutorMoves.toString());
+            */
+        //System.out.println("There are " + skipNames.size() + " problem children.");
     }
 
     public static List<String> getLabelDelaminatedTermsList(String input, String splitString, String endString) {
@@ -608,6 +637,9 @@ public class PokedexScraperMain {
         }
         return moveList;
     }
+
+    //GET IMAGES
+
 }
 
 
