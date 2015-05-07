@@ -18,7 +18,7 @@ public class PokedexScraperMain {
         List<String> skipNames = new ArrayList<String>(Arrays.asList(
                 "PUMPKABOO", "GOURGEIST", "ROTOM", "TOTODILE", "MAGMAR", "PORYGON-Z"));
         try {
-            int firstPage = 12; //12
+            int firstPage = 745; //12
             int lastPage = 745; //745
 
             PDDocument pdf;
@@ -71,59 +71,48 @@ public class PokedexScraperMain {
                 }
 
                 //GET HP
-                String hp = getPokemonHP(currentPageText);
+                String hp = getPokemonStat(currentPageText, "HP:", "Attack:");;
                 System.out.println("HP : " + hp);
 
                 //GET ATTACK
-                String attack = getPokemonAttack(currentPageText);
+                String attack = getPokemonStat(currentPageText, "Attack:", "Defense:");
                 System.out.println("Attack : " + attack);
 
                 //GET DEFENSE
-                String defense = getPokemonDefense(currentPageText);
+                String defense = getPokemonStat(currentPageText, "Defense:", "Special Attack:");;
                 System.out.println("Defense : " + defense);
 
                 //GET SPECIAL ATTACK
-                String specialAttack = getPokemonSpecialAttack(currentPageText);
+                String specialAttack = getPokemonStat(currentPageText, "Special Attack:", "Special Defense");
                 System.out.println("Special Attack : " + specialAttack);
 
                 //GET SPECIAL DEFENSE
-                String specialDefense = getPokemonSpecialDefense(currentPageText);
+                String specialDefense = getPokemonStat(currentPageText, "Special Defense:", "Speed:");
                 System.out.println("Special Defense : " + specialDefense);
 
                 //GET SPEED
-                String speed = getPokemonSpeed(currentPageText);
+                String speed = getPokemonStat(currentPageText, "Speed:", "Basic Information");
                 System.out.println("Speed : " + speed);
 
                 //GET THE TYPE
                 List<String> types = getPokemonTypes(currentPageText);
-                for (int i = 0; i < types.size(); i++) {
-                    System.out.println("Type " + (i + 1) + " : " + types.get(i));
-                }
+                System.out.println("Types : " + types.toString());
 
                 //GET THE BASIC ABILITY
                 List<String> basicAbilities = getBasicAbility(currentPageText);
-                for (int i = 0; i < basicAbilities.size(); i++) {
-                    System.out.println("Basic Ability " + (i + 1) + " : " + basicAbilities.get(i));
-                }
+                System.out.println("Basic Abilities : " + basicAbilities.toString());
 
                 //GET THE ADV ABILITY
                 List<String> advAbilities = getAdvAbility(currentPageText);
-                for (int i = 0; i < advAbilities.size(); i++) {
-                    System.out.println("Adv Ability " + (i + 1) + " : " + advAbilities.get(i));
-                }
+                System.out.println("Adv Abilities : " + advAbilities.toString());
 
                 //GET THE HIGH ABILITY
                 List<String> highAbilities = getHighAbility(currentPageText);
-                for (int i = 0; i < highAbilities.size(); i++) {
-                    System.out.println("High Ability " + (i + 1) + " : " + highAbilities.get(i));
-                }
+                System.out.println("High Abilities : " + highAbilities.toString());
 
                 //GET EVOLUTION TREE
                 List<String> evolutions = getEvolutionTree(currentPageText);
-                System.out.println("Evolution:");
-                for (int i = 0; i < evolutions.size(); i++) {
-                    System.out.println(evolutions.get(i));
-                }
+                System.out.println("Evolution : " + evolutions.toString());
 
                 //GET HEIGHT
                 double height = getPokemonHeight(currentPageText);
@@ -139,16 +128,7 @@ public class PokedexScraperMain {
 
                 //GET EGG GROUPS
                 List<String> eggGroups = getPokemonEggGroups(currentPageText);
-                System.out.print("Egg Groups : ");
-                for (int i = 0; i < eggGroups.size(); i++) {
-                    System.out.print(eggGroups.get(i));
-                    if (i < eggGroups.size() - 1) {
-                        System.out.print(", ");
-                    }
-                    else {
-                        System.out.println();
-                    }
-                }
+                System.out.println("Egg Groups : " + eggGroups.toString());
 
                 //GET AVERAGE HATCH RATE
                 int hatchRate = getHathRate(currentPageText);
@@ -157,30 +137,11 @@ public class PokedexScraperMain {
 
                 //GET DIETS
                 List<String> diets = getDiets(currentPageText);
-                System.out.print("Diets : ");
-                for (int i = 0; i < diets.size(); i++) {
-                    System.out.print(diets.get(i));
-                    if (i < diets.size() - 1) {
-                        System.out.print(", ");
-                    }
-                    else {
-                        System.out.println();
-                    }
-                }
-
+                System.out.println("Diets : " + diets.toString());
 
                 //GET HABITATS
                 List<String> habitats = getHabitats(currentPageText);
-                System.out.print("Habitats : ");
-                for (int i = 0; i < habitats.size(); i++) {
-                    System.out.print(habitats.get(i));
-                    if (i < habitats.size() - 1) {
-                        System.out.print(", ");
-                    }
-                    else {
-                        System.out.println();
-                    }
-                }
+                System.out.println("Habitats : " + habitats.toString());
 
                 //GET OVERLAND
                 int overland = getCapabilityValue(currentPageText, "Overland");
@@ -207,9 +168,17 @@ public class PokedexScraperMain {
                 System.out.println("Power : " + power);
 
                 //GET LONG JUMP
+                int longJump = getCapabilityValue(currentPageText, "Jump");
+                System.out.println("Long Jump : " + longJump);
 
                 //GET HIGH JUMP
+                int highJump = getHighJumpValue(currentPageText);
+                System.out.println("High Jump : " + highJump);
 
+                //GET CAPABILITIES
+                List<String> capabilities = getCapabilities(currentPageText);
+                System.out.print("Capabilities : ");
+                //System.out.println(capabilities.toString());
                 /*
                 //GET MEGA
                 if(currentPageText.contains("Mega Evolution")) {
@@ -250,14 +219,19 @@ public class PokedexScraperMain {
         String inputSubString = (input.substring(input.indexOf(startString) + startString.length() + 2, input.indexOf(endString) - 7));
 
         List<String> output = Arrays.asList(inputSubString.split("\n"));
+
+        /*
         for (int i = 0; i < output.size(); i++) {
-            if (output.get(i) == "\n") {
-                output.remove(i);
-                i++;
-            } else {
-                output.set(i, output.get(i).trim());
-            }
+            output.set(i, output.get(i).trim());
         }
+        */
+
+        for (String string : output) {
+            if (string.length() < 0 || string.equals(" "))
+                output.remove(string);
+        }
+
+        output.removeAll(Arrays.asList(Arrays.asList("", null, " ")));
         return output;
     }
 
@@ -284,37 +258,6 @@ public class PokedexScraperMain {
                 .substring(pageText.indexOf(startString) + startString.length(), pageText.indexOf(endString))
                 .trim();
         return stat;
-    }
-
-    //GET HP
-    public static String getPokemonHP(String pageText) {
-        return getPokemonStat(pageText, "HP:", "Attack:");
-    }
-
-
-    //GET ATTACK
-    public static String getPokemonAttack(String pageText) {
-        return getPokemonStat(pageText, "Attack:", "Defense:");
-    }
-
-    //GET DEFENSE
-    public static String getPokemonDefense(String pageText) {
-        return getPokemonStat(pageText, "Defense:", "Special Attack:");
-    }
-
-    //GET SPECIAL ATTACK
-    public static String getPokemonSpecialAttack(String pageText) {
-        return getPokemonStat(pageText, "Special Attack:", "Special Defense");
-    }
-
-    //GET SPECIAL DEFENSE
-    public static String getPokemonSpecialDefense(String pageText) {
-        return  getPokemonStat(pageText, "Special Defense:", "Speed:");
-    }
-
-    //GET SPEED
-    public static String getPokemonSpeed(String pageText){
-        return getPokemonStat(pageText, "Speed:", "Basic Information");
     }
 
     //GET THE TYPE
@@ -482,11 +425,38 @@ public class PokedexScraperMain {
             return 0;
     }
 
-    //GET LONG JUMP
-
     //GET HIGH JUMP
+    public static int getHighJumpValue(String pageText) {
+        int value = 0;
+        String capabilities = getBetweenSubString(pageText, "Capability List", "Skill List").trim().replaceAll("\\s+", "");
+        if (capabilities.contains("Jump")){
+            int startIndex = capabilities.indexOf("Jump") + 6;
+
+            try {
+                value = Integer.parseInt(capabilities.substring(startIndex, startIndex + 1));
+            }
+            catch (Exception e){
+                return -1;
+            }
+        }
+        return value;
+    }
 
     //GET CAPABILITIES
+    public static List<String> getCapabilities (String pageText){
+        List<String> capabilityList = new ArrayList<String>();
+        String capabilities = getBetweenSubString(pageText, "Capability List", "Skill List").trim().replaceAll("-", "").replaceAll("\n", "");
+        String powerValue = getCapabilityValue(pageText, "Power") + "";
+        int startIndex = capabilities.indexOf("Power") + 6 + powerValue.length();
+        capabilities = capabilities.substring(startIndex).trim();
+        capabilityList = Arrays.asList(capabilities.split(","));
+
+        //TRIMMING capabilityList ENTRIES
+        for (int i = 0; i < capabilityList.size(); i++){
+            capabilityList.set(i, capabilityList.get(i).trim());
+        }
+        return capabilityList;
+    }
 
     //GET ATHLETICS
 
