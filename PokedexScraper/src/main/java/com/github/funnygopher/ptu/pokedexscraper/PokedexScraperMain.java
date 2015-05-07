@@ -1,6 +1,5 @@
 package com.github.funnygopher.ptu.pokedexscraper;
 
-import com.sun.glass.ui.View;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
 
@@ -177,7 +176,32 @@ public class PokedexScraperMain {
 
                 //GET CAPABILITIES
                 List<String> capabilities = getCapabilities(currentPageText);
-                System.out.println(capabilities.toString());
+                System.out.println("Capabilities : " + capabilities.toString());
+
+                //GET ATHLETICS
+                String athletics = getSkill(currentPageText, "Athl");
+                System.out.println("Athletics : " + athletics);
+
+                //GET ACROBATICS
+                String acrobatics = getSkill(currentPageText, "Acro");
+                System.out.println("Acrobatics : " + acrobatics);
+
+                //GET COMBAT
+                String combat = getSkill(currentPageText, "Combat");
+                System.out.println("Combat : " + combat);
+
+                //GET STEALTH
+                String stealth = getSkill(currentPageText, "Stealth");
+                System.out.println("Stealth : " + stealth);
+
+                //GET PERCEPTION
+                String perception = getSkill(currentPageText, "Percep");
+                System.out.println("Perception : " + perception);
+
+                //GET FOCUS
+                String focus = getSkill(currentPageText, "Focus");
+                System.out.println("Focus : " + focus);
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -429,7 +453,7 @@ public class PokedexScraperMain {
     //GET CAPABILITIES
     public static List<String> getCapabilities (String pageText){
         List<String> capabilityList = new ArrayList<String>();
-        String capabilities = getBetweenSubString(pageText, "Capability List", "Skill List").trim().replaceAll("-", "").replace("\r", "").replace("\n","");
+        String capabilities = getBetweenSubString(pageText, "Capability List", "Skill List").trim().replaceAll("-", "").replace("\r", "").replace("\n", "");
         String powerValue = getCapabilityValue(pageText, "Power") + "";
         int startIndex = capabilities.indexOf("Power") + 8 + powerValue.length();
         try {
@@ -450,6 +474,22 @@ public class PokedexScraperMain {
         }
 
         return finalCapabilityList;
+    }
+
+    //GET SKILL VALUE
+    public static String getSkill(String pageText, String skillName){
+        String skills = getBetweenSubString(pageText, "Skill List", "Move List").trim().replaceAll("\\s+", "");
+        if (skills.contains(skillName)){
+            int startIndex = skills.indexOf(skillName) + skillName.length();
+            skills = skills.substring(startIndex);
+            try {
+                skills = skills.substring(0, skills.indexOf(","));
+            }
+            catch (Exception e){
+                return skills;
+            }
+        }
+        return skills;
     }
 
     //GET ATHLETICS
