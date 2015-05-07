@@ -18,7 +18,7 @@ public class PokedexScraperMain {
         List<String> skipNames = new ArrayList<String>(Arrays.asList(
                 "PUMPKABOO", "GOURGEIST", "ROTOM", "TOTODILE", "MAGMAR", "PORYGON-Z"));
         try {
-            int firstPage = 745; //12
+            int firstPage = 12; //12
             int lastPage = 745; //745
 
             PDDocument pdf;
@@ -177,19 +177,7 @@ public class PokedexScraperMain {
 
                 //GET CAPABILITIES
                 List<String> capabilities = getCapabilities(currentPageText);
-                System.out.print("Capabilities : ");
-                //System.out.println(capabilities.toString());
-                /*
-                //GET MEGA
-                if(currentPageText.contains("Mega Evolution")) {
-                    System.out.println("------------------------------------");
-                    System.out.println(pokemonNumber);
-                    System.out.println("Mega " + name);
-                    String mega = currentPageText
-                            .substring(currentPageText.indexOf("Mega Evolution") + 14);
-                    System.out.println(mega);
-                }
-                */
+                System.out.println(capabilities.toString());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -219,20 +207,16 @@ public class PokedexScraperMain {
         String inputSubString = (input.substring(input.indexOf(startString) + startString.length() + 2, input.indexOf(endString) - 7));
 
         List<String> output = Arrays.asList(inputSubString.split("\n"));
+        List<String> finalOutput = new ArrayList<String>();
 
-        /*
         for (int i = 0; i < output.size(); i++) {
             output.set(i, output.get(i).trim());
-        }
-        */
-
-        for (String string : output) {
-            if (string.length() < 0 || string.equals(" "))
-                output.remove(string);
+            if (!output.get(i).isEmpty()) {
+                finalOutput.add(output.get(i));
+            }
         }
 
-        output.removeAll(Arrays.asList(Arrays.asList("", null, " ")));
-        return output;
+        return finalOutput;
     }
 
     public static String getSubString(String input, String startString, String endString) {
@@ -445,17 +429,27 @@ public class PokedexScraperMain {
     //GET CAPABILITIES
     public static List<String> getCapabilities (String pageText){
         List<String> capabilityList = new ArrayList<String>();
-        String capabilities = getBetweenSubString(pageText, "Capability List", "Skill List").trim().replaceAll("-", "").replaceAll("\n", "");
+        String capabilities = getBetweenSubString(pageText, "Capability List", "Skill List").trim().replaceAll("-", "").replace("\r", "").replace("\n","");
         String powerValue = getCapabilityValue(pageText, "Power") + "";
-        int startIndex = capabilities.indexOf("Power") + 6 + powerValue.length();
-        capabilities = capabilities.substring(startIndex).trim();
+        int startIndex = capabilities.indexOf("Power") + 8 + powerValue.length();
+        try {
+            capabilities = capabilities.substring(startIndex).trim();
+        }
+        catch (Exception e) {
+            return capabilityList;
+        }
         capabilityList = Arrays.asList(capabilities.split(","));
+        List<String> finalCapabilityList = new ArrayList<String>();
 
         //TRIMMING capabilityList ENTRIES
         for (int i = 0; i < capabilityList.size(); i++){
             capabilityList.set(i, capabilityList.get(i).trim());
+            if (!(capabilityList.get(i).isEmpty() || capabilityList.get(i).equals("") || capabilityList.get(i).equals("\n" ))) {
+                finalCapabilityList.add(capabilityList.get(i));
+            }
         }
-        return capabilityList;
+
+        return finalCapabilityList;
     }
 
     //GET ATHLETICS
