@@ -14,7 +14,7 @@ public class Species {
 	private int gameGeneration;
 	private int stage;
 	private CombatStatManager combatStats;
-	private Type type1, type2;
+	private List<Type> types;
 	private List<Ability> basicAbilities, advancedAbilities;
 	private Ability highAbility;
 	private List<Evolution> evolution;
@@ -39,9 +39,11 @@ public class Species {
 	//private Image eggImage;
 	//private Mega megaEvolution;
 	//private List<Forms> forms;
-	
-	public Species(String name, int gameGeneration, int stage,
-			CombatStatManager combatStats, Type type1, Type type2,
+
+    public Species() {}
+
+	public Species(String name, int stage,
+			CombatStatManager combatStats, List<Type> types,
 			List<Ability> basicAbilities, List<Ability> advancedAbilities,
 			Ability highAbility, List<Evolution> evolution, Size size,
 			int height, int weight, double genderRatio, EggGroup eggGroup1,
@@ -50,11 +52,9 @@ public class Species {
 			int highJump, List<Capability> cabilities, SkillManager skills) {
 			//MoveList moveList) {
 		this.name = name;
-		this.gameGeneration = gameGeneration;
 		this.stage = stage;
 		this.combatStats = combatStats;
-		this.type1 = type1;
-		this.type2 = type2;
+		this.types = types;
 		this.basicAbilities = basicAbilities;
 		this.advancedAbilities = advancedAbilities;
 		this.highAbility = highAbility;
@@ -149,11 +149,8 @@ public class Species {
 	public int getSwim() {
 		return swim;
 	}
-	public Type getType1() {
-		return type1;
-	}
-	public Type getType2() {
-		return type2;
+	public List<Type> getTypes() {
+		return types;
 	}
 	public int getWeight() {
 		return weight;

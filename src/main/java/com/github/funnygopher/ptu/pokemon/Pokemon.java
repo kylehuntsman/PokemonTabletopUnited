@@ -152,12 +152,8 @@ public class Pokemon {
 		return tutorPoints;
 	}
 
-	public Type getType1() {
-		return species.getType1();
-	}
-
-	public Type getType2() {
-		return species.getType2();
+	public List<Type> getTypes() {
+		return species.getTypes();
 	}
 
 	public List<Vitamin> getVitmains() {

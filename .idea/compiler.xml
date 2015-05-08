@@ -25,8 +25,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="PokedexScraper" target="1.5" />
-      <module name="PokemonTabletopUnited" target="1.5" />
+      <module name="PokedexScraper" target="1.8" />
+      <module name="PokemonTabletopUnited" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
