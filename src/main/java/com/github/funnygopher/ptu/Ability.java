@@ -49,7 +49,7 @@ public class Ability {
 	 * 
 	 * @return frequency
 	 */
-	public Frequency getFrequency() {
+	public String getFrequency() {
 		return frequency;
 	}
 

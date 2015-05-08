@@ -13,20 +13,18 @@ import java.util.List;
 
 public class AbilityScraper {
 
-    private File pdfFile;
     private PDDocument pdf;
     private int startPage;
     private int endPage;
 
-    public AbilityScraper(File pdfFile, int startPage, int endPage) throws IOException{
-        this.pdfFile = pdfFile;
+    public AbilityScraper(String pdfFile, int startPage, int endPage) throws IOException{
         this.startPage = startPage;
         this.endPage = endPage;
 
         pdf = PDDocument.load(pdfFile);
     }
 
-    public List<Ability> parseAbilities(String input) throws IOException {
+    public List<Ability> parseAbilities() throws IOException {
         List<Ability> abilities = new ArrayList<Ability>();
         for (int currentPageNumber = startPage; currentPageNumber <= endPage; currentPageNumber++) {
             List<String> lines = getPageLines(currentPageNumber);
