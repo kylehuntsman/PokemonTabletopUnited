@@ -7,7 +7,7 @@ package com.github.funnygopher.ptu;
  */
 public class Ability {
 	private String name;
-	private Frequency frequency;
+	private String frequency;
 	private String target;
 	private String trigger;
 	private String effect;
@@ -26,7 +26,7 @@ public class Ability {
 	 * @param effect
 	 *            - The effect of the Ability
 	 */
-	public Ability(String name, Frequency frequency, String target,
+	public Ability(String name, String frequency, String target,
 			String trigger, String effect) {
 		this.name = name;
 		this.frequency = frequency;
