@@ -22,11 +22,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="AbilityScraper" />
         <module name="PokedexScraper" />
         <module name="PokemonTabletopUnited" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
+      <module name="AbilityScraper" target="1.5" />
       <module name="PokedexScraper" target="1.5" />
       <module name="PokemonTabletopUnited" target="1.5" />
     </bytecodeTargetLevel>

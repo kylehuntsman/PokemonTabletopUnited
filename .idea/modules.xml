@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AbilityScraper/AbilityScraper.iml" filepath="$PROJECT_DIR$/AbilityScraper/AbilityScraper.iml" />
       <module fileurl="file://$PROJECT_DIR$/PokedexScraper/PokedexScraper.iml" filepath="$PROJECT_DIR$/PokedexScraper/PokedexScraper.iml" />
       <module fileurl="file://$PROJECT_DIR$/PokedexScraper/PokedexScraper.iml" filepath="$PROJECT_DIR$/PokedexScraper/PokedexScraper.iml" />
       <module fileurl="file://$PROJECT_DIR$/PokedexScraper/PokedexScraper.iml" filepath="$PROJECT_DIR$/PokedexScraper/PokedexScraper.iml" />
