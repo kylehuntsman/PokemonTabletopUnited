@@ -35,7 +35,11 @@ public class PokedexScraperMain {
         NINETALES - Missing "," after the power capability
         */
 
-        PDDocument pdf = null;
+        PDDocument pdf  = null;
+        int firstPage = 12; //12
+        int lastPage = 745; //745
+        String currentPageText = null;
+
         try {
 
             File input = new File("C:\\Users\\braolson\\downloads\\PTU 1.05\\Pokedex 1.05.pdf");  // The PDF file from where you would like to extract
@@ -45,47 +49,33 @@ public class PokedexScraperMain {
             e.printStackTrace();
         }
 
-        List pages = pdf.getDocumentCatalog().getAllPages();
-        Iterator iter = pages.iterator();
-        int index = 1;
 
-        while(iter.hasNext()) {
-            PDPage page = (PDPage) iter.next();
-            PDResources resources = page.getResources();
-            Map pageImages = null;
-            try {
-                pageImages = resources.getImages();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (pageImages != null) {
-                Iterator imageIter = pageImages.keySet().iterator();
-                while (imageIter.hasNext()) {
-                    String key = (String) imageIter.next();
-                    PDXObjectImage image = (PDXObjectImage) pageImages.get(key);
-                    try {
-                        image.write2file("C:\\Users\\braolson\\downloads\\PTU 1.05\\images\\" + index + ".png");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
 
-                    index++;
-                }
-            }
-        }
-
-        //PDFTextStripper stripper = new PDFTextStripper();
-
-        /*
-        int firstPage = 12; //12
-        int lastPage = 745; //745
         int pokemonNumber = 1;
         //System.out.println(stripper.getText(pdf));
         for (int currentPageIndex = firstPage; currentPageIndex <= lastPage; currentPageIndex++) {
+            List pages = pdf.getDocumentCatalog().getAllPages();
+            Iterator iter = pages.iterator();
+            int index = 1;
+            List<PDXObjectImage> imageList = new ArrayList<PDXObjectImage>();
 
-            stripper.setStartPage(currentPageIndex);
-            stripper.setEndPage(currentPageIndex);
-            String currentPageText = stripper.getText(pdf);
+            while(iter.hasNext()) {
+                PDPage page = (PDPage) iter.next();
+                getImages(page);
+
+                index++;
+            }
+
+            try {
+                PDFTextStripper stripper = new PDFTextStripper();
+                stripper.setStartPage(currentPageIndex);
+                stripper.setEndPage(currentPageIndex);
+                currentPageText = stripper.getText(pdf);
+            }
+
+            catch (Exception e) {
+                e.printStackTrace();
+            }
             //currentPageText = currentPageText.replaceAll("\\s+", " ");
 
 
@@ -108,7 +98,6 @@ public class PokedexScraperMain {
 
             //GET HP
             String hp = getPokemonStat(currentPageText, "HP:", "Attack:");
-            ;
             System.out.println("HP : " + hp);
 
             //GET ATTACK
@@ -256,8 +245,8 @@ public class PokedexScraperMain {
             //GET TUTOR MOVES
             List<String> tutorMoves = getTutorMoveList(currentPageText);
             System.out.println("Tutor Moves : " + tutorMoves.toString());
-            */
-        //System.out.println("There are " + skipNames.size() + " problem children.");
+        }
+        System.out.println("There are " + skipNames.size() + " problem children.");
     }
 
     public static List<String> getLabelDelaminatedTermsList(String input, String splitString, String endString) {
@@ -329,6 +318,34 @@ public class PokedexScraperMain {
 
     public static String getBetweenSubString(String input, String startString, String endString){
         return input.substring(input.indexOf(startString) + startString.length(), input.indexOf(endString));
+    }
+
+    public static List<PDXObjectImage> getImages(PDPage page){
+        PDResources resources = page.getResources();
+        Map pageImages = null;
+        List<PDXObjectImage> imageList = new ArrayList<PDXObjectImage>();
+
+        try {
+            pageImages = resources.getImages();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (pageImages != null) {
+            Iterator imageIter = pageImages.keySet().iterator();
+            while (imageIter.hasNext()) {
+                String key = (String) imageIter.next();
+                PDXObjectImage image = (PDXObjectImage) pageImages.get(key);
+                imageList.add(image);
+
+                /*try {
+                    image.write2file("C:\\Users\\braolson\\downloads\\PTU 1.05\\images\\" + index + ".png");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                */
+            }
+        }
+        return imageList;
     }
 
     //GET THE NAME
@@ -533,7 +550,15 @@ public class PokedexScraperMain {
     //GET CAPABILITIES
     public static List<String> getCapabilities (String pageText){
         List<String> capabilityList = new ArrayList<String>();
+        List<String> natureWalks = new ArrayList<String>();
         String capabilities = getBetweenSubString(pageText, "Capability List", "Skill List").trim().replaceAll("-", "").replace("\r", "").replace("\n", "");
+        if (capabilities.contains("Naturewalk")) {
+            natureWalks = getNatureWalk(capabilities);
+            int startIndex = capabilities.indexOf("Naturewalk");
+            int endIndex = capabilities.indexOf(")");
+            String toBeReplaced = capabilities.substring(startIndex, endIndex + 1);
+            capabilities = capabilities.replace(toBeReplaced, "");
+        }
         String powerValue = getCapabilityValue(pageText, "Power") + "";
         int startIndex = capabilities.indexOf("Power") + 8 + powerValue.length();
         try {
@@ -544,6 +569,10 @@ public class PokedexScraperMain {
         }
         capabilityList = Arrays.asList(capabilities.split(","));
         List<String> finalCapabilityList = new ArrayList<String>();
+
+        for (String natureWalk : natureWalks) {
+            finalCapabilityList.add(natureWalk);
+        }
 
         //TRIMMING capabilityList ENTRIES
         for (int i = 0; i < capabilityList.size(); i++){
@@ -587,10 +616,7 @@ public class PokedexScraperMain {
             moves = getNumberedList(pageText, startString, "Tutor Move List");
         }
         else{
-
-
             String inputSubString = (pageText.substring(pageText.indexOf(startString) + startString.length() + 2, pageText.length() - 1));
-
             List<String> output = Arrays.asList(inputSubString.split("\n"));
 
             for (int i = 0; i < output.size(); i++) {
@@ -640,6 +666,18 @@ public class PokedexScraperMain {
 
     //GET IMAGES
 
+    //GET NATUREWALK
+    public static List<String> getNatureWalk(String cabapilitiesList) {
+        List<String> raw = new ArrayList<String>();
+        List<String> natureWalks = new ArrayList<String>();
+        raw = Arrays.asList((cabapilitiesList.substring(cabapilitiesList.indexOf("(") + 1, cabapilitiesList.indexOf(")")).split(",")));
+        for (int i = 0; i < raw.size(); i++){
+            if (!(raw.get(i).isEmpty() || raw.get(i).equals("") || raw.get(i).equals("\n" ))) {
+                natureWalks.add("Naturewalk (" + raw.get(i).trim() + ")");
+            }
+        }
+        return natureWalks;
+    }
 }
 
 
