@@ -150,8 +150,15 @@ public class PokedexScraperMain {
             System.out.println("Weight : " + weight + " kg");
 
             //GET MALE GENDER RATIO
-            double genderRatio = getPokemonGenderRatio(currentPageText);
-            System.out.println("Gender Ratio: " + genderRatio + "% MALE");
+            double maleGenderRatio = getPokemonGenderRatio(currentPageText);
+            if (maleGenderRatio == -1) {
+                System.out.println("Male Gender Ratio : None");
+                System.out.println("Female Gender Ratio : None");
+            }
+            else {
+                System.out.println("Male Gender Ratio : " + maleGenderRatio + "%");
+                System.out.println("Female Gender Ratio : " + (100 - maleGenderRatio) + "%");
+            }
 
             //GET EGG GROUPS
             List<String> eggGroups = getPokemonEggGroups(currentPageText);
