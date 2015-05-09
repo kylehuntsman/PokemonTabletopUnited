@@ -1,7 +1,6 @@
 package com.github.funnygopher.ptu.abilityscraper;
 
 import com.github.funnygopher.ptu.Ability;
-import org.apache.pdfbox.pdmodel.PDDocument;
 
 import java.io.IOException;
 import java.util.ArrayList;
