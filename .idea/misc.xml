@@ -46,6 +46,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/Pokemon Tabletop United/pom.xml" />
+        <option value="$PROJECT_DIR$/PokedexScraper/pom.xml" />
       </list>
     </option>
   </component>

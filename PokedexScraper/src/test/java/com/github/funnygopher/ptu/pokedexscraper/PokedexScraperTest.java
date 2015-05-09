@@ -3,7 +3,6 @@ package com.github.funnygopher.ptu.pokedexscraper;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.List;
 
 public class PokedexScraperTest {
 
@@ -12,15 +11,10 @@ public class PokedexScraperTest {
         PokedexScraper scraper;
         int page = 1;
         try {
-            scraper = new PokedexScraper("C:/Users/braolson.KNOWN-UNIVERSE/Dev/PokemonTabletopUnited/PokedexScraper/src/test/resources/Bulbasaur.pdf", page, page, false);
-            List<String> pageText = scraper.getPageText(page);
-            for (String s : pageText) {
-                System.out.println(s);
-            }
+            scraper = new PokedexScraper("Bulbasaur.pdf", page, page, false);
+            System.out.println(scraper.getPageText(page));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }

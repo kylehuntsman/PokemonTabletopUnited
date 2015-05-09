@@ -11,7 +11,6 @@ import org.apache.pdfbox.pdmodel.PDResources;
 import org.apache.pdfbox.pdmodel.graphics.xobject.PDXObjectImage;
 import org.apache.pdfbox.util.PDFTextStripper;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -32,7 +31,7 @@ public class PokedexScraper {
         exemptPages = new ArrayList<Integer>();
         exemptPokemon = new ArrayList<String>();
 
-        pdf = PDDocument.load(fileName);
+        pdf = PDDocument.load(ClassLoader.getSystemResourceAsStream(fileName));
         addExemptPokemon(Arrays.asList("pumpkaboo", "gourgiest", "rotom", "totodile", "magmar", "porygon-z"));
     }
 
@@ -95,11 +94,11 @@ public class PokedexScraper {
         List<Ability> advAbilities = getAdvAbility(pageText);
         List<Ability> highAbilities = getHighAbility(pageText);
 
-
+        /*
         Species species = new Species(
           name, stage, stats, types, basicAbilities, advAbilities, highAbilities,
         );
-
+        */
         return null;
     }
 
@@ -109,7 +108,6 @@ public class PokedexScraper {
         stripper.setEndPage(pageNumber);
 
         String pageText = stripper.getText(pdf).replaceAll(" +", " ");
-
         return pageText;
     }
 /*
