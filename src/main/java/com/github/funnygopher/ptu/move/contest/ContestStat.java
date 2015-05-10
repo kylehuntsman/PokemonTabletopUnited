@@ -1,8 +1,8 @@
 package com.github.funnygopher.ptu.move.contest;
 
 public enum ContestStat {
-	BEAUTY("Beuaty"), COOL("Cool"), CUTE("Cute"),
-	SMART("Smart"), TOUGH("Tough");
+	BEAUTY("Beauty"), COOL("Cool"), CUTE("Cute"),
+	SMART("Smart"), TOUGH("Tough"), ERROR("Error");
 	
 	private String name;
 	

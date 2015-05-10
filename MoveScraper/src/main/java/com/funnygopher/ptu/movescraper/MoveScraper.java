@@ -1,6 +1,7 @@
 package com.funnygopher.ptu.movescraper;
 
 import com.github.funnygopher.ptu.move.Move;
+import com.github.funnygopher.ptu.move.MoveBuilder;
 import com.github.funnygopher.ptu.move.MoveClass;
 import com.github.funnygopher.ptu.move.contest.ContestEffect;
 import com.github.funnygopher.ptu.move.contest.ContestStat;
@@ -27,54 +28,102 @@ public class MoveScraper {
         pdf = PDDocument.load(pdfFile);
     }
 
-    public List<Move> parseAbilities() throws IOException {
+    public List<Move> parseMoves() throws IOException {
         List<Move> moves = new ArrayList<>();
 
+        // Loops through each page
         for (int currentPageNumber = startPage; currentPageNumber <= endPage; currentPageNumber++) {
-            List<String> lines = getPageLines(currentPageNumber);
-            List<Integer> abilityNameIndexes = getMoveNameIndexes(lines);
+            List<String> pageText = getPageLines(currentPageNumber);
 
-            String name;
-            Type type;
-            String frequency;
-            int accuracyCheck;
-            int damageBaseValue;
-            String calculatedDamage;
-            int quickDamage;
-            MoveClass moveClass;
-            String range;
-            String effect;
-            ContestStat contestStat;
-            ContestEffect contestEffect;
+            MoveBuilder moveBuilder = new MoveBuilder();
+            String effect = "";
 
-            /*
-            for (int i = 0; i < abilityNameIndexes.size() - 1; i++) {
-                name = getAbilityName(lines.get(abilityNameIndexes.get(i)));
-                frequency = lines.get(abilityNameIndexes.get(i) + 1);
-                target = "";
-                trigger = "";
-                effect = "";
-                for (int lineIndex = abilityNameIndexes.get(i); lineIndex <= abilityNameIndexes.get(i + 1); lineIndex++) {
-                    String currentLine = lines.get(lineIndex);
-                    if (currentLine.contains("Ability:")) {}
-                    else if (currentLine.contains("Target:")) {
-                        target = getAbilityTarget(currentLine);
+            // Loops through each Move
+            for (int lineIndex = 0; lineIndex < pageText.size(); lineIndex++) {
+                String currentLine = pageText.get(lineIndex);
+                System.out.println(currentLine);
+
+                if (currentLine.equals("Indices and References") || currentLine.isEmpty() || currentLine.equals(346 + currentPageNumber + "")) {continue;}
+
+                if (currentLine.contains("Move:")) {
+                    if(moveBuilder.bName) {
+                        moveBuilder.build();
+                        moveBuilder = new MoveBuilder();
+                        String name = getName(currentLine);
+                        moveBuilder.name(name);
+                    } else {
+                        String name = getName(currentLine);
+                        moveBuilder.name(name);
                     }
-                    else if (currentLine.contains("Trigger:")) {
-                        trigger = getAbilityTrigger(currentLine);
-                    }
-                    else if (currentLine.contains("Effect:")) {
-                        effect = getAbilityEffect(currentLine);
-                    }
-                    else {
-                        effect += " " + currentLine;
-                    }
+                    continue;
                 }
-                abilities.add(new Ability(name, frequency, target, trigger, effect));
-            }
-            */
-        }
 
+                if (currentLine.contains("Contest Type:")) {
+                    ContestStat contestStat = getContestStat(currentLine);
+                    moveBuilder.contestStat(contestStat);
+                    continue;
+                }
+
+                if (!moveBuilder.bType && currentLine.contains("Type:")) {
+                    Type type = getType(currentLine);
+                    moveBuilder.type(type);
+                    continue;
+                }
+
+                if (!moveBuilder.bFrequency && currentLine.contains("Frequency:")) {
+                    String frequency = getFrequency(currentLine);
+                    moveBuilder.frequency(frequency);
+                    continue;
+                }
+
+                if (!moveBuilder.bAccCheck && currentLine.contains("AC:")) {
+                    int accuracyCheck = getAccuracyCheck(currentLine);
+                    moveBuilder.accuracyCheck(accuracyCheck);
+                    continue;
+                }
+
+                if (!moveBuilder.bDamageBase && currentLine.contains("Damage Base")) {
+                    int damageBaseValue = getDamageBaseValue(currentLine);
+                    moveBuilder.damageBase(damageBaseValue);
+                    continue;
+                }
+
+                if (!moveBuilder.bMoveClass && currentLine.contains("Class:")) {
+                    MoveClass moveClass = getMoveClass(currentLine);
+                    moveBuilder.moveClass(moveClass);
+                    continue;
+                }
+
+                if (!moveBuilder.bRange && currentLine.contains("Range:")) {
+                    String range = getRange(currentLine);
+                    moveBuilder.range(range);
+                    continue;
+                }
+
+                if (currentLine.contains("Contest Effect")) {
+                    ContestEffect contestEffect = getContestEffect(currentLine);
+                    moveBuilder.contestEffect(contestEffect);
+                    continue;
+                }
+
+                if (currentLine.contains("Effect:")) {
+                    effect = getEffect(currentLine);
+                    continue;
+                }
+
+                if (!moveBuilder.bSpecial && currentLine.contains("Special:")) {
+                    String special = getSpecial(currentLine);
+                    moveBuilder.special(special);
+                    continue;
+                }
+
+                effect += " " + currentLine;
+            }
+            moveBuilder.effect(effect);
+            Move newMove = moveBuilder.build();
+            moves.add(newMove);
+            System.out.println();
+        }
         return moves;
     }
 
@@ -92,62 +141,76 @@ public class MoveScraper {
         return lines;
     }
 
-    private ArrayList<Integer> getMoveNameIndexes(List<String> pageLines) {
-        ArrayList<Integer> abilityIndexes = new ArrayList<>();
+    private ArrayList<Integer> getMoveNameIndices(List<String> pageLines) {
+        ArrayList<Integer> moveNameIndexes = new ArrayList<>();
         for (int lineIndex = 0; lineIndex < pageLines.size(); lineIndex++) {
             String currentLine = pageLines.get(lineIndex);
             if (currentLine.contains("Move:"))
-                abilityIndexes.add(lineIndex);
+                moveNameIndexes.add(lineIndex);
         }
-        abilityIndexes.add(pageLines.size() - 1);
-        return abilityIndexes;
+        return moveNameIndexes;
     }
 
     private String getName(String input) {
-        return null;
+        return input.substring(5).trim();
     }
 
     private Type getType(String input) {
-        return null;
+        return Type.valueOf(input.substring(5).trim().toUpperCase());
     }
 
     private String getFrequency(String input) {
-        return null;
+        return input.substring(10).trim();
     }
 
-    private String getAccuracyCheck(String input) {
-        return null;
+    private int getAccuracyCheck(String input) {
+        String value = input.substring(3).trim();
+        if (value.equals("None") || value.equals("--") || value.equals("See Effect")) {
+            return -1;
+        }
+        else {
+            return Integer.parseInt(input.substring(3).trim());
+        }
     }
 
-    private Integer getDamageBaseValue(String input) {
-        return null;
-    }
-
-    private String getCalculatedDamage(String input) {
-        return null;
-    }
-
-    private Integer getQuickDamage(String input) {
-        return null;
+    private int getDamageBaseValue(String input) {
+        String damageBase = input.substring(input.indexOf("Damage Base") + 11, input.indexOf(":")).trim();
+        if(damageBase.equals("X") || damageBase.isEmpty()) {
+            return 0;
+        }
+        return Integer.parseInt(damageBase);
     }
 
     private MoveClass getMoveClass(String input) {
-        return null;
+        return MoveClass.valueOf(input.substring(6).trim().toUpperCase());
     }
 
     private String getRange(String input) {
-        return null;
+        return input.substring(6).trim();
     }
 
     private String getEffect(String input) {
-        return null;
+        return input.substring(7).trim();
     }
 
     private ContestStat getContestStat(String input) {
-        return null;
+        String contestStat = input.substring(13).trim().toUpperCase();
+        ContestStat cs;
+        try {
+            cs = ContestStat.valueOf(contestStat);
+        } catch (Exception e) {
+            return ContestStat.ERROR;
+        }
+        return cs;
     }
 
     private ContestEffect getContestEffect(String input) {
-        return null;
+        String contestEffectName = input.substring(15).trim();
+        //Look up the die roll and effect from the database table table
+        return new ContestEffect(contestEffectName, "", "");
+    }
+
+    private String getSpecial(String input) {
+        return input.substring(8).trim();
     }
 }

@@ -8,39 +8,33 @@ import com.github.funnygopher.ptu.move.contest.ContestEffect;
 public class Move {
 	private String name;
 	private Type type;
-	private Frequency frequency;
+	private String frequency;
 	private int accuracyCheck;
 	private int damageBaseValue;
-	private String calculatedDamage;
-	private int quickDamage;
 	private MoveClass moveClass;
 	private String range;
 	private String effect;
 	private ContestStat contestStat;
 	private ContestEffect contestEffect;
+    private String special;
 	
-	public Move(String name, Type type, Frequency frequency, int accuracyCheck,
-			int damageBaseValue, String calculatedDamage, int quickDamage,
-			MoveClass moveClass, String range, String effect,
-			ContestStat contestStat, ContestEffect contestEffect) {
+	public Move(String name, Type type, String frequency, int accuracyCheck,
+			int damageBaseValue, MoveClass moveClass, String range, String effect,
+			ContestStat contestStat, ContestEffect contestEffect, String special) {
 		this.name = name;
 		this.type = type;
 		this.frequency = frequency;
 		this.accuracyCheck = accuracyCheck;
 		this.damageBaseValue = damageBaseValue;
-		this.calculatedDamage = calculatedDamage;
-		this.quickDamage = quickDamage;
 		this.moveClass = moveClass;
 		this.range = range;
 		this.effect = effect;
 		this.contestStat = contestStat;
 		this.contestEffect = contestEffect;
+        this.special = special;
 	}
 	public int getAccuracyCheck() {
 		return accuracyCheck;
-	}
-	public String getCalculatedDamage() {
-		return calculatedDamage;
 	}
 	public ContestEffect getContestEffect() {
 		return contestEffect;
@@ -54,7 +48,7 @@ public class Move {
 	public String getEffect() {
 		return effect;
 	}
-	public Frequency getFrequency() {
+	public String getFrequency() {
 		return frequency;
 	}
 	public MoveClass getMoveClass() {
@@ -63,13 +57,25 @@ public class Move {
 	public String getName() {
 		return name;
 	}
-	public int getQuickDamage() {
-		return quickDamage;
-	}
 	public String getRange() {
 		return range;
 	}
 	public Type getType() {
 		return type;
 	}
+
+    @Override public String toString() {
+        String result;
+        result = "Name: " + name + "\n" +
+                "Type: " + type.toString() + "\n" +
+                "Frequency: " + frequency + "\n" +
+                "Accuracy Check: " + accuracyCheck + "\n" +
+                "Damage Base Value: " + damageBaseValue + "\n" +
+                "Move Class: " + moveClass.toString() + "\n" +
+                "Range: " + type.toString() + "\n" +
+                "Contest Stat: " + contestStat.toString() + "\n" +
+                "Contest Effect: " + contestEffect.getName() + "\n" +
+                "Special: " + special;
+        return  result;
+    }
 }

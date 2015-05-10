@@ -1,7 +1,7 @@
 package com.github.funnygopher.ptu.move;
 
 public enum MoveClass {
-	STATUS("Status"), SPECIAL("Special"), PHYSICAL("Physical");
+	STATUS("Status"), SPECIAL("Special"), PHYSICAL("Physical"), STATIC("Static");
 	
 	private String name;
 
