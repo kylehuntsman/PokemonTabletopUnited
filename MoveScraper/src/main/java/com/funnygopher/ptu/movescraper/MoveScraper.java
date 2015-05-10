@@ -39,15 +39,18 @@ public class MoveScraper {
             String effect = "";
 
             // Loops through each Move
-            for (int lineIndex = 0; lineIndex < pageText.size(); lineIndex++) {
-                String currentLine = pageText.get(lineIndex);
-                System.out.println(currentLine);
+            for (String currentLine : pageText) {
+                //System.out.println(currentLine);
 
-                if (currentLine.equals("Indices and References") || currentLine.isEmpty() || currentLine.equals(346 + currentPageNumber + "")) {continue;}
+                if (currentLine.equals("Indices and References") || currentLine.isEmpty() || currentLine.equals(346 + currentPageNumber + "")) {
+                    continue;
+                }
 
                 if (currentLine.contains("Move:")) {
-                    if(moveBuilder.bName) {
-                        moveBuilder.build();
+                    if (moveBuilder.bName) {
+                        moveBuilder.effect(effect);
+                        Move newMove = moveBuilder.build();
+                        moves.add(newMove);
                         moveBuilder = new MoveBuilder();
                         String name = getName(currentLine);
                         moveBuilder.name(name);
@@ -58,7 +61,7 @@ public class MoveScraper {
                     continue;
                 }
 
-                if (currentLine.contains("Contest Type:")) {
+                if (!moveBuilder.bConStat && currentLine.contains("Contest Type:")) {
                     ContestStat contestStat = getContestStat(currentLine);
                     moveBuilder.contestStat(contestStat);
                     continue;
@@ -100,7 +103,7 @@ public class MoveScraper {
                     continue;
                 }
 
-                if (currentLine.contains("Contest Effect")) {
+                if (!moveBuilder.bConEffect && currentLine.contains("Contest Effect")) {
                     ContestEffect contestEffect = getContestEffect(currentLine);
                     moveBuilder.contestEffect(contestEffect);
                     continue;
@@ -122,7 +125,6 @@ public class MoveScraper {
             moveBuilder.effect(effect);
             Move newMove = moveBuilder.build();
             moves.add(newMove);
-            System.out.println();
         }
         return moves;
     }
@@ -141,22 +143,17 @@ public class MoveScraper {
         return lines;
     }
 
-    private ArrayList<Integer> getMoveNameIndices(List<String> pageLines) {
-        ArrayList<Integer> moveNameIndexes = new ArrayList<>();
-        for (int lineIndex = 0; lineIndex < pageLines.size(); lineIndex++) {
-            String currentLine = pageLines.get(lineIndex);
-            if (currentLine.contains("Move:"))
-                moveNameIndexes.add(lineIndex);
-        }
-        return moveNameIndexes;
-    }
-
     private String getName(String input) {
         return input.substring(5).trim();
     }
 
     private Type getType(String input) {
-        return Type.valueOf(input.substring(5).trim().toUpperCase());
+        String value = input.substring(5).trim().toUpperCase();
+        try {
+            return Type.valueOf(value);
+        } catch (Exception e) {
+            return Type.ERROR;
+        }
     }
 
     private String getFrequency(String input) {
@@ -165,24 +162,29 @@ public class MoveScraper {
 
     private int getAccuracyCheck(String input) {
         String value = input.substring(3).trim();
-        if (value.equals("None") || value.equals("--") || value.equals("See Effect")) {
+        try {
+            return Integer.parseInt(value);
+        } catch (Exception e) {
             return -1;
-        }
-        else {
-            return Integer.parseInt(input.substring(3).trim());
         }
     }
 
     private int getDamageBaseValue(String input) {
-        String damageBase = input.substring(input.indexOf("Damage Base") + 11, input.indexOf(":")).trim();
-        if(damageBase.equals("X") || damageBase.isEmpty()) {
-            return 0;
+        String value = input.substring(input.indexOf("Damage Base") + 11, input.indexOf(":")).trim();
+        try {
+            return Integer.parseInt(value);
+        } catch (Exception e) {
+            return -1;
         }
-        return Integer.parseInt(damageBase);
     }
 
     private MoveClass getMoveClass(String input) {
-        return MoveClass.valueOf(input.substring(6).trim().toUpperCase());
+        String value = input.substring(6).trim().toUpperCase();
+        try {
+            return MoveClass.valueOf(value);
+        } catch (Exception e) {
+            return MoveClass.ERROR;
+        }
     }
 
     private String getRange(String input) {
@@ -194,14 +196,12 @@ public class MoveScraper {
     }
 
     private ContestStat getContestStat(String input) {
-        String contestStat = input.substring(13).trim().toUpperCase();
-        ContestStat cs;
+        String value = input.substring(13).trim().toUpperCase();
         try {
-            cs = ContestStat.valueOf(contestStat);
+            return ContestStat.valueOf(value);
         } catch (Exception e) {
             return ContestStat.ERROR;
         }
-        return cs;
     }
 
     private ContestEffect getContestEffect(String input) {

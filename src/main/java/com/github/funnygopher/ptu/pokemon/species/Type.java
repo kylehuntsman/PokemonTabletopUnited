@@ -18,7 +18,10 @@ public enum Type {
 	ICE("Ice"),
 	DRAGON("Dragon"),
 	DARK("Dark"),
-	FAIRY("Fairy");
+	FAIRY("Fairy"),
+
+    ERROR("Error"),
+    NONE("None");
 
 	private String name;
 

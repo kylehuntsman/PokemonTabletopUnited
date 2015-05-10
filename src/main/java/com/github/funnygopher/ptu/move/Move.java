@@ -26,7 +26,7 @@ public class Move {
 		this.frequency = frequency;
 		this.accuracyCheck = accuracyCheck;
 		this.damageBaseValue = damageBaseValue;
-		this.moveClass = moveClass;
+        this.moveClass = moveClass;
 		this.range = range;
 		this.effect = effect;
 		this.contestStat = contestStat;
@@ -65,17 +65,19 @@ public class Move {
 	}
 
     @Override public String toString() {
-        String result;
-        result = "Name: " + name + "\n" +
-                "Type: " + type.toString() + "\n" +
-                "Frequency: " + frequency + "\n" +
-                "Accuracy Check: " + accuracyCheck + "\n" +
-                "Damage Base Value: " + damageBaseValue + "\n" +
-                "Move Class: " + moveClass.toString() + "\n" +
-                "Range: " + type.toString() + "\n" +
-                "Contest Stat: " + contestStat.toString() + "\n" +
-                "Contest Effect: " + contestEffect.getName() + "\n" +
-                "Special: " + special;
+        String result = "";
+        result += "Name: " + name + "\n";
+        result += "Type: " + type.toString() + "\n";
+        result += "Frequency: " + frequency + "\n";
+        result += "Accuracy Check: " + accuracyCheck + "\n";
+        result += "Damage Base Value: " + damageBaseValue + "\n";
+        if (moveClass != null)
+            result += "Move Class: " + moveClass.toString() + "\n";
+        result += "Range: " + range + "\n";
+        result += "Effect: " + effect + "\n";
+        result += "Contest Stat: " + contestStat.toString() + "\n";
+        result += "Contest Effect: " + contestEffect.getName() + "\n";
+        result += "Special: " + special;
         return  result;
     }
 }
