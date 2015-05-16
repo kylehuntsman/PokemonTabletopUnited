@@ -311,3 +311,12 @@ DROP FOREIGN KEY POWER_ID [90057-185]
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:745)
+05-16 00:57:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE EQUIPMENT_SLOT (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(50) INT[*] NOT NULL
+)"; expected "FOR, UNSIGNED, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE EQUIPMENT_SLOT (
+  ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  NAME VARCHAR(50) INT NOT NULL
+) [42001-185]
