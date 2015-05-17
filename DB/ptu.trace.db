@@ -359,3 +359,13 @@ INSERT INTO DIET(NAME, DESCRIPTION)
     VALUES ('Ergovore','Lives by consuming pure energy.');
 INSERT INTO DIET(NAME, DESCRIPTION)
     VALUES ('Filter Feeder', 'Feed by straining suspended matter and food particles from water'); [22001-185]
+05-17 13:47:54 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO POKEMON_LEVEL(LEVEL, EXPERIENCE_NEEDED)
+VALUES (,[*])"; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM"; SQL statement:
+INSERT INTO POKEMON_LEVEL(LEVEL, EXPERIENCE_NEEDED)
+VALUES (,) [42001-185]
+05-17 14:11:37 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO POKEMON_LEVEL(LEVEL, EXPERIENCE_NEEDED)
+VALUES (,[*])"; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM"; SQL statement:
+INSERT INTO POKEMON_LEVEL(LEVEL, EXPERIENCE_NEEDED)
+VALUES (,) [42001-185]
