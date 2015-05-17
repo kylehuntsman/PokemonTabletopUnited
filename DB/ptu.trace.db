@@ -320,3 +320,42 @@ CREATE TABLE EQUIPMENT_SLOT (
   ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   NAME VARCHAR(50) INT NOT NULL
 ) [42001-185]
+05-16 22:57:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO POWER(VALUE, HEAVY_LIFTING_LIMIT, STARGGERING_WEIGHT_LIMIT, DRAG_WEIGHT_LIMIT)
+VALUES (1,,[*],)"; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM"; SQL statement:
+INSERT INTO POWER(VALUE, HEAVY_LIFTING_LIMIT, STARGGERING_WEIGHT_LIMIT, DRAG_WEIGHT_LIMIT)
+VALUES (1,,,) [42001-185]
+05-17 00:05:44 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(30) NOT NULL": "'Feed on leafy food, vegetables, nuts and fruits to survive.' (59)"; SQL statement:
+
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Herbivore', 'Feed on leafy food, vegetables, nuts and fruits to survive.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Omnivores', 'Can eat plants and other Pokémon.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Phototroph','Photosynthesize their own food and energy.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Terravore','One who feeds on the minerals found in rock and dirt around them.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Nullivore','Does not need to eat anything to sustain itself for various reasons.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Ergovore','Lives by consuming pure energy.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Filter Feeder', 'Feed by straining suspended matter and food particles from water, typically by passing the water over a specialized filtering structure.');
+ [22001-185]
+05-17 00:07:18 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(30) NOT NULL": "'Feed on leafy food, vegetables, nuts and fruits.' (48)"; SQL statement:
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Herbivore', 'Feed on leafy food, vegetables, nuts and fruits.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Omnivores', 'Can eat plants and other Pokémon.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Phototroph','Photosynthesize their own food and energy.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Terravore','One who feeds on the minerals found in rock and dirt around them.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Nullivore','Does not need to eat anything to sustain itself for various reasons.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Ergovore','Lives by consuming pure energy.');
+INSERT INTO DIET(NAME, DESCRIPTION)
+    VALUES ('Filter Feeder', 'Feed by straining suspended matter and food particles from water'); [22001-185]
