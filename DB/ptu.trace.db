@@ -369,3 +369,181 @@ org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO POKEMON
 VALUES (,[*])"; expected "), DEFAULT, NOT, EXISTS, INTERSECTS, SELECT, FROM"; SQL statement:
 INSERT INTO POKEMON_LEVEL(LEVEL, EXPERIENCE_NEEDED)
 VALUES (,) [42001-185]
+05-18 17:19:11 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Table "COMBAT_TYPE" not found; SQL statement:
+INSERT INTO COMBAT_TYPE(NAME) VALUES ('Cool');
+INSERT INTO COMBAT_TYPE(NAME) VALUES ('Beauty');
+INSERT INTO COMBAT_TYPE(NAME) VALUES ('Cute');
+INSERT INTO COMBAT_TYPE(NAME) VALUES ('Smart');
+INSERT INTO COMBAT_TYPE(NAME) VALUES ('Tough'); [42102-185]
+05-18 17:44:42 jdbc[55]: exception
+org.h2.jdbc.JdbcSQLException: Column "MULTIPLAYER" not found; SQL statement:
+SELECT t.* FROM PUBLIC.EFFECTIVENESS t ORDER BY MULTIPLAYER ASC [42122-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.command.dml.Select.prepare(Select.java:834)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at com.intellij.database.remote.jdbc.impl.RemoteStatementImpl.execute(RemoteStatementImpl.java:61)
+	at sun.reflect.GeneratedMethodAccessor29.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:323)
+	at sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:568)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$254(TCPTransport.java:683)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler$$Lambda$2/365683284.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+05-18 18:11:11 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Grass', 32;[*]
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ice', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Fighting', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Poison', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ground', 4);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Flying', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Psychic', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Bug', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Rock', 4);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ghost', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Dragon', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Dark', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Steel', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Fairy', 3);"; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Grass', 32;
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ice', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Fighting', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Poison', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ground', 4);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Flying', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Psychic', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Bug', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Rock', 4);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ghost', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Dragon', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Dark', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Steel', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Fairy', 3); [42001-185]
+05-18 18:12:59 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Grass', 2;[*]
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ice', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Fighting', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Poison', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ground', 4);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Flying', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Psychic', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Bug', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Rock', 4);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ghost', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Dragon', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Dark', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Steel', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Fairy', 3);"; expected "[, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Grass', 2;
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ice', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Fighting', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Poison', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ground', 4);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Flying', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Psychic', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Bug', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Rock', 4);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Ghost', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Dragon', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Dark', 3);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Steel', 2);
+INSERT INTO TYPE_EFFECTIVENESS(TYPE_ATTACKING_ID, TYPE_DEFENDING_ID, EFFECTIVENESS_ID)
+VALUES (SELECT ID FROM TYPE WHERE NAME = 'Grass', SELECT ID FROM TYPE WHERE NAME = 'Fairy', 3); [42001-185]
+05-18 19:11:36 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(250) NOT NULL": "STRINGDECODE('Pok\u00e9mon detest their trainers, and defy them at every opportunity. You must make a DC 20 Command Check to giv... (1506)"; SQL statement:
+INSERT INTO LOYALTY(LOYALTY, DESCRIPTION) VALUES (0, 'Pokémon detest their trainers, and defy them at every opportunity. You must make a DC 20 Command Check to give commands to Pokémon with 0 Loyalty. If you fail, the Pokémon may loaf about doing nothing, or may use whichever Move or Attack it pleases on whichever target it pleases – including its Trainer or other helpless bystanders!
+These Pokémon are usually the product of chronic and brutal mistreatment, such as Pokémon kept by a Lasher that are never allowed to fully recover from the Injuries inflicted by their brutal training or the application of Features like Strike of the Whip. It usually takes a special effort to lower a Pokémon down to this Loyalty Rank.
+However, it’s not unheard of for Pokémon to be caught at this Loyalty Rank as well. As an extreme example, a Trainer who crushed a mother Pokémon’s nest of eggs and then proceeded to capture her would rightfully earn the ire of that Pokémon!
+In a more benign case, an especially powerful and feral Pokémon that was caught by a stroke of luck could begin at Loyalty 0 or even require a higher Command Check than 20 to order in battle at first. The Trainer would have to prove their worth in order to overcome this obstacle.
+The typical behavior of Loyalty 0 Pokémon can vary widely, from near-paralyzing fear of their Trainer to incredibly active defiance. Either way, it is usually not a good idea to leave them unattended or even have them released and unrestrained in public, as they may be wont to run away or even attack bystanders.') [22001-185]
+05-18 19:11:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(250) NOT NULL": "STRINGDECODE('Pok\u00e9mon detest their trainers, and defy them at every opportunity. You must make a DC 20 Command Check to giv... (1506)"; SQL statement:
+INSERT INTO LOYALTY(LOYALTY, DESCRIPTION) VALUES (0, 'Pokémon detest their trainers, and defy them at every opportunity. You must make a DC 20 Command Check to give commands to Pokémon with 0 Loyalty. If you fail, the Pokémon may loaf about doing nothing, or may use whichever Move or Attack it pleases on whichever target it pleases – including its Trainer or other helpless bystanders!
+These Pokémon are usually the product of chronic and brutal mistreatment, such as Pokémon kept by a Lasher that are never allowed to fully recover from the Injuries inflicted by their brutal training or the application of Features like Strike of the Whip. It usually takes a special effort to lower a Pokémon down to this Loyalty Rank.
+However, it’s not unheard of for Pokémon to be caught at this Loyalty Rank as well. As an extreme example, a Trainer who crushed a mother Pokémon’s nest of eggs and then proceeded to capture her would rightfully earn the ire of that Pokémon!
+In a more benign case, an especially powerful and feral Pokémon that was caught by a stroke of luck could begin at Loyalty 0 or even require a higher Command Check than 20 to order in battle at first. The Trainer would have to prove their worth in order to overcome this obstacle.
+The typical behavior of Loyalty 0 Pokémon can vary widely, from near-paralyzing fear of their Trainer to incredibly active defiance. Either way, it is usually not a good idea to leave them unattended or even have them released and unrestrained in public, as they may be wont to run away or even attack bystanders.') [22001-185]
+05-18 19:13:15 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(1000) NOT NULL": "STRINGDECODE('Pok\u00e9mon detest their trainers, and defy them at every opportunity. You must make a DC 20 Command Check to giv... (1506)"; SQL statement:
+INSERT INTO LOYALTY(LOYALTY, DESCRIPTION) VALUES (0, 'Pokémon detest their trainers, and defy them at every opportunity. You must make a DC 20 Command Check to give commands to Pokémon with 0 Loyalty. If you fail, the Pokémon may loaf about doing nothing, or may use whichever Move or Attack it pleases on whichever target it pleases – including its Trainer or other helpless bystanders!
+These Pokémon are usually the product of chronic and brutal mistreatment, such as Pokémon kept by a Lasher that are never allowed to fully recover from the Injuries inflicted by their brutal training or the application of Features like Strike of the Whip. It usually takes a special effort to lower a Pokémon down to this Loyalty Rank.
+However, it’s not unheard of for Pokémon to be caught at this Loyalty Rank as well. As an extreme example, a Trainer who crushed a mother Pokémon’s nest of eggs and then proceeded to capture her would rightfully earn the ire of that Pokémon!
+In a more benign case, an especially powerful and feral Pokémon that was caught by a stroke of luck could begin at Loyalty 0 or even require a higher Command Check than 20 to order in battle at first. The Trainer would have to prove their worth in order to overcome this obstacle.
+The typical behavior of Loyalty 0 Pokémon can vary widely, from near-paralyzing fear of their Trainer to incredibly active defiance. Either way, it is usually not a good idea to leave them unattended or even have them released and unrestrained in public, as they may be wont to run away or even attack bystanders.') [22001-185]
