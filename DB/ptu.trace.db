@@ -547,3 +547,40 @@ These Pokémon are usually the product of chronic and brutal mistreatment, such 
 However, it’s not unheard of for Pokémon to be caught at this Loyalty Rank as well. As an extreme example, a Trainer who crushed a mother Pokémon’s nest of eggs and then proceeded to capture her would rightfully earn the ire of that Pokémon!
 In a more benign case, an especially powerful and feral Pokémon that was caught by a stroke of luck could begin at Loyalty 0 or even require a higher Command Check than 20 to order in battle at first. The Trainer would have to prove their worth in order to overcome this obstacle.
 The typical behavior of Loyalty 0 Pokémon can vary widely, from near-paralyzing fear of their Trainer to incredibly active defiance. Either way, it is usually not a good idea to leave them unattended or even have them released and unrestrained in public, as they may be wont to run away or even attack bystanders.') [22001-185]
+05-24 01:15:31 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO BALL(NAME, MODIFIER, EFFECT, COST)
+VALUES ('Great', -10, 'A better Poké Ball with no special effects.') [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at com.intellij.database.remote.jdbc.impl.RemoteStatementImpl.execute(RemoteStatementImpl.java:61)
+	at sun.reflect.GeneratedMethodAccessor21.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:323)
+	at sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:568)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$254(TCPTransport.java:683)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler$$Lambda$2/640011814.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+05-24 01:20:34 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "EFFECT VARCHAR(100) NOT NULL": "STRINGDECODE('-30 Modifier if the user has an active Pok\u00e9mon that is of the same evolutionary line as the target, and the o... (163)"; SQL statement:
+INSERT INTO BALL(NAME, MODIFIER, EFFECT, COST)
+VALUES ('Love', 0, '-30 Modifier if the user has an active Pokémon that is of the same evolutionary line as the target, and the opposite gender. Does not work with genderless Pokémon.', 800) [22001-185]
